@@ -1,7 +1,9 @@
 package pool;
 
 import gui.Ventana;
+import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JPanel;
 
 public abstract class Bola {
     //PROPIEDADES
@@ -9,12 +11,12 @@ public abstract class Bola {
     protected int y;
     protected int velocidadX;
     protected int velocidadY;
-    protected boolean estado; // Si esta en la mesa o no
+    protected boolean estado; // Si esta en la mesa o en una tronera
     protected final int radio;
     protected int puntaje;
     
     //METODOS
-    public abstract void paint(Graphics g, Ventana v);
+    public abstract void paint(Graphics g, JPanel panel);
     
     public int getX(){
         return x;
@@ -32,12 +34,15 @@ public abstract class Bola {
         this.y = y;
     }
     
+    public void ColisionSimple(){
+        
+    }
+    
     public boolean DetectarColision(){
         return true;
     }
     
-    public int AnguloColision(){
-        return 0;
+    public void AnguloColision(){
     }
     
     public int getPuntaje(){
@@ -50,7 +55,45 @@ public abstract class Bola {
         velocidadX = 0;
         velocidadY = 0;
         estado = true; // Si esta en la mesa o no
-        radio = 10;
+        radio = 15;
         this.puntaje = puntaje;
+    }
+}
+
+
+
+public class Bola1 extends Bola{
+    //METODOS
+    @Override
+    public void paint(Graphics g, JPanel panel){
+        g.setColor(new Color(200, 10, 10)); 
+        g.fillOval(x, y, 30, 30);
+    }
+    public Bola1(int x, int y){
+        super(x, y, 10);
+    }
+}
+
+public class Bola2 extends Bola{
+    //METODOS
+    @Override
+    public void paint(Graphics g, JPanel panel){
+        g.setColor(new Color(10, 200, 10)); 
+        g.fillOval(x, y, 30, 30);
+    }
+    public Bola2(int x, int y){
+        super(x, y, 10);
+    }
+}
+    
+public class Bola3 extends Bola{
+    //METODOS
+    @Override
+    public void paint(Graphics g, JPanel panel){
+        g.setColor(new Color(10, 10, 200)); 
+        g.fillOval(x, y, 30, 30);
+    }
+    public Bola3(int x, int y){
+        super(x, y, 10);
     }
 }
