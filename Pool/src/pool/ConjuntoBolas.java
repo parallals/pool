@@ -31,11 +31,22 @@ public class ConjuntoBolas {
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY((int)(Math.random()*1034+100), (int)(Math.random()*451+100));
         }
-        for(int i=0 ; i<8; i++){
-            for(int j=i+1 ; j<9; j++){
-                if(DetectarColision(conjunto.get(i), conjunto.get(j)) == true){
-                    System.out.println("aaa");
-                    
+        for(int i=0 ; i<9; i++){
+            for(int j=0 ; j<9; j++){
+                if(DetectarColision(conjunto.get(i), conjunto.get(j)) == true && i!= j){
+                    System.out.println("Detectaada colision en el primer randomizer");
+                    int aux = 0;
+                    do{
+                        conjunto.get(i).setX((int)(Math.random()*1064+100));
+                        conjunto.get(i).setY((int)(Math.random()*481+100));
+                        aux = 0;
+                            for(int k = 0; k<9;++k){
+                                if(DetectarColision(conjunto.get(i), conjunto.get(k))&& i != k){
+                                    System.out.println("Detectaada colision en el segundo randomizer");
+                                    aux = 1; 
+                                }
+                            }
+                    }while(aux == 1);
                 }
             }
         }
