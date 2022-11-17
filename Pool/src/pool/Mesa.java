@@ -14,7 +14,7 @@ public class Mesa {
         //Mesa
         g.setColor(new Color(100, 60, 50)); 
         g.fillRect(x-30, y-30, 1064+60, 481+60);
-        g.setColor(new Color(30, 130, 80)); 
+        g.setColor(new Color(30, 130, 80)); //Zona Verde
         g.fillRect(x, y, 1064, 481);
         //Troneras
         g.setColor(new Color(0, 0, 0)); 
