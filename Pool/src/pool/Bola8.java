@@ -10,9 +10,9 @@ public class Bola8 extends Bola{
     @Override
     public void paint(Graphics g, JPanel panel){
         g.setColor(new Color(250, 250, 250)); 
-        g.fillOval(x, y, 30, 30);
+        g.fillOval((int)x, (int)y, 30, 30);
     }
-    public Bola8(int x, int y){
+    public Bola8(double x, double y){
         super(x, y, 10);
     }
 }

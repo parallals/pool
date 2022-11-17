@@ -41,12 +41,12 @@ public class Angular {
      * @param y2
      * @return
      */
-    public static double distEntre2Puntos(int x1, int y1, int x2, int y2){
+    public static double distEntre2Puntos(double x1, double y1, double x2, double y2){ // Cambiamos los int por double
         double d = Math.sqrt(
-               ((double)x1-(double)x2)*
-               ((double)x1-(double)x2)+
-               ((double)y1-(double)y2)* 
-               ((double)y1-(double)y2)
+               (((double)x1-(double)x2)*
+               ((double)x1-(double)x2))+
+               (((double)y1-(double)y2)* 
+               ((double)y1-(double)y2))
             );
         return d;
     }
