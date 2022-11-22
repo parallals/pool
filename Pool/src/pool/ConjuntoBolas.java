@@ -40,6 +40,7 @@ public class ConjuntoBolas {
     }
     
     public void AnguloColision(Bola b1, Bola b2){
+        
     }
     
     private void RandomizarBolas(){
