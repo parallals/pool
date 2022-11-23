@@ -10,9 +10,10 @@ import javax.swing.JPanel;
 public class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto;
+    private int cantidadBolas;
     
     //METODOS
-    public void ColisionSimple(Bola b1){ //Colision entre Bola Pared
+    public void ColisionPared(Bola b1){ //Colision entre Bola Pared
         if(b1.getEstado()==true){
             if((b1.getX()<100 && b1.getVelocidadX()<0) || (b1.getX()+30>1164 && b1.getVelocidadX()>0)){
                 b1.setVelocidadX(-b1.getVelocidadX());
@@ -46,17 +47,17 @@ public class ConjuntoBolas {
     private void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY((int)(Math.random()*1034+100), (int)(Math.random()*451+100));
-            conjunto.get(i).estado = true;
+            conjunto.get(i).setEstado(true);
         }
-        for(int i=0 ; i<9; i++){
-            for(int j=0 ; j<9; j++){
+        for(int i=0 ; i<conjunto.size() ; i++){
+            for(int j=0 ; j<conjunto.size() ; j++){
                 if((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j){
                     System.out.println("Detectada colision en el primer randomizer");
                     boolean aux;
                     do{
                         conjunto.get(i).setXY((int)(Math.random()*1034+100), (int)(Math.random()*451+100));
                         aux = false;
-                            for(int k=0; k<9; k++){
+                            for(int k=0 ; k<conjunto.size() ; k++){
                                 if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k){
                                     System.out.println("Detectada colision en el segundo randomizer");
                                     aux = true; 
@@ -70,7 +71,7 @@ public class ConjuntoBolas {
     
      public void paint(Graphics g, JPanel panel){
         for(int j = 0; j < conjunto.size() ; j++){
-            if(conjunto.get(j).estado == true){
+            if(conjunto.get(j).getEstado() == true){
                 conjunto.get(j).paint(g, panel);
             }
         }
@@ -78,15 +79,11 @@ public class ConjuntoBolas {
         
     public ConjuntoBolas(){
         conjunto = new ArrayList<>();
-        conjunto.add(new BolaBlanca(0, 0));
-        conjunto.add(new Bola1(0, 0));
-        conjunto.add(new Bola2(0, 0));
-        conjunto.add(new Bola3(0, 0));
-        conjunto.add(new Bola4(0, 0));
-        conjunto.add(new Bola5(0, 0));
-        conjunto.add(new Bola6(0, 0));
-        conjunto.add(new Bola7(0, 0));
-        conjunto.add(new Bola8(0, 0));
+        cantidadBolas = 8;
+        conjunto.add(new Bola(0, 0, -10, 0));
+        for(int i=1 ; i<=cantidadBolas ; i++){
+            conjunto.add(new Bola(0, 0, 10, i));
+        }
         RandomizarBolas();
     }
 }
