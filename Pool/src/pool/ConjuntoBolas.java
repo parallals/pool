@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 
-public class ConjuntoBolas {
+class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto;
     private int cantidadBolas;
+    private final MesaBillar mesaBillar;
     
     //METODOS
     public void ColisionPared(Bola b1){ //Colision entre Bola Pared
@@ -50,16 +51,16 @@ public class ConjuntoBolas {
             conjunto.get(i).setEstado(true);
         }
         for(int i=0 ; i<conjunto.size() ; i++){
-            for(int j=0 ; j<conjunto.size() ; j++){
+            for(int j=1 ; j<conjunto.size() ; j++){
                 if((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j){
-                    System.out.println("Detectada colision en el primer randomizer");
+                    System.out.println("Detectada colision");
                     boolean aux;
                     do{
                         conjunto.get(i).setXY((int)(Math.random()*1034+100), (int)(Math.random()*451+100));
                         aux = false;
                             for(int k=0 ; k<conjunto.size() ; k++){
                                 if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k){
-                                    System.out.println("Detectada colision en el segundo randomizer");
+                                    System.out.println("Detectada colision luego del randomizer");
                                     aux = true; 
                                 }
                             }
@@ -77,7 +78,8 @@ public class ConjuntoBolas {
         }
      }
         
-    public ConjuntoBolas(){
+    public ConjuntoBolas(MesaBillar mesa){
+        this.mesaBillar = mesa;
         conjunto = new ArrayList<>();
         cantidadBolas = 8;
         conjunto.add(new Bola(0, 0, -10, 0));

@@ -5,15 +5,12 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
-import pool.ConjuntoBolas;
-
-import pool.Mesa;
+import pool.MesaBillar;
 
 
 class PanelPrincipal extends JPanel{
     //PROPIEDADES
-    Mesa m = new Mesa();
-    ConjuntoBolas c = new ConjuntoBolas();
+    MesaBillar m = new MesaBillar();
     
     
     //METODOS
@@ -22,7 +19,6 @@ class PanelPrincipal extends JPanel{
         super.paint(g);
         this.setBackground(Color.gray);
         m.paint(g, this);
-        c.paint(g, this);
     }
            
     private class EscuchaRaton implements MouseListener{

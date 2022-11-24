@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-public class Mesa {
+public class MesaBillar {
     //PROPIEDADES
     protected int x;
     protected int y;
+    ConjuntoBolas conjuntoBolas;
     
     //METODOS
     public void paint(Graphics g, JPanel panel){
@@ -24,10 +25,13 @@ public class Mesa {
         g.fillOval(x-25, y+481-(40-25), 40, 40);
         g.fillOval(x+(1064/2)-40/2, y+481-(40-25), 40, 40);
         g.fillOval(x+1064-40+25, y+481-(40-25), 40, 40);
+        
+        conjuntoBolas.paint(g, panel);
         //
     }
     
-    public Mesa(){
+    public MesaBillar(){
+        conjuntoBolas = new ConjuntoBolas(this);
         x = 100;
         y = 100;
     }
