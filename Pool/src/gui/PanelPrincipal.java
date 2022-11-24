@@ -16,7 +16,7 @@ import pool.Bola;
 import static angular.Angular.anguloPI;
 import static angular.Angular.distEntre2Puntos;
 import java.awt.Point;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 
 class PanelPrincipal extends JPanel implements ActionListener {
@@ -84,20 +84,24 @@ class PanelPrincipal extends JPanel implements ActionListener {
     public void mouseMoved(MouseEvent me) {
         //System.out.println("X:"+me.getX() + " Y:"+me.getY());
         Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);
-        Point pointBola = new Point((int)bolaBlanca.getX(),(int)bolaBlanca.getY());
-        Point pointMouse = new Point(me.getX(),me.getY());        
-        angle = anguloPI(pointMouse,pointBola);
+        Point pointBola = new Point((int)bolaBlanca.getX()+50,(int)bolaBlanca.getY()+50);
+        Point pointMouse = new Point(me.getX()+50,me.getY()+50);        
+        angle = anguloPI(pointBola,pointMouse);
         //System.out.println(angle);
-        float cos = (float) Math.cos(Math.toRadians(angle));
-        float sin = (float) Math.sin(Math.toRadians(angle));
+        float cos = (float) cos(angle);
+        
+        float sin = (float) sin(angle);
+        System.out.println("Angulo:"+angle);
         System.out.println("Cos: "+cos);//flag
         System.out.println("Sen: "+sin);//flag
-        float a = (float) sqrt((float)distEntre2Puntos(pointMouse,pointBola));
+        float a = (float) sqrt((float)distEntre2Puntos(pointBola,pointMouse));
         System.out.println("Radio: "+a);
         System.out.println("Pos Bola blanca X: " + bolaBlanca.getX()+ "   Y: "+bolaBlanca.getY()); //flags
-        System.out.println("Pos Taco X: " + ((int)bolaBlanca.getX()+a*cos));System.out.println("Pos Taco Y: "+((int)bolaBlanca.getY()+a*sin)); //FLAGS
+        System.out.println("Pos Taco X: " + (int)(bolaBlanca.getX()+(a*cos)));
+        System.out.println("Pos Taco Y: " + (int)(bolaBlanca.getY()+(a*sin))); //FLAGS
         System.out.println("---------------------------------------");
-        taco.setXY((int)bolaBlanca.getX()+(int)(a*cos),(int)bolaBlanca.getY()+(int)(a*sin));
+        
+        taco.setXY((int)(bolaBlanca.getX()+(30*cos)+30),(int)(bolaBlanca.getY()+(30*sin)+30));
         //taco.setXY(me.getX(),me.getY());
         repaint();
     }

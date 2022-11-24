@@ -31,7 +31,7 @@ public class Angular {
         alto=dos.y-uno.y;
         ancho=dos.x-uno.x;
         angulo = (float)Math.atan2(-(double)alto,(double)ancho);      
-        return angulo/(float)Math.PI;
+        return angulo; //sin radianes
     }
     /*public static float anguloPI(float uno, float dos){
         float angulo,alto,ancho;       

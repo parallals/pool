@@ -66,7 +66,7 @@ public class Bola {
     public void paint(Graphics g, JPanel panel){
         switch(bola){
             case 0 : { // BOLA BLANCA
-                g.setColor(new Color(0, 0, 0)); 
+                g.setColor(Color.white); 
                 break;
             } case 1 : { // BOLA 1 LISA
                 g.setColor(new Color(200, 10, 10)); 
@@ -90,7 +90,7 @@ public class Bola {
                 g.setColor(new Color(100, 100, 100)); 
                 break;
             } case 8 : { // BOLA 8 NEGRA
-                g.setColor(new Color(250, 250, 250)); 
+                g.setColor(new Color(0, 0, 0)); 
                 break;
             } case 9 : { // BOLA 9 RAYADA
                 g.setColor(new Color(200, 10, 10)); 
