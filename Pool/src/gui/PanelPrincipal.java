@@ -10,11 +10,14 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.event.MouseInputAdapter;
+import pool.Taco;
 
 
 class PanelPrincipal extends JPanel implements ActionListener {
     //PROPIEDADES
     MesaBillar mesaBillar = new MesaBillar();
+    Taco taco = new Taco(0,0);
     private Timer timer;
     
     //METODOS
@@ -23,6 +26,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
         super.paint(g);
         this.setBackground(Color.gray);
         mesaBillar.paint(g, this);
+        taco.paint(g, this);
     }
 
     @Override
@@ -44,6 +48,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
         }
         @Override
         public void mouseClicked(MouseEvent me) { 
+            System.out.println("click");
         }    
         @Override
         public void mouseReleased(MouseEvent me) {
@@ -55,10 +60,33 @@ class PanelPrincipal extends JPanel implements ActionListener {
         public void mouseExited(MouseEvent me) {
         }
     }
+    private class EscuchaRaton1 extends MouseInputAdapter {
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent me) {
+        
+        //System.out.println("X:"+me.getX() + " Y:"+me.getY());
+        taco.setXY(me.getX(),me.getY());
+        repaint();
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent me) {
+        //System.out.println("X:"+me.getX() + " Y:"+me.getY());
+        taco.setXY(me.getX(),me.getY());
+        repaint();
+    }
+        
+    }
     
     public PanelPrincipal() { 
         EscuchaRaton er = new EscuchaRaton();
+        EscuchaRaton1 er1 = new EscuchaRaton1();
         this.addMouseListener(er); 
+        this.addMouseMotionListener(er1);
         Botones();
         timer = new Timer(100,null);
         timer.addActionListener(this);
