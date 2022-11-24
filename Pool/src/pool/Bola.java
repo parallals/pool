@@ -65,38 +65,54 @@ class Bola {
     
     public void paint(Graphics g, JPanel panel){
         switch(bola){
-            case 0 -> { // BOLA BLANCA
+            case 0 : { // BOLA BLANCA
                 g.setColor(new Color(0, 0, 0)); 
-            } case 1 -> { // BOLA 1 LISA
+                break;
+            } case 1 : { // BOLA 1 LISA
                 g.setColor(new Color(200, 10, 10)); 
-            } case 2 -> { // BOLA 2 LISA
+                break;
+            } case 2 : { // BOLA 2 LISA
                 g.setColor(new Color(10, 200, 10)); 
-            } case 3 -> { // BOLA 3 LISA
-                g.setColor(new Color(10, 10, 200)); 
-            } case 4 -> { // BOLA 4 LISA
-                g.setColor(new Color(10, 200, 200)); 
-            } case 5 -> { // BOLA 5 LISA
-                g.setColor(new Color(200, 10, 200)); 
-            } case 6 -> { // BOLA 6 LISA
+                break;
+            } case 3 : { // BOLA 3 LISA
+                g.setColor(new Color(10, 10, 200));
+                break;
+            } case 4 : { // BOLA 4 LISA
+                g.setColor(new Color(10, 200, 200));
+                break;
+            } case 5 : { // BOLA 5 LISA
+                g.setColor(new Color(200, 10, 200));
+                break;
+            } case 6 : { // BOLA 6 LISA
                 g.setColor(new Color(200, 200, 10)); 
-            } case 7 -> { // BOLA 7 LISA
+                break;
+            } case 7 : { // BOLA 7 LISA
                 g.setColor(new Color(100, 100, 100)); 
-            } case 8 -> { // BOLA 8 NEGRA
+                break;
+            } case 8 : { // BOLA 8 NEGRA
                 g.setColor(new Color(250, 250, 250)); 
-            } case 9 -> { // BOLA 9 RAYADA
+                break;
+            } case 9 : { // BOLA 9 RAYADA
                 g.setColor(new Color(200, 10, 10)); 
-            } case 10 -> { // BOLA 10 RAYADA
+                break;
+            } case 10 : { // BOLA 10 RAYADA
                 g.setColor(new Color(10, 200, 10)); 
-            } case 11 -> { // BOLA 11 RAYADA
+                break;
+            } case 11 : { // BOLA 11 RAYADA
                 g.setColor(new Color(10, 10, 200)); 
-            } case 12 -> { // BOLA 12 RAYADA
+                break;
+            } case 12 : { // BOLA 12 RAYADA
                 g.setColor(new Color(10, 200, 200)); 
-            } case 13 -> { // BOLA 13 RAYADA
+                break;
+            } case 13 : { // BOLA 13 RAYADA
                 g.setColor(new Color(200, 10, 200)); 
-            } case 14 -> { // BOLA 14 RAYADA
+                break;
+            } case 14 : { // BOLA 14 RAYADA
                 g.setColor(new Color(200, 200, 10)); 
-            } case 15 -> { // BOLA 15
+                break;
+            } case 15 : { // BOLA 15
                 g.setColor(new Color(100, 100, 100)); 
+                break;
             }
         }
         g.fillOval((int)x, (int)y, 30, 30);
