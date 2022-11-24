@@ -15,7 +15,7 @@ public class Ventana extends JFrame {
         this.setVisible(true); 
         this.add(new PanelPrincipal());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(1536, 864);      
+        this.setSize(1264, 864);      
         setLocationRelativeTo(null);
         /* Funcion para ver la Resolucion real de la ventana.
         getContentPane().addComponentListener(new ComponentAdapter() {
