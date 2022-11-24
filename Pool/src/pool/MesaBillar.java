@@ -11,6 +11,10 @@ public class MesaBillar {
     ConjuntoBolas conjuntoBolas;
     
     //METODOS
+    public ConjuntoBolas getCb(){
+        return conjuntoBolas;
+    }
+    
     public int getX(){
         return x;
     }

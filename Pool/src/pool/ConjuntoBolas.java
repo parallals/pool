@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 
-class ConjuntoBolas {
+public class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto;
     private int cantidadBolas;
     private MesaBillar mesaBillar;
     
     //METODOS
+    public ArrayList<Bola> getConjunto(){
+        return conjunto;
+    }
     public void ColisionPared(Bola b1){ //Colision entre Bola Pared
         if(b1.getEstado()==true){
             if((b1.getX()<mesaBillar.getX() && b1.getVelocidadX()<0) || (b1.getX()+30>1064+mesaBillar.getX() && b1.getVelocidadX()>0)){

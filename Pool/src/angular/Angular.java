@@ -25,6 +25,7 @@ public class Angular {
      * @param dos: otro punto
      * @return: el ángulo con respecto a la horizontal
      */
+    // ORIGINAL 
     public static float anguloPI(Point uno, Point dos){
         float angulo,alto,ancho;       
         alto=dos.y-uno.y;
@@ -32,7 +33,13 @@ public class Angular {
         angulo = (float)Math.atan2(-(double)alto,(double)ancho);      
         return angulo/(float)Math.PI;
     }
-
+    /*public static float anguloPI(float uno, float dos){
+        float angulo,alto,ancho;       
+        alto=dos-uno;
+        ancho=dos-uno;
+        angulo = (float)Math.atan2(-(double)alto,(double)ancho);      
+        return angulo/(float)Math.PI;
+    }   */
     /**
      * Distancia en pixeles entre dos puntos
      * @param x1

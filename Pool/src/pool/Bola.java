@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-class Bola {
+public class Bola {
     //PROPIEDADES
     private double x;
     private double y;
