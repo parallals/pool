@@ -11,15 +11,15 @@ class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto;
     private int cantidadBolas;
-    private final MesaBillar mesaBillar;
+    private MesaBillar mesaBillar;
     
     //METODOS
     public void ColisionPared(Bola b1){ //Colision entre Bola Pared
         if(b1.getEstado()==true){
-            if((b1.getX()<100 && b1.getVelocidadX()<0) || (b1.getX()+30>1164 && b1.getVelocidadX()>0)){
+            if((b1.getX()<mesaBillar.getX() && b1.getVelocidadX()<0) || (b1.getX()+30>1064+mesaBillar.getX() && b1.getVelocidadX()>0)){
                 b1.setVelocidadX(-b1.getVelocidadX());
             }
-            if((b1.getY()<100 && b1.getVelocidadY()<0) || (b1.getY()+30>581 && b1.getVelocidadY()>0)){
+            if((b1.getY()<mesaBillar.getY() && b1.getVelocidadY()<0) || (b1.getY()+30>481+mesaBillar.getY() && b1.getVelocidadY()>0)){
                 b1.setVelocidadY(-b1.getVelocidadY());
             }
         }
@@ -47,7 +47,7 @@ class ConjuntoBolas {
     
     private void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
-            conjunto.get(i).setXY((int)(Math.random()*1034+100), (int)(Math.random()*451+100));
+            conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
             conjunto.get(i).setEstado(true);
         }
         for(int i=0 ; i<conjunto.size() ; i++){
@@ -56,7 +56,7 @@ class ConjuntoBolas {
                     System.out.println("Detectada colision");
                     boolean aux;
                     do{
-                        conjunto.get(i).setXY((int)(Math.random()*1034+100), (int)(Math.random()*451+100));
+                        conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
                         aux = false;
                             for(int k=0 ; k<conjunto.size() ; k++){
                                 if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k){
@@ -79,7 +79,7 @@ class ConjuntoBolas {
      }
         
     public ConjuntoBolas(MesaBillar mesa){
-        this.mesaBillar = mesa;
+        mesaBillar = mesa;
         conjunto = new ArrayList<>();
         cantidadBolas = 8;
         conjunto.add(new Bola(0, 0, -10, 0));

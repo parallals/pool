@@ -20,7 +20,7 @@ class Bola {
     }
     
     public double getY(){
-        return x;
+        return y;
     }
     
     public void setX(int x){

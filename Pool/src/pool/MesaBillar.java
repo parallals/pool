@@ -6,11 +6,19 @@ import javax.swing.JPanel;
 
 public class MesaBillar {
     //PROPIEDADES
-    protected int x;
-    protected int y;
+    private int x;
+    private int y;
     ConjuntoBolas conjuntoBolas;
     
     //METODOS
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
+    }
+    
     public void paint(Graphics g, JPanel panel){
         //Mesa
         g.setColor(new Color(100, 60, 50)); 
@@ -31,9 +39,9 @@ public class MesaBillar {
     }
     
     public MesaBillar(){
-        conjuntoBolas = new ConjuntoBolas(this);
         x = 100;
         y = 100;
+        conjuntoBolas = new ConjuntoBolas(this);
     }
  
 }

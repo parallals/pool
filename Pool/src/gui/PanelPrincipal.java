@@ -10,7 +10,7 @@ import pool.MesaBillar;
 
 class PanelPrincipal extends JPanel{
     //PROPIEDADES
-    MesaBillar m = new MesaBillar();
+    MesaBillar mesaBillar = new MesaBillar();
     
     
     //METODOS
@@ -18,7 +18,7 @@ class PanelPrincipal extends JPanel{
     public void paint(Graphics g){
         super.paint(g);
         this.setBackground(Color.gray);
-        m.paint(g, this);
+        mesaBillar.paint(g, this);
     }
            
     private class EscuchaRaton implements MouseListener{
