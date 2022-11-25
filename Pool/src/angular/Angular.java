@@ -6,11 +6,11 @@ import java.awt.Point;
 public class Angular {
 
     /**
-     * obtiene un nuevo punto a una cierta distancia y angulo desde la horizontal
+     * Obtiene un nuevo punto a una cierta distancia y angulo desde la horizontal
      * @param uno: punto actual
      * @param r: radio en pixeles
      * @param alfaGiro: angulo desde la horizontal en PI radianes
-     * @return: punto nuevo
+     * @return int punto nuevo
      */
     public  static Point generaPunto(Point uno, double r, double alfaGiro){    
         int x = (int)((double) uno.x + r*Math.cos(alfaGiro*Math.PI));
@@ -20,10 +20,10 @@ public class Angular {
     }
 
     /**
-     *
+     * Calcula el angulo respecto a la horizontal
      * @param uno: punto de referencia
      * @param dos: otro punto
-     * @return: el ángulo con respecto a la horizontal
+     * @return int el ángulo con respecto a la horizontal
      */
     // ORIGINAL 
     public static float anguloPI(Point uno, Point dos){
@@ -42,11 +42,11 @@ public class Angular {
     }   */
     /**
      * Distancia en pixeles entre dos puntos
-     * @param x1
-     * @param y1
-     * @param x2
-     * @param y2
-     * @return
+     * @param x1 Coordenada x del punto 1
+     * @param y1 Coordenada y del punto 1
+     * @param x2 Coordenada x del punto 2
+     * @param y2 Coordenada y del punto 2
+     * @return int distancia
      */
     public static double distEntre2Puntos(double x1, double y1, double x2, double y2){ // Cambiamos los int por double
         double d = Math.sqrt(
@@ -59,10 +59,10 @@ public class Angular {
     }
 
     /**
-     * distancia en pixeles entre dos puntos
-     * @param uno
-     * @param dos
-     * @return
+     * Calcula la distancia en pixeles entre dos puntos
+     * @param uno Variable tipo Point 1
+     * @param dos Variable tipo Point 2
+     * @return la distancia
      */
     public static double distEntre2Puntos(Point uno, Point dos){
         double d=Math.sqrt(

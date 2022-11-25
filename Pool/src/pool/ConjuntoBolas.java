@@ -9,14 +9,23 @@ import javax.swing.JPanel;
 
 public class ConjuntoBolas {
     //PROPIEDADES
+    
     private final ArrayList<Bola> conjunto;
     private int cantidadBolas;
     private MesaBillar mesaBillar;
     
     //METODOS
+    /**
+     * Getter de conjunto
+     * @return conjunto
+     */
     public ArrayList<Bola> getConjunto(){
         return conjunto;
     }
+    /**
+     * Detecta si hay una colision entre una bola y  la pared de la mesa
+     * @param b1 
+     */
     public void ColisionPared(Bola b1){ //Colision entre Bola Pared
         if(b1.getEstado()==true){
             if((b1.getX()<mesaBillar.getX() && b1.getVelocidadX()<0) || (b1.getX()+30>1064+mesaBillar.getX() && b1.getVelocidadX()>0)){
@@ -27,14 +36,23 @@ public class ConjuntoBolas {
             }
         }
     }
-    
+    /**
+     * Detecta si hay una colision entre una bola y otra, y guarda el angulo de colision
+     * @param b1
+     * @param b2 
+     */
     public void ColisionBolas(Bola b1, Bola b2){
         if(DetectarColision(b1, b2)){
             AnguloColision(b1, b2);
         }
     }
-    
-    private boolean DetectarColision(Bola b1, Bola b2){ //Colision entre dos Bolas
+    /**
+     * Detecta si hay una colision entre dos bolas
+     * @param b1
+     * @param b2
+     * @return Si hay una colisión, devuelve true.
+     */
+    public boolean DetectarColision(Bola b1, Bola b2){ //Colision entre dos Bolas
         if(b1.getEstado()==true && b2.getEstado()==true){
             double Aux = distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY());
             if(Aux <= 30){
@@ -43,11 +61,17 @@ public class ConjuntoBolas {
         }
         return false;
     }
-    
+    /**
+     * Detecta y registra el angulo de colision
+     * @param b1
+     * @param b2 
+     */
     public void AnguloColision(Bola b1, Bola b2){
         
     }
-    
+    /**
+     * Randomiza la posicion de las bolas
+     */
     private void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
@@ -72,7 +96,11 @@ public class ConjuntoBolas {
             }
         }
     }
-    
+    /**
+     * Funcion paint de ConjuntoBolas
+     * @param g
+     * @param panel 
+     */
      public void paint(Graphics g, JPanel panel){
         for(int j = 0; j < conjunto.size() ; j++){
             if(conjunto.get(j).getEstado() == true){
@@ -80,7 +108,10 @@ public class ConjuntoBolas {
             }
         }
      }
-        
+    /**
+     * Constructor de ConjuntoBolas
+     * @param mesa 
+     */
     public ConjuntoBolas(MesaBillar mesa){
         mesaBillar = mesa;
         conjunto = new ArrayList<>();

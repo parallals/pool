@@ -27,6 +27,10 @@ class PanelPrincipal extends JPanel implements ActionListener {
     private Timer timer;
     
     //METODOS
+    /**
+     * Funcion paint de PanelPrincipal
+     * @param g 
+     */
     @Override
     public void paint(Graphics g){
         super.paint(g);
@@ -39,7 +43,9 @@ class PanelPrincipal extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         
     }
-    
+    /**
+     * Funcion que crea los botones
+     */
     private void Botones(){
         JButton Boton1 = new JButton("Reset");
         Boton1.setBounds(100, 700, 100,50);
@@ -70,19 +76,36 @@ class PanelPrincipal extends JPanel implements ActionListener {
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         this.add(RadioBoton3);
     }
-    
+    /**
+     * 
+     */
     private class EscuchaRaton implements MouseListener{
-        
+        /**
+         * Funcion mousePressed
+         * @param me 
+         */
         @Override
         public void mousePressed(MouseEvent me){
         }
+        /**
+         * funcion mouseClicked
+         * @param me 
+         */
         @Override
         public void mouseClicked(MouseEvent me) { 
             System.out.println("click");
-        }    
+        }
+        /**
+         * funcion mouseReleased
+         * @param me 
+         */
         @Override
         public void mouseReleased(MouseEvent me) {
         }
+        /**
+         * funcion mouseEntered
+         * @param me 
+         */
         @Override
         public void mouseEntered(MouseEvent me) {
         }
@@ -97,12 +120,18 @@ class PanelPrincipal extends JPanel implements ActionListener {
     }
 
     @Override
+    /**
+     * 
+     */
     public void mouseDragged(MouseEvent me) {
         taco.setXY(me.getX(),me.getY());
         repaint();
     }
 
     @Override
+    /**
+     * 
+     */
     public void mouseMoved(MouseEvent me) {
         Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);
         Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
@@ -114,7 +143,9 @@ class PanelPrincipal extends JPanel implements ActionListener {
     }
         
     }
-    
+    /**
+     * Constructor del Panel Principal
+     */
     public PanelPrincipal() { 
         EscuchaRaton er = new EscuchaRaton();
         EscuchaRaton1 er1 = new EscuchaRaton1();

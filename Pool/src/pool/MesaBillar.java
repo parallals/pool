@@ -11,18 +11,32 @@ public class MesaBillar {
     ConjuntoBolas conjuntoBolas;
     
     //METODOS
+    /**
+     * Getter de conjuntoBolas
+     * @return conjuntoBolas
+     */
     public ConjuntoBolas getCb(){
         return conjuntoBolas;
     }
-    
+    /**
+     * Getter de X
+     * @return x
+     */
     public int getX(){
         return x;
     }
-    
+    /**
+     * Getter de y
+     * @return y
+     */
     public int getY(){
         return y;
     }
-    
+    /**
+     * Paint de la mesa de billar con posiciones relativas
+     * @param g
+     * @param panel 
+     */
     public void paint(Graphics g, JPanel panel){
         //Mesa
         g.setColor(new Color(100, 60, 50)); 
@@ -41,7 +55,9 @@ public class MesaBillar {
         conjuntoBolas.paint(g, panel);
         //
     }
-    
+    /*
+    Constructor de MesaBillar
+    */
     public MesaBillar(){
         x = 100;
         y = 100;

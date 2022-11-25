@@ -15,54 +15,97 @@ public class Bola {
     private final int bola;
     
     //METODOS
+    /**
+     * Getter de x
+     * @return x
+     */
     public double getX(){
         return x;
     }
-    
+    /**
+     * Getter de y
+     * @return y
+     */
     public double getY(){
         return y;
     }
-    
+    /**
+     * Setter de x
+     * @param x 
+     */
     public void setX(int x){
         this.x = x;
     }
+    /**
+     * Setter de y
+     * @param y 
+     */
     public void setY(int y){
         this.y = y;
     }
-    
+    /**
+     * Setter de xy
+     * @param x
+     * @param y 
+     */
     public void setXY(int x, int y){
         this.x = x;
         this.y = y;
     }
-    
+    /**
+     * Getter de la velocidad en x
+     * @return  velocidad en X
+     */
     public double getVelocidadX(){
         return velocidadX;
     }
-    
+    /**
+     * Getter de la velocidad en y
+     * @return velocidad en Y
+     */
     public double getVelocidadY(){
         return velocidadY;
     }
-    
+    /**
+     * Setter de la velocidad en x
+     * @param velocidadX 
+     */
     public void setVelocidadX(double velocidadX){
         this.velocidadX = velocidadX;
     }
-    
+    /**
+     * Setter de la velocidad en y
+     * @param velocidadY 
+     */
     public void setVelocidadY(double velocidadY){
         this.velocidadY = velocidadY;
     }
-    
+    /**
+     * Getter del Estado de la bola
+     * @return El estado 
+     */
     public boolean getEstado(){
         return estado;
     }
-    
+    /**
+     * Setter del Estado de la bola
+     * @param estado 
+     */
     public void setEstado(boolean estado){
         this.estado = estado;
     }
-        
+    /**
+     * Getter del puntaje de la bola
+     * @return puntaje de la bola
+     */
     public int getPuntaje(){
         return puntaje;
     }
-    
+    /**
+     * Funcion de paint de bola
+     * @param g
+     * @param panel 
+     */
     public void paint(Graphics g, JPanel panel){
         switch(bola){
             case 0 : { // BOLA BLANCA
@@ -117,7 +160,13 @@ public class Bola {
         }
         g.fillOval((int)x, (int)y, 30, 30);
     }
-    
+    /**
+     * Constructor de Bola
+     * @param x Coordenada x de la bola
+     * @param y Coordenada y de la bola
+     * @param puntaje Puntaje correspondiente
+     * @param bola Tipo de bola (Numero int del 1 al 15)
+     */
     public Bola(double x, double y, int puntaje, int bola){
         this.x = x;
         this.y = y;
