@@ -8,20 +8,32 @@ import javax.swing.JPanel;
 
 public class Taco {
     //PROPIEDADES
-    protected int x;
-    protected int y;
-    protected Polygon p;
+    private int x;
+    private int y;
+    private Polygon p;
+    private float cos;
+    private float sen;
     
     //METODOS
     public void setXY(int x, int y){
         this.x = x;
         this.y = y;
     }
+    
+    public void setCosSen(float cos, float sen){
+        this.cos = cos;
+        this.sen = sen;
+    }
+    
     public void paint(Graphics g, JPanel panel){
         g.setColor(Color.yellow);
         //g.fillRect(x, y, 10, 150);
         p = new Polygon();
-        p.addPoint(x,y);p.addPoint(x+10,y);p.addPoint(x+10,y+150);p.addPoint(x,y+150);
+        
+        p.addPoint((int)(x+30*cos),(int)(y-30*sen)); //Parte cercana a la bola
+        p.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos));
+        p.addPoint((int)(x+200*cos-5*sen), (int)(y-200*sen-5*cos)); // Parte lejana a la bola 
+        p.addPoint((int)(x+200*cos+5*sen), (int)(y-200*sen+5*cos));
         g.drawPolygon(p);
         g.fillPolygon(p);
         

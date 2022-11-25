@@ -73,36 +73,18 @@ class PanelPrincipal extends JPanel implements ActionListener {
 
     @Override
     public void mouseDragged(MouseEvent me) {
-        
-        //System.out.println("X:"+me.getX() + " Y:"+me.getY());
-        
         taco.setXY(me.getX(),me.getY());
         repaint();
     }
 
     @Override
     public void mouseMoved(MouseEvent me) {
-        //System.out.println("X:"+me.getX() + " Y:"+me.getY());
         Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);
         Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
         Point pointMouse = new Point(me.getX(), me.getY());        
         angle = anguloPI(pointBola,pointMouse);
-        //System.out.println(angle);
-        float cos = (float) cos(angle);
-        
-        float sin = (float) sin(angle);
-        System.out.println("Angulo:"+angle);
-        System.out.println("Cos: "+cos);//flag
-        System.out.println("Sen: "+sin);//flag
-        float a = (float) sqrt((float)distEntre2Puntos(pointBola,pointMouse));
-        System.out.println("Radio: "+a);
-        System.out.println("Pos Bola blanca X: " + bolaBlanca.getX()+ "   Y: "+bolaBlanca.getY()); //flags
-        System.out.println("Pos Taco X: " + (int)(bolaBlanca.getX()+(a*cos)));
-        System.out.println("Pos Taco Y: " + (int)(bolaBlanca.getY()+(a*sin))); //FLAGS
-        System.out.println("---------------------------------------");
-        
-        taco.setXY((int)(bolaBlanca.getX()+(30*cos)+10),(int)(bolaBlanca.getY()+(-30*sin)+10));
-        //taco.setXY(me.getX(),me.getY());
+        taco.setCosSen((float) cos(angle), (float) sin(angle));
+        taco.setXY((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
         repaint();
     }
         
