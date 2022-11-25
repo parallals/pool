@@ -84,8 +84,8 @@ class PanelPrincipal extends JPanel implements ActionListener {
     public void mouseMoved(MouseEvent me) {
         //System.out.println("X:"+me.getX() + " Y:"+me.getY());
         Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);
-        Point pointBola = new Point((int)bolaBlanca.getX()+50,(int)bolaBlanca.getY()+50);
-        Point pointMouse = new Point(me.getX()+50,me.getY()+50);        
+        Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
+        Point pointMouse = new Point(me.getX(), me.getY());        
         angle = anguloPI(pointBola,pointMouse);
         //System.out.println(angle);
         float cos = (float) cos(angle);
@@ -101,7 +101,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
         System.out.println("Pos Taco Y: " + (int)(bolaBlanca.getY()+(a*sin))); //FLAGS
         System.out.println("---------------------------------------");
         
-        taco.setXY((int)(bolaBlanca.getX()+(30*cos)+30),(int)(bolaBlanca.getY()+(30*sin)+30));
+        taco.setXY((int)(bolaBlanca.getX()+(30*cos)+10),(int)(bolaBlanca.getY()+(-30*sin)+10));
         //taco.setXY(me.getX(),me.getY());
         repaint();
     }
