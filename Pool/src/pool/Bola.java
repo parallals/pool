@@ -10,6 +10,7 @@ public class Bola {
     private double y;
     private double velocidadX;
     private double velocidadY;
+    private final double aceleracion;
     private boolean estado; // Si esta en la mesa o en una tronera
     private final int puntaje;
     private final int bola;
@@ -101,15 +102,38 @@ public class Bola {
     public int getPuntaje(){
         return puntaje;
     }
-    public void moveBola(int velocidad){
-        x = velocidadX + x;
-        y = velocidadY + y;
-        /*if(choquePared == 1){
-            velocidadX = -1*velocidadX;
+    
+    public void movimientoBola(){
+        if(velocidadX > 0){
+            if(velocidadX - aceleracion > 0){
+                velocidadX = velocidadX - aceleracion;         
+            }else{
+                velocidadX = 0;
+            }
+            x = velocidadX + x;
+        }else if(velocidadX < 0){
+            if(velocidadX + aceleracion < 0){
+                velocidadX = velocidadX + aceleracion;         
+            }else{
+                velocidadX = 0;
+            }
+            x = velocidadX + x;
         }
-        if(choquePared == 2){
-            velocidadY = -1*velocidadY;
-        }*/
+        if(velocidadY > 0){
+            if(velocidadY - aceleracion > 0){
+                velocidadY = velocidadY - aceleracion;         
+            }else{
+                velocidadY = 0;
+            }
+            y = velocidadY + y;
+        }else if(velocidadY < 0){
+            if(velocidadY + aceleracion < 0){
+                velocidadY = velocidadY + aceleracion;         
+            }else{
+                velocidadY = 0;
+            }
+            y = velocidadY + y;
+        }
     }
     /**
      * Funcion de paint de bola
@@ -180,8 +204,9 @@ public class Bola {
     public Bola(double x, double y, int puntaje, int bola){
         this.x = x;
         this.y = y;
-        velocidadX = 20;
-        velocidadY = 20;
+        velocidadX = 0;
+        velocidadY = 0;
+        aceleracion = 0.1;
         estado = true; // Si esta en la mesa o no
         this.puntaje = puntaje;
         this.bola = bola;

@@ -41,17 +41,8 @@ class PanelPrincipal extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0); 
-            bolaBlanca.moveBola(22);
-            if(bolaBlanca.getX() > mesaBillar.getX()+1049 || bolaBlanca.getX() < mesaBillar.getX()){
-                bolaBlanca.setVelocidadX((bolaBlanca.getVelocidadX())*-1);
-                System.out.println(bolaBlanca.getVelocidadX());
-            }
-            if(bolaBlanca.getY() > mesaBillar.getY()+466 || bolaBlanca.getY() < mesaBillar.getY()){
-                bolaBlanca.setVelocidadY((bolaBlanca.getVelocidadY())*-1);
-                System.out.println("Y: " + bolaBlanca.getVelocidadY());
-            }
-            repaint();        
+        mesaBillar.getCb().Movimiento();
+        repaint();        
     }
     /**
      * Funcion que crea los botones
@@ -173,7 +164,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
         this.addMouseListener(er); 
         this.addMouseMotionListener(er1);
         Botones();
-        timer = new Timer(50,null);
+        timer = new Timer(16,null);
         timer.addActionListener(this);
         timer.start();
     }

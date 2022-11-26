@@ -22,6 +22,20 @@ public class ConjuntoBolas {
     public ArrayList<Bola> getConjunto(){
         return conjunto;
     }
+    
+    public void Movimiento(){
+        for(int i=0 ; i<conjunto.size() ; i++){
+            conjunto.get(i).movimientoBola();
+        }
+        for(int i=0 ; i<conjunto.size() ; i++){
+            ColisionPared(conjunto.get(i));
+        }
+        for(int i=0 ; i<conjunto.size()-1 ; i++){
+            for(int j=i+1 ; j<conjunto.size() ; j++){
+                ColisionBolas(conjunto.get(i), conjunto.get(j));
+            }
+        }
+    }
     /**
      * Detecta si hay una colision entre una bola y  la pared de la mesa
      * @param b1 
@@ -121,6 +135,8 @@ public class ConjuntoBolas {
             conjunto.add(new Bola(0, 0, 10, i));
         }
         RandomizarBolas();
+        conjunto.get(0).setVelocidadX(20);
+        conjunto.get(0).setVelocidadY(20);
     }
 }
 
