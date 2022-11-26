@@ -41,7 +41,17 @@ class PanelPrincipal extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0); 
+            bolaBlanca.moveBola(22);
+            if(bolaBlanca.getX() > mesaBillar.getX()+1049 || bolaBlanca.getX() < mesaBillar.getX()){
+                bolaBlanca.setVelocidadX((bolaBlanca.getVelocidadX())*-1);
+                System.out.println(bolaBlanca.getVelocidadX());
+            }
+            if(bolaBlanca.getY() > mesaBillar.getY()+466 || bolaBlanca.getY() < mesaBillar.getY()){
+                bolaBlanca.setVelocidadY((bolaBlanca.getVelocidadY())*-1);
+                System.out.println("Y: " + bolaBlanca.getVelocidadY());
+            }
+            repaint();        
     }
     /**
      * Funcion que crea los botones
@@ -80,6 +90,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
      * 
      */
     private class EscuchaRaton implements MouseListener{
+        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);   
         /**
          * Funcion mousePressed
          * @param me 
@@ -92,8 +103,17 @@ class PanelPrincipal extends JPanel implements ActionListener {
          * @param me 
          */
         @Override
+        // w: 1064 h: 481, w - 15: 1045 h-15: 466
         public void mouseClicked(MouseEvent me) { 
-            System.out.println("click");
+            /*System.out.println("click");
+            bolaBlanca.moveBola(1, 0);
+            if(bolaBlanca.getX() > mesaBillar.getX()+1049 || bolaBlanca.getX() < mesaBillar.getX()){
+                bolaBlanca.moveBola(1, 1);
+            }
+            if(bolaBlanca.getY() > mesaBillar.getY()+466 || bolaBlanca.getX() < mesaBillar.getY()){
+                bolaBlanca.moveBola(1, 2);
+            }
+            repaint();*/
         }
         /**
          * funcion mouseReleased
@@ -115,8 +135,10 @@ class PanelPrincipal extends JPanel implements ActionListener {
     }
     private class EscuchaRaton1 extends MouseInputAdapter {
     float angle = 0f;
+    Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);    
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println("click");
     }
 
     @Override
@@ -133,7 +155,6 @@ class PanelPrincipal extends JPanel implements ActionListener {
      * 
      */
     public void mouseMoved(MouseEvent me) {
-        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);
         Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
         Point pointMouse = new Point(me.getX(), me.getY());        
         angle = anguloPI(pointBola,pointMouse);
@@ -152,7 +173,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
         this.addMouseListener(er); 
         this.addMouseMotionListener(er1);
         Botones();
-        timer = new Timer(100,null);
+        timer = new Timer(50,null);
         timer.addActionListener(this);
         timer.start();
     }

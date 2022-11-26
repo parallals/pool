@@ -101,6 +101,16 @@ public class Bola {
     public int getPuntaje(){
         return puntaje;
     }
+    public void moveBola(int velocidad){
+        x = velocidadX + x;
+        y = velocidadY + y;
+        /*if(choquePared == 1){
+            velocidadX = -1*velocidadX;
+        }
+        if(choquePared == 2){
+            velocidadY = -1*velocidadY;
+        }*/
+    }
     /**
      * Funcion de paint de bola
      * @param g
@@ -170,8 +180,8 @@ public class Bola {
     public Bola(double x, double y, int puntaje, int bola){
         this.x = x;
         this.y = y;
-        velocidadX = 0;
-        velocidadY = 0;
+        velocidadX = 20;
+        velocidadY = 20;
         estado = true; // Si esta en la mesa o no
         this.puntaje = puntaje;
         this.bola = bola;
