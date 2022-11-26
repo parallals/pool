@@ -1,8 +1,10 @@
 package pool;
 
 //import java.util.Random;
+import static angular.Angular.anguloPI;
 import static angular.Angular.distEntre2Puntos;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -81,7 +83,38 @@ public class ConjuntoBolas {
      * @param b2 
      */
     public void AnguloColision(Bola b1, Bola b2){
-        
+         double Aux;
+         float angle = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
+         double cos = Math.cos(angle);
+         double sen = Math.sin(angle);
+         double velocidadTotal1 = Math.sqrt(b1.getVelocidadX()*b1.getVelocidadX() + b1.getVelocidadY()*b1.getVelocidadY());
+         double velocidadTotal2 = Math.sqrt(b2.getVelocidadX()*b2.getVelocidadX() + b2.getVelocidadY()*b2.getVelocidadY());
+         
+         if(b1.getX() > b2.getX()){
+             b1.setVelocidadX(velocidadTotal2*cos);
+             b2.setVelocidadX(velocidadTotal1*cos);
+         }else if(b1.getX() < b2.getX()){
+             b1.setVelocidadX(velocidadTotal2*cos);
+             b2.setVelocidadX(-velocidadTotal1*cos);
+         }else{/*
+             Aux = b1.getVelocidadX();
+             b1.setVelocidadX(b2.getVelocidadX());
+             b2.setVelocidadX(Aux);*/
+         }
+         
+         if(b1.getY() > b2.getY()){
+             b1.setVelocidadY(velocidadTotal2*sen);
+             b2.setVelocidadY(-velocidadTotal1*sen);
+             
+         }else if(b1.getY() < b2.getY()){
+             b1.setVelocidadY(velocidadTotal2*sen);
+             b2.setVelocidadY(-velocidadTotal1*sen);
+             
+         }else{/*
+             Aux = b1.getVelocidadY();
+             b1.setVelocidadY(b2.getVelocidadY());
+             b2.setVelocidadY(Aux);*/
+         }
     }
     /**
      * Randomiza la posicion de las bolas

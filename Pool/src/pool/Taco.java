@@ -2,7 +2,6 @@ package pool;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.Polygon;
 import javax.swing.JPanel;
 

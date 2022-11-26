@@ -104,34 +104,27 @@ public class Bola {
     }
     
     public void movimientoBola(){
-        if(velocidadX > 0){
-            if(velocidadX - aceleracion > 0){
-                velocidadX = velocidadX - aceleracion;         
+        double velocidadTotal = Math.sqrt((velocidadX*velocidadX)+(velocidadY*velocidadY));
+        if(velocidadTotal > 0){
+            if(velocidadTotal - aceleracion > 0){
+                velocidadTotal = velocidadTotal - aceleracion;         
             }else{
                 velocidadX = 0;
+                velocidadY = 0;
             }
-            x = velocidadX + x;
-        }else if(velocidadX < 0){
-            if(velocidadX + aceleracion < 0){
-                velocidadX = velocidadX + aceleracion;         
+        }else if(velocidadTotal < 0){
+            if(velocidadTotal + aceleracion < 0){
+                velocidadTotal = velocidadTotal + aceleracion;         
             }else{
                 velocidadX = 0;
+                velocidadY = 0;
             }
-            x = velocidadX + x;
         }
-        if(velocidadY > 0){
-            if(velocidadY - aceleracion > 0){
-                velocidadY = velocidadY - aceleracion;         
-            }else{
-                velocidadY = 0;
-            }
-            y = velocidadY + y;
-        }else if(velocidadY < 0){
-            if(velocidadY + aceleracion < 0){
-                velocidadY = velocidadY + aceleracion;         
-            }else{
-                velocidadY = 0;
-            }
+        if(velocidadTotal != 0){
+            double angulo = Math.atan2(velocidadY, velocidadX);
+            velocidadX = velocidadTotal*Math.cos(angulo);
+            velocidadY = velocidadTotal*Math.sin(angulo);
+            x = velocidadX + x;
             y = velocidadY + y;
         }
     }

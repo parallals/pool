@@ -15,7 +15,6 @@ import pool.Taco;
 import pool.Bola;
 import static angular.Angular.anguloPI;
 import java.awt.Point;
-import static java.lang.Math.*;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
@@ -125,35 +124,35 @@ class PanelPrincipal extends JPanel implements ActionListener {
         }
     }
     private class EscuchaRaton1 extends MouseInputAdapter {
-    float angle = 0f;
-    Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);    
-    @Override
-    public void mousePressed(MouseEvent e) {
-        System.out.println("click");
-    }
+        float angle = 0f;
+        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);    
+        @Override
+        public void mousePressed(MouseEvent e) {
+            System.out.println("click");
+        }
 
-    @Override
-    /**
-     * 
-     */
-    public void mouseDragged(MouseEvent me) {
-        taco.setXY(me.getX(),me.getY());
-        repaint();
-    }
+        @Override
+        /**
+         * 
+         */
+        public void mouseDragged(MouseEvent me) {
+            taco.setXY(me.getX(),me.getY());
+            repaint();
+        }
 
-    @Override
-    /**
-     * 
-     */
-    public void mouseMoved(MouseEvent me) {
-        Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
-        Point pointMouse = new Point(me.getX(), me.getY());        
-        angle = anguloPI(pointBola,pointMouse);
-        taco.setCosSen((float) cos(angle), (float) sin(angle));
-        taco.setXY((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
-        repaint();
-    }
-        
+        @Override
+        /**
+         * 
+         */
+        public void mouseMoved(MouseEvent me) {
+            Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
+            Point pointMouse = new Point(me.getX(), me.getY());        
+            angle = anguloPI(pointBola, pointMouse);
+            taco.setCosSen((float) Math.cos(angle), (float) Math.sin(angle));
+            taco.setXY((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
+            repaint();
+        }
+
     }
     /**
      * Constructor del Panel Principal
