@@ -101,15 +101,14 @@ public class Bola {
     public int getPuntaje(){
         return puntaje;
     }
+    public void startmoveBola(float direccionX, float direccionY){
+        velocidadX = velocidadX*-1*direccionX;
+        velocidadY = velocidadY*-1*direccionY;
+        System.out.println(velocidadX);System.out.println(velocidadY);
+    }
     public void moveBola(int velocidad){
         x = velocidadX + x;
         y = velocidadY + y;
-        /*if(choquePared == 1){
-            velocidadX = -1*velocidadX;
-        }
-        if(choquePared == 2){
-            velocidadY = -1*velocidadY;
-        }*/
     }
     /**
      * Funcion de paint de bola

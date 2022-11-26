@@ -33,6 +33,19 @@ public class Taco {
         this.cos = cos;
         this.sen = sen;
     }
+    public float getCos(){
+        return cos;
+    }
+    
+    public float getSin(){
+        return sen;
+    }
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }    
     /**
      * Método paint de Taco
      * @param g
