@@ -12,7 +12,8 @@ public class Taco {
     private Polygon p;
     private float cos = 0;
     private float sen = 0;
-    private Bola bolaBlanca;
+    private final Bola bolaBlanca;
+    private boolean turnoAcabado;
     
     //METODOS
     /**
@@ -35,17 +36,24 @@ public class Taco {
     }
     
     public void golpearBola(){
+        if(turnoAcabado == true){
             double Fuerza = 30;
             bolaBlanca.setVelocidadX((double)Fuerza*-cos);
             bolaBlanca.setVelocidadY((double)Fuerza*sen);
+        }
     }
+    
+    public void setTurnoAcabado(boolean turnoAcabado){
+        this.turnoAcabado = turnoAcabado;
+    }
+    
     /**
      * Método paint de Taco
      * @param g
      * @param panel 
      */
     public void paint(Graphics g, JPanel panel){
-        if(true){
+        if(turnoAcabado == true){
             g.setColor(Color.yellow);
             p = new Polygon();
             p.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos)); //Parte cercana a la bola

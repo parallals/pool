@@ -37,16 +37,20 @@ class PanelPrincipal extends JPanel implements ActionListener {
         mesaBillar.paint(g, this);
         taco.paint(g, this);
     }
-
+    /**
+     * 
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         mesaBillar.getCb().Movimiento();
+        taco.setTurnoAcabado(mesaBillar.getCb().TurnoAcabado());
         repaint();        
     }
     /**
      * Funcion que crea los botones
      */
-    private void Botones(){
+    public void Botones(){
         JButton Boton1 = new JButton("Reset");
         Boton1.setBounds(100, 700, 100,50);
         Boton1.setEnabled(true);
@@ -86,27 +90,15 @@ class PanelPrincipal extends JPanel implements ActionListener {
          */
         @Override
         public void mousePressed(MouseEvent me){
-            if(mesaBillar.getCb().TurnoAcabado() == true){
-                taco.golpearBola();                
-                repaint();
-            }
+            taco.golpearBola();                
+            repaint();
         }
         /**
          * funcion mouseClicked
          * @param me 
          */
         @Override
-        // w: 1064 h: 481, w - 15: 1045 h-15: 466
         public void mouseClicked(MouseEvent me) { 
-            /*System.out.println("click");
-            bolaBlanca.moveBola(1, 0);
-            if(bolaBlanca.getX() > mesaBillar.getX()+1049 || bolaBlanca.getX() < mesaBillar.getX()){
-                bolaBlanca.moveBola(1, 1);
-            }
-            if(bolaBlanca.getY() > mesaBillar.getY()+466 || bolaBlanca.getX() < mesaBillar.getY()){
-                bolaBlanca.moveBola(1, 2);
-            }
-            repaint();*/
         }
         /**
          * funcion mouseReleased
@@ -132,14 +124,6 @@ class PanelPrincipal extends JPanel implements ActionListener {
         Bola bolaBlanca = mesaBillar.getCb().getBolaBlanca();    
         
         @Override
-        public void mousePressed(MouseEvent me){
-        }
-        
-        @Override
-        public void mouseClicked(MouseEvent me) {
-        }
-        
-        @Override
         public void mouseMoved(MouseEvent me) {
             Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
             Point pointMouse = new Point(me.getX(), me.getY());        
@@ -148,7 +132,12 @@ class PanelPrincipal extends JPanel implements ActionListener {
             taco.setXY((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
             repaint();
         }
-        
+        @Override
+        public void mousePressed(MouseEvent me){
+        }
+        @Override
+        public void mouseClicked(MouseEvent me) {
+        }
         @Override
         public void mouseReleased(MouseEvent me) {
         }
@@ -158,11 +147,9 @@ class PanelPrincipal extends JPanel implements ActionListener {
         @Override
         public void mouseExited(MouseEvent me) {
         }
-    
-
     }
     /**
-     * Constructor del Panel Principal
+     * Constructor del PanelPrincipal
      */
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();

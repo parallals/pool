@@ -102,7 +102,9 @@ public class Bola {
     public int getPuntaje(){
         return puntaje;
     }
-    
+    /**
+     * Funcion que maneja el movimiento que tendra Bola
+     */
     public void movimientoBola(){
         double velocidadTotal = Math.sqrt((velocidadX*velocidadX)+(velocidadY*velocidadY));
         if(velocidadTotal > 0){
@@ -111,6 +113,7 @@ public class Bola {
             }else{
                 velocidadX = 0;
                 velocidadY = 0;
+                velocidadTotal = 0; 
             }
         }else if(velocidadTotal < 0){
             if(velocidadTotal + aceleracion < 0){
@@ -118,6 +121,7 @@ public class Bola {
             }else{
                 velocidadX = 0;
                 velocidadY = 0;
+                velocidadTotal = 0; 
             }
         }
         if(velocidadTotal != 0){

@@ -33,20 +33,20 @@ public class Angular {
         angulo = (float)Math.atan2(-(double)alto,(double)ancho);      
         return angulo; //sin radianes
     }
-    /*public static float anguloPI(float uno, float dos){
+    public static float anguloPI(float uno, float dos){
         float angulo,alto,ancho;       
         alto=dos-uno;
         ancho=dos-uno;
         angulo = (float)Math.atan2(-(double)alto,(double)ancho);      
         return angulo/(float)Math.PI;
-    }   */
+    }   
     /**
      * Distancia en pixeles entre dos puntos
      * @param x1 Coordenada x del punto 1
      * @param y1 Coordenada y del punto 1
      * @param x2 Coordenada x del punto 2
      * @param y2 Coordenada y del punto 2
-     * @return int distancia
+     * @return double distancia
      */
     public static double distEntre2Puntos(double x1, double y1, double x2, double y2){ // Cambiamos los int por double
         double d = Math.sqrt(
