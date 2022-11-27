@@ -1,22 +1,21 @@
 package gui;
 
+import javax.swing.event.MouseInputAdapter;
+import static angular.Angular.anguloPI;
 import java.awt.event.MouseListener;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Graphics;
 import pool.MesaBillar;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.event.MouseInputAdapter;
-import pool.Taco;
-import pool.Bola;
-import static angular.Angular.anguloPI;
 import java.awt.Point;
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
+import pool.Taco;
 
 
 class PanelPrincipal extends JPanel implements ActionListener {
@@ -51,6 +50,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
      * Funcion que crea los botones
      */
     public void Botones(){
+        
         JButton Boton1 = new JButton("Reset");
         Boton1.setBounds(100, 700, 100,50);
         Boton1.setEnabled(true);
@@ -81,9 +81,9 @@ class PanelPrincipal extends JPanel implements ActionListener {
         this.add(RadioBoton3);
     }
     /**
-     * 
+     * Clase EscuchaRaton1
      */
-    private class EscuchaRaton implements MouseListener{
+    private class EscuchaRaton1 implements MouseListener{
         /**
          * Funcion mousePressed
          * @param me 
@@ -114,37 +114,67 @@ class PanelPrincipal extends JPanel implements ActionListener {
         @Override
         public void mouseEntered(MouseEvent me) {
         }
+        /**
+         * funcion mouseExited
+         * @param me 
+         */
         @Override
         public void mouseExited(MouseEvent me) {
         }
     }
-    
-    private class EscuchaRaton1 extends MouseInputAdapter {
-        float angle = 0f;
-        Bola bolaBlanca = mesaBillar.getCb().getBolaBlanca();    
-        
+    /**
+     * Clase EscuchaRaton2
+     */
+    private class EscuchaRaton2 extends MouseInputAdapter {
+        float angle;
+        Point pointMouse;
+        Point pointBola;
+        /**
+         * funcion mouseMoved
+         * @param me 
+         */
         @Override
         public void mouseMoved(MouseEvent me) {
-            Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
-            Point pointMouse = new Point(me.getX(), me.getY());        
+            pointBola = new Point((int)mesaBillar.getCb().getBolaBlanca().getX()+15, (int)mesaBillar.getCb().getBolaBlanca().getY()+15);
+            pointMouse = new Point(me.getX(), me.getY());        
             angle = anguloPI(pointBola, pointMouse);
             taco.setCosSen((float) Math.cos(angle), (float) Math.sin(angle));
-            taco.setXY((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
+            taco.setXY(pointBola.x, pointBola.y);
             repaint();
         }
+        /**
+         * funcion mousePressed
+         * @param me 
+         */
         @Override
         public void mousePressed(MouseEvent me){
         }
+        /**
+         * funcion mouseClicked
+         * @param me 
+         */
         @Override
         public void mouseClicked(MouseEvent me) {
         }
+        /**
+         * funcion mouseReleased
+         * @param me 
+         */
         @Override
         public void mouseReleased(MouseEvent me) {
         }
+        /**
+         * funcion mouseEntered
+         * @param me 
+         */
         @Override
         public void mouseEntered(MouseEvent me) {
         }
-        @Override
+        /**
+         * funcion mouseExited
+         * @param me 
+         */
+       @Override
         public void mouseExited(MouseEvent me) {
         }
     }
@@ -154,10 +184,10 @@ class PanelPrincipal extends JPanel implements ActionListener {
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();
         taco = new Taco(0, 0, mesaBillar.getCb().getBolaBlanca());
-        EscuchaRaton er = new EscuchaRaton();
         EscuchaRaton1 er1 = new EscuchaRaton1();
-        this.addMouseListener(er); 
-        this.addMouseMotionListener(er1);
+        this.addMouseListener(er1); 
+        EscuchaRaton2 er2 = new EscuchaRaton2();
+        this.addMouseMotionListener(er2);
         Botones();
         timer = new Timer(16,null);
         timer.addActionListener(this);

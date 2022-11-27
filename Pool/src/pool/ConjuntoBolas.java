@@ -1,20 +1,19 @@
 package pool;
 
-//import java.util.Random;
-import static angular.Angular.anguloPI;
 import static angular.Angular.distEntre2Puntos;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.util.ArrayList;
+import static angular.Angular.anguloPI;
 import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.util.ArrayList;
+import java.awt.Point;
+//import java.util.Random;
 
 
 public class ConjuntoBolas {
     //PROPIEDADES
-    
-    private final ArrayList<Bola> conjunto;
-    private int cantidadBolas;
-    private MesaBillar mesaBillar;
+    private final ArrayList<Bola> conjunto; // Guarda las Bolas
+    private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
+    private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
     
     //METODOS
     /**
@@ -24,7 +23,10 @@ public class ConjuntoBolas {
     public Bola getBolaBlanca(){
         return conjunto.get(0);
     }
-    
+    /**
+     * Detecta si existe alguno Bola que sigue en movimiento.
+     * @return true en caso de que se acabo el turno y false en caso de que aun no.
+     */
     public boolean TurnoAcabado(){
         for(int i=0 ; i<conjunto.size() ; i++){
             if(conjunto.get(i).getVelocidadX()!=0 || conjunto.get(i).getVelocidadY()!=0){
@@ -33,13 +35,19 @@ public class ConjuntoBolas {
         }
         return true;
     }
-    
+    /**
+     * Funcion que procesa la trayectoria que tedra cada Bola del Conjunto
+     */
     public void Movimiento(){
         for(int i=0 ; i<conjunto.size() ; i++){
-            conjunto.get(i).movimientoBola();
+            if(conjunto.get(i).getEstado() == true){
+                conjunto.get(i).movimientoBola();    
+            }
         }
         for(int i=0 ; i<conjunto.size() ; i++){
-            ColisionPared(conjunto.get(i));
+            if(conjunto.get(i).getEstado() == true){
+                ColisionPared(conjunto.get(i));
+            }
         }
         for(int i=0 ; i<conjunto.size()-1 ; i++){
             for(int j=i+1 ; j<conjunto.size() ; j++){
@@ -48,21 +56,27 @@ public class ConjuntoBolas {
         }
     }
     /**
-     * Detecta si hay una colision entre una bola y  la pared de la mesa
+     * Detecta si hay una colision entre una Bola y  la Pared de la mesa
      * @param b1 
      */
-    public void ColisionPared(Bola b1){ //Colision entre Bola Pared
-        if(b1.getEstado()==true){
-            if((b1.getX()<mesaBillar.getX() && b1.getVelocidadX()<0) || (b1.getX()+30>1064+mesaBillar.getX() && b1.getVelocidadX()>0)){
-                b1.setVelocidadX(-b1.getVelocidadX());
-            }
-            if((b1.getY()<mesaBillar.getY() && b1.getVelocidadY()<0) || (b1.getY()+30>481+mesaBillar.getY() && b1.getVelocidadY()>0)){
-                b1.setVelocidadY(-b1.getVelocidadY());
-            }
+    public void ColisionPared(Bola b1){
+        if(b1.getX()<mesaBillar.getX() && b1.getVelocidadX()<0){
+            b1.setVelocidadX(-b1.getVelocidadX());
+            b1.setX(mesaBillar.getX());
+        }else if(b1.getX()+30>1064+mesaBillar.getX() && b1.getVelocidadX()>0){
+            b1.setVelocidadX(-b1.getVelocidadX());
+            b1.setX(1024+mesaBillar.getX());
+        }
+        if((b1.getY()<mesaBillar.getY() && b1.getVelocidadY()<0)){
+            b1.setVelocidadY(-b1.getVelocidadY());
+            b1.setY(mesaBillar.getY());
+        }else if(b1.getY()+30>481+mesaBillar.getY() && b1.getVelocidadY()>0){
+            b1.setVelocidadY(-b1.getVelocidadY());
+            b1.setY(451+mesaBillar.getY());
         }
     }
     /**
-     * Detecta si hay una colision entre una bola y otra, y guarda el angulo de colision
+     * Detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
      * @param b1
      * @param b2 
      */
@@ -75,9 +89,9 @@ public class ConjuntoBolas {
      * Detecta si hay una colision entre dos bolas
      * @param b1
      * @param b2
-     * @return Si hay una colisión, devuelve true.
+     * @return Si hay una colisión, devuelve true, en caso contrario, false
      */
-    public boolean DetectarColision(Bola b1, Bola b2){ //Colision entre dos Bolas
+    public boolean DetectarColision(Bola b1, Bola b2){
         if(b1.getEstado()==true && b2.getEstado()==true){
             double Aux = distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY());
             if(Aux <= 30){
@@ -87,12 +101,11 @@ public class ConjuntoBolas {
         return false;
     }
     /**
-     * Detecta y registra el angulo de colision
+     * Cambia la dirreccion y sentido con respecto a cada tipo de colision entre dos Bolas
      * @param b1
      * @param b2 
      */
     public void AnguloColision(Bola b1, Bola b2){
-         double Aux;
          float angle = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
          double cos = Math.cos(angle);
          double sen = Math.sin(angle);
@@ -126,7 +139,7 @@ public class ConjuntoBolas {
          }
     }
     /**
-     * Randomiza la posicion de las bolas
+     * Randomiza la posicion de las Bolas
      */
     private void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
@@ -153,7 +166,7 @@ public class ConjuntoBolas {
         }
     }
     /**
-     * Funcion paint de ConjuntoBolas
+     * Funcion paint de ConjuntoBolas, hace un llamado al paint de cada Bola
      * @param g
      * @param panel 
      */

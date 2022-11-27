@@ -2,11 +2,13 @@ package gui;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 
 public class Ventana extends JFrame {
     // METODOS
+    /**
+     * Contructor de la clase Ventana
+     */
     public Ventana(){
         super();
         this.setLayout(new BorderLayout());

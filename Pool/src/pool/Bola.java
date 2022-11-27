@@ -1,19 +1,19 @@
 package pool;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Color;
 
 public class Bola {
     //PROPIEDADES
-    private double x;
-    private double y;
-    private double velocidadX;
-    private double velocidadY;
-    private final double aceleracion;
-    private boolean estado; // Si esta en la mesa o en una tronera
-    private final int puntaje;
-    private final int bola;
+    private double x; // Posicion con respecto a la horizontal.
+    private double y; // Posicion con respecto a la vertical.
+    private double velocidadX; // Velocidad con respecto a la horizontal.
+    private double velocidadY; // Velocidad con respecto a la vertical.
+    private final double aceleracion; // Perdida de velocidad debido al roce.
+    private boolean estado; // true si esta en la mesa y false si esta en una tronera.
+    private final int puntaje; // cantidad de puntos que da al caer en una tronera.
+    private final int bola; // Diseño que tendra.
     
     //METODOS
     /**
@@ -45,7 +45,7 @@ public class Bola {
         this.y = y;
     }
     /**
-     * Setter de xy
+     * Setter de x e y
      * @param x
      * @param y 
      */
@@ -103,7 +103,7 @@ public class Bola {
         return puntaje;
     }
     /**
-     * Funcion que maneja el movimiento que tendra Bola
+     * Funcion que maneja el movimiento que tendra Bola (No contempla colisiones)
      */
     public void movimientoBola(){
         double velocidadTotal = Math.sqrt((velocidadX*velocidadX)+(velocidadY*velocidadY));
@@ -133,7 +133,7 @@ public class Bola {
         }
     }
     /**
-     * Funcion de paint de bola
+     * Funcion paint de bola
      * @param g
      * @param panel 
      */
@@ -204,7 +204,7 @@ public class Bola {
         velocidadX = 0;
         velocidadY = 0;
         aceleracion = 0.2;
-        estado = true; // Si esta en la mesa o no
+        estado = true;
         this.puntaje = puntaje;
         this.bola = bola;
     }

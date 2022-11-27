@@ -1,19 +1,18 @@
 package pool;
 
-import java.awt.Color;
+import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Polygon;
-import javax.swing.JPanel;
+import java.awt.Color;
 
 public class Taco {
     //PROPIEDADES
-    private int x;
-    private int y;
-    private Polygon p;
-    private float cos = 0;
-    private float sen = 0;
-    private final Bola bolaBlanca;
-    private boolean turnoAcabado;
+    private int x; // Posicion con respecto a la horizontal
+    private int y; // Posicion con respecto a la vertical
+    private float cos = 0; // Guarda el seno del taco con respecto a la Bola Blanca
+    private float sen = 0; // Guarda el coseno del taco con respecto a la Bola Blanca
+    private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca
+    private boolean turnoAcabado; // guarda true si puedes golpear con el taco y false en caso contrario 
     
     //METODOS
     /**
@@ -26,7 +25,7 @@ public class Taco {
         this.y = y;
     }
     /**
-     * Setter de propiedades cos y sen (el coseno y seno de la posicion del taco con respecto a la bola, respectivamente. Se inicia con valor 0)
+     * Setter de propiedades cos y sen
      * @param cos
      * @param sen 
      */
@@ -34,7 +33,9 @@ public class Taco {
         this.cos = cos;
         this.sen = sen;
     }
-    
+    /**
+     * Funcion que cambia la velocidad de la Bola Blanca con respecto a la fuerza que se le golpea 
+     */
     public void golpearBola(){
         if(turnoAcabado == true){
             double Fuerza = 30;
@@ -42,11 +43,13 @@ public class Taco {
             bolaBlanca.setVelocidadY((double)Fuerza*sen);
         }
     }
-    
+    /**
+     * Setter de propiedad turnoAcabado
+     * @param turnoAcabado 
+     */
     public void setTurnoAcabado(boolean turnoAcabado){
         this.turnoAcabado = turnoAcabado;
     }
-    
     /**
      * Método paint de Taco
      * @param g
@@ -55,7 +58,7 @@ public class Taco {
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
             g.setColor(Color.yellow);
-            p = new Polygon();
+            Polygon p = new Polygon();
             p.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos)); //Parte cercana a la bola
             p.addPoint((int)(x+30*cos-2*sen),(int)(y-30*sen-2*cos));
             p.addPoint((int)(x+400*cos-5*sen), (int)(y-400*sen-5*cos)); // Parte lejana a la bola 
@@ -68,6 +71,7 @@ public class Taco {
      * Constructor Taco
      * @param x
      * @param y 
+     * @param bolaBlanca
      */
     public Taco(int x,int y, Bola bolaBlanca){
         this.bolaBlanca = bolaBlanca;
