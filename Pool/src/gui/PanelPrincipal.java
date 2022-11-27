@@ -21,9 +21,9 @@ import javax.swing.JRadioButton;
 
 class PanelPrincipal extends JPanel implements ActionListener {
     //PROPIEDADES
-    MesaBillar mesaBillar = new MesaBillar();
-    Taco taco = new Taco(0,0);
-    private Timer timer;
+    MesaBillar mesaBillar;
+    Taco taco;
+    private final Timer timer;
     
     //METODOS
     /**
@@ -80,13 +80,16 @@ class PanelPrincipal extends JPanel implements ActionListener {
      * 
      */
     private class EscuchaRaton implements MouseListener{
-        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);   
         /**
          * Funcion mousePressed
          * @param me 
          */
         @Override
         public void mousePressed(MouseEvent me){
+            if(mesaBillar.getCb().TurnoAcabado() == true){
+                taco.golpearBola();                
+                repaint();
+            }
         }
         /**
          * funcion mouseClicked
@@ -123,27 +126,20 @@ class PanelPrincipal extends JPanel implements ActionListener {
         public void mouseExited(MouseEvent me) {
         }
     }
+    
     private class EscuchaRaton1 extends MouseInputAdapter {
         float angle = 0f;
-        Bola bolaBlanca = mesaBillar.getCb().getConjunto().get(0);    
+        Bola bolaBlanca = mesaBillar.getCb().getBolaBlanca();    
+        
         @Override
-        public void mousePressed(MouseEvent e) {
-            System.out.println("click");
+        public void mousePressed(MouseEvent me){
         }
-
+        
         @Override
-        /**
-         * 
-         */
-        public void mouseDragged(MouseEvent me) {
-            taco.setXY(me.getX(),me.getY());
-            repaint();
+        public void mouseClicked(MouseEvent me) {
         }
-
+        
         @Override
-        /**
-         * 
-         */
         public void mouseMoved(MouseEvent me) {
             Point pointBola = new Point((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
             Point pointMouse = new Point(me.getX(), me.getY());        
@@ -152,12 +148,25 @@ class PanelPrincipal extends JPanel implements ActionListener {
             taco.setXY((int)bolaBlanca.getX()+15, (int)bolaBlanca.getY()+15);
             repaint();
         }
+        
+        @Override
+        public void mouseReleased(MouseEvent me) {
+        }
+        @Override
+        public void mouseEntered(MouseEvent me) {
+        }
+        @Override
+        public void mouseExited(MouseEvent me) {
+        }
+    
 
     }
     /**
      * Constructor del Panel Principal
      */
     public PanelPrincipal() { 
+        mesaBillar = new MesaBillar();
+        taco = new Taco(0, 0, mesaBillar.getCb().getBolaBlanca());
         EscuchaRaton er = new EscuchaRaton();
         EscuchaRaton1 er1 = new EscuchaRaton1();
         this.addMouseListener(er); 

@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 
 public class MesaBillar {
     //PROPIEDADES
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     ConjuntoBolas conjuntoBolas;
     
     //METODOS
@@ -32,6 +32,7 @@ public class MesaBillar {
     public int getY(){
         return y;
     }
+    
     /**
      * Paint de la mesa de billar con posiciones relativas
      * @param g

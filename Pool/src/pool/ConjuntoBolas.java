@@ -18,11 +18,20 @@ public class ConjuntoBolas {
     
     //METODOS
     /**
-     * Getter de conjunto
-     * @return conjunto
+     * Getter de bolaBlanca
+     * @return bolaBlanca
      */
-    public ArrayList<Bola> getConjunto(){
-        return conjunto;
+    public Bola getBolaBlanca(){
+        return conjunto.get(0);
+    }
+    
+    public boolean TurnoAcabado(){
+        for(int i=0 ; i<conjunto.size() ; i++){
+            if(conjunto.get(i).getVelocidadX()!=0 || conjunto.get(i).getVelocidadY()!=0){
+                return false;
+            }
+        }
+        return true;
     }
     
     public void Movimiento(){
@@ -168,8 +177,6 @@ public class ConjuntoBolas {
             conjunto.add(new Bola(0, 0, 10, i));
         }
         RandomizarBolas();
-        conjunto.get(0).setVelocidadX(20);
-        conjunto.get(0).setVelocidadY(20);
     }
 }
 

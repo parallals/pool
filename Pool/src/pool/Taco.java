@@ -12,6 +12,7 @@ public class Taco {
     private Polygon p;
     private float cos = 0;
     private float sen = 0;
+    private Bola bolaBlanca;
     
     //METODOS
     /**
@@ -32,29 +33,36 @@ public class Taco {
         this.cos = cos;
         this.sen = sen;
     }
+    
+    public void golpearBola(){
+            double Fuerza = 30;
+            bolaBlanca.setVelocidadX((double)Fuerza*-cos);
+            bolaBlanca.setVelocidadY((double)Fuerza*sen);
+    }
     /**
      * Método paint de Taco
      * @param g
      * @param panel 
      */
     public void paint(Graphics g, JPanel panel){
-        g.setColor(Color.yellow);
-        p = new Polygon();
-        p.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos)); //Parte cercana a la bola
-        p.addPoint((int)(x+30*cos-2*sen),(int)(y-30*sen-2*cos));
-        p.addPoint((int)(x+400*cos-5*sen), (int)(y-400*sen-5*cos)); // Parte lejana a la bola 
-        p.addPoint((int)(x+400*cos+5*sen), (int)(y-400*sen+5*cos));
-        g.drawPolygon(p);
-        g.fillPolygon(p);
-        
-        
+        if(true){
+            g.setColor(Color.yellow);
+            p = new Polygon();
+            p.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos)); //Parte cercana a la bola
+            p.addPoint((int)(x+30*cos-2*sen),(int)(y-30*sen-2*cos));
+            p.addPoint((int)(x+400*cos-5*sen), (int)(y-400*sen-5*cos)); // Parte lejana a la bola 
+            p.addPoint((int)(x+400*cos+5*sen), (int)(y-400*sen+5*cos));
+            g.drawPolygon(p);
+            g.fillPolygon(p);
+        }
     }
     /**
      * Constructor Taco
      * @param x
      * @param y 
      */
-    public Taco(int x,int y){
+    public Taco(int x,int y, Bola bolaBlanca){
+        this.bolaBlanca = bolaBlanca;
         this.x = x;
         this.y = y;
     }

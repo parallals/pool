@@ -199,7 +199,7 @@ public class Bola {
         this.y = y;
         velocidadX = 0;
         velocidadY = 0;
-        aceleracion = 0.1;
+        aceleracion = 0.2;
         estado = true; // Si esta en la mesa o no
         this.puntaje = puntaje;
         this.bola = bola;
