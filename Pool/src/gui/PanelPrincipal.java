@@ -126,7 +126,7 @@ class PanelPrincipal extends JPanel implements ActionListener {
      * Clase EscuchaRaton2
      */
     private class EscuchaRaton2 extends MouseInputAdapter {
-        float angle;
+        float angulo;
         Point pointMouse;
         Point pointBola;
         /**
@@ -137,8 +137,8 @@ class PanelPrincipal extends JPanel implements ActionListener {
         public void mouseMoved(MouseEvent me) {
             pointBola = new Point((int)mesaBillar.getCb().getBolaBlanca().getX()+15, (int)mesaBillar.getCb().getBolaBlanca().getY()+15);
             pointMouse = new Point(me.getX(), me.getY());        
-            angle = anguloPI(pointBola, pointMouse);
-            taco.setCosSen((float) Math.cos(angle), (float) Math.sin(angle));
+            angulo = anguloPI(pointBola, pointMouse);
+            taco.setCosSen((float) Math.cos(angulo), (float) Math.sin(angulo));
             taco.setXY(pointBola.x, pointBola.y);
             repaint();
         }
