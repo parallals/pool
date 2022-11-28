@@ -12,7 +12,7 @@ public class Bola {
     private double velocidadY; // Velocidad con respecto a la vertical.
     private final double aceleracion; // Perdida de velocidad debido al roce.
     private boolean estado; // true si esta en la mesa y false si esta en una tronera.
-    private final int puntaje; // cantidad de puntos que da al caer en una tronera.
+    private int puntaje; // cantidad de puntos que da al caer en una tronera.
     private final int bola; // Diseño que tendra.
     
     //METODOS
@@ -52,6 +52,13 @@ public class Bola {
     public void setXY(int x, int y){
         this.x = x;
         this.y = y;
+    }
+    /**
+     * Setter de puntaje
+     * @param p 
+     */
+    public void setPuntaje(int p){
+        this.puntaje = p;
     }
     /**
      * Getter de la velocidad en x
