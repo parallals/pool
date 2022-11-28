@@ -58,13 +58,22 @@ public class Taco {
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
             g.setColor(Color.yellow);
-            Polygon p = new Polygon();
-            p.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos)); //Parte cercana a la bola
-            p.addPoint((int)(x+30*cos-2*sen),(int)(y-30*sen-2*cos));
-            p.addPoint((int)(x+400*cos-5*sen), (int)(y-400*sen-5*cos)); // Parte lejana a la bola 
-            p.addPoint((int)(x+400*cos+5*sen), (int)(y-400*sen+5*cos));
-            g.drawPolygon(p);
-            g.fillPolygon(p);
+            Polygon taco = new Polygon();
+            taco.addPoint((int)(x+30*cos+2*sen),(int)(y-30*sen+2*cos)); //Parte cercana a la bola
+            taco.addPoint((int)(x+30*cos-2*sen),(int)(y-30*sen-2*cos));
+            taco.addPoint((int)(x+400*cos-5*sen), (int)(y-400*sen-5*cos)); // Parte lejana a la bola 
+            taco.addPoint((int)(x+400*cos+5*sen), (int)(y-400*sen+5*cos));
+            g.drawPolygon(taco);
+            g.fillPolygon(taco);
+            
+            Color c = new Color(255, 255, 255, 100 );
+            g.setColor(c);
+            Polygon trayectoria = new Polygon();
+            
+            trayectoria.addPoint((int)(x-400*cos-1*sen), (int)(y+400*sen-1*cos)); // Parte lejana a la bola 
+            trayectoria.addPoint((int)(x-400*cos+1*sen), (int)(y+400*sen+1*cos));
+            g.drawPolygon(trayectoria);
+            g.fillPolygon(trayectoria);
         }
     }
     /**

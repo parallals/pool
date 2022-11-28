@@ -82,7 +82,7 @@ public class ConjuntoBolas {
      */
     public void ColisionBolas(Bola b1, Bola b2){
         if(DetectarColision(b1, b2)){
-            AnguloColision(b1, b2);
+            ColisionDosBolas(b1, b2);
         }
     }
     /**
@@ -93,8 +93,7 @@ public class ConjuntoBolas {
      */
     public boolean DetectarColision(Bola b1, Bola b2){
         if(b1.getEstado()==true && b2.getEstado()==true){
-            double Aux = distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY());
-            if(Aux <= 30){
+            if(distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY()) <= 30){
                 return true;
             }
         }
@@ -105,18 +104,22 @@ public class ConjuntoBolas {
      * @param b1
      * @param b2 
      */
-    public void AnguloColision(Bola b1, Bola b2){
+    public void ColisionDosBolas(Bola b1, Bola b2){
          float angulo = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
          double cos = Math.cos(angulo);
          double sen = Math.sin(angulo);
-         double velocidadX1 = b2.getVelocidadX()*cos + b2.getVelocidadY();
-         double velocidadY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
-         double velocidadX2 = b1.getVelocidadX()*cos + b1.getVelocidadY();
-         double velocidadY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
-         b1.setVelocidadX(velocidadX1*cos - velocidadY1*sen);
-         b1.setVelocidadY(velocidadX1*sen + velocidadY1*cos);
-         b2.setVelocidadX(velocidadX2*cos - velocidadY2*sen);
-         b2.setVelocidadY(velocidadX2*sen + velocidadY2*cos);
+         
+         double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY();
+         double auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
+         double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY();
+         double auxVelY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
+         
+         
+         b1.setVelocidadX(auxVelX1*cos - auxVelY1*sen);
+         b1.setVelocidadY(auxVelX1*sen + auxVelY1*cos);
+         b2.setVelocidadX(auxVelX2*cos - auxVelY2*sen);
+         b2.setVelocidadY(auxVelX2*sen + auxVelY2*cos);
+         
     }
     /**
      * Randomiza la posicion de las Bolas

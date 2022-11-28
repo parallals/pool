@@ -34,14 +34,14 @@ public class Bola {
      * Setter de x
      * @param x 
      */
-    public void setX(int x){
+    public void setX(double x){
         this.x = x;
     }
     /**
      * Setter de y
      * @param y 
      */
-    public void setY(int y){
+    public void setY(double y){
         this.y = y;
     }
     /**
@@ -203,7 +203,7 @@ public class Bola {
         this.y = y;
         velocidadX = 0;
         velocidadY = 0;
-        aceleracion = 0.2;
+        aceleracion = 0.3;
         estado = true;
         this.puntaje = puntaje;
         this.bola = bola;
