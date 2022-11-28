@@ -32,7 +32,20 @@ public class MesaBillar {
     public int getY(){
         return y;
     }
-    
+        /**
+     * Verifica si hay bolas que caigan en una tronera
+     */
+    public void bolaCaeTronera(){
+        for(int i = 0; i<conjuntoBolas.getCantidad();i++){
+            if(conjuntoBolas.getBola(i).getX() < x+5 && conjuntoBolas.getBola(i).getY() < y+5 && conjuntoBolas.getBola(i).getEstado()==true){
+                conjuntoBolas.getBola(i).setEstado(false);
+                conjuntoBolas.getBola(i).setVelocidadX(0);
+                conjuntoBolas.getBola(i).setVelocidadY(0);                
+                System.out.println("Cayo en tronera");
+                
+            }
+        }
+    }    
     /**
      * Paint de MesaBillar, hace un llamado a ConjuntoBolas
      * @param g

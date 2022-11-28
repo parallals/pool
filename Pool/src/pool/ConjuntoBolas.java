@@ -2,6 +2,7 @@ package pool;
 
 import static angular.Angular.distEntre2Puntos;
 import static angular.Angular.anguloPI;
+import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -14,7 +15,21 @@ public class ConjuntoBolas {
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
     private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
     private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
-    
+    /**
+     * Getter de una bola en el conjunto
+     * @param i
+     * @return 
+     */
+    public Bola getBola(int i){
+        return conjunto.get(i);
+    }
+    /**
+     * Getter de cantidadBolas
+     * @return 
+     */
+    public int getCantidad(){
+        return cantidadBolas;
+    }    
     //METODOS
     /**
      * Getter de bolaBlanca
@@ -54,6 +69,7 @@ public class ConjuntoBolas {
                 ColisionBolas(conjunto.get(i), conjunto.get(j));
             }
         }
+        mesaBillar.bolaCaeTronera();
     }
     /**
      * Detecta si hay una colision entre una Bola y  la Pared de la mesa
@@ -156,6 +172,10 @@ public class ConjuntoBolas {
                 conjunto.get(j).paint(g, panel);
             }
         }
+        Font f = new Font("Calibri",Font.PLAIN,20);
+        g.setFont(f);
+        String s = "Puntaje: " + Integer.toString(recibirPuntaje());
+        g.drawString(s, 1100, 700);
      }
     /**
      * Constructor de ConjuntoBolas
@@ -171,5 +191,15 @@ public class ConjuntoBolas {
         }
         RandomizarBolas();
     }
+
+    public int recibirPuntaje(){
+        int Sumapuntos = 0;
+        for(int i = 0; i<cantidadBolas;++i){
+            if(conjunto.get(i).getEstado()== false){
+                Sumapuntos = conjunto.get(i).getPuntaje() + Sumapuntos;
+            }
+        }
+        return Sumapuntos;
+    }   
 }
 
