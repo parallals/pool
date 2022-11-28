@@ -108,13 +108,10 @@ public class ConjuntoBolas {
          float angulo = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
          double cos = Math.cos(angulo);
          double sen = Math.sin(angulo);
-         
          double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY();
          double auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
          double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY();
          double auxVelY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
-         
-         
          b1.setVelocidadX(auxVelX1*cos - auxVelY1*sen);
          b1.setVelocidadY(auxVelX1*sen + auxVelY1*cos);
          b2.setVelocidadX(auxVelX2*cos - auxVelY2*sen);

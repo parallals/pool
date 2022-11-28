@@ -69,7 +69,8 @@ public class Taco {
             Color c = new Color(255, 255, 255, 100 );
             g.setColor(c);
             Polygon trayectoria = new Polygon();
-            
+            trayectoria.addPoint((int)(x-30*cos+1*sen),(int)(y+30*sen+1*cos)); //Parte cercana a la bola
+            trayectoria.addPoint((int)(x-30*cos-1*sen),(int)(y+30*sen-1*cos));
             trayectoria.addPoint((int)(x-400*cos-1*sen), (int)(y+400*sen-1*cos)); // Parte lejana a la bola 
             trayectoria.addPoint((int)(x-400*cos+1*sen), (int)(y+400*sen+1*cos));
             g.drawPolygon(trayectoria);
