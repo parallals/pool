@@ -1,21 +1,39 @@
 package pool;
 
+import static angular.Angular.distEntre2Puntos;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class MesaBillar {
     //PROPIEDADES
     private final int x; // Posicion con respecto a la horizontal.
     private final int y; // Posicion con respecto a la vertical.
     ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
+    private final ArrayList<Bola> enTronera;
+    private int Puntaje;
     
     //METODOS
     /**
-     * Getter de conjuntoBolas
+     *  Getter de Puntaje
+     * @return Puntaje
+     */
+    public int getPuntaje(){
+        return Puntaje;
+    }
+    /**
+     * Getter de Bola
      * @return conjuntoBolas
      */
-    public ConjuntoBolas getCb(){
+    public Bola getBola(int i){
+        return conjuntoBolas.getBola(i);   
+    }
+    /**
+     * Getter de conjuntoBolas
+     * @return  conjuntoBolas
+     */
+    public ConjuntoBolas getConjunto(){
         return conjuntoBolas;
     }
     /**
@@ -35,17 +53,26 @@ public class MesaBillar {
         /**
      * Verifica si hay bolas que caigan en una tronera
      */
-    public void bolaCaeTronera(){
-        for(int i = 0; i<conjuntoBolas.getCantidad();i++){
-            if(conjuntoBolas.getBola(i).getX() < x+5 && conjuntoBolas.getBola(i).getY() < y+5 && conjuntoBolas.getBola(i).getEstado()==true){
-                conjuntoBolas.getBola(i).setEstado(false);
-                conjuntoBolas.getBola(i).setVelocidadX(0);
-                conjuntoBolas.getBola(i).setVelocidadY(0);                
-                System.out.println("Cayo en tronera");
-                
+    public void bolaCaeTronera(Bola b1){
+        if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 35) ){
+            if(b1.getSerie() == 0){
+                Puntaje = Puntaje + b1.getPuntaje();
+                b1.setVelocidadX(0);
+                b1.setVelocidadY(0); 
+                b1.setXY((int)((Math.random()*1034)+x), (int)((Math.random()*451)+y));
+            }else{
+                for(int i=0 ; i<conjuntoBolas.getConjunto().size() ; i++){
+                    if(conjuntoBolas.getBola(i).getSerie() == b1.getSerie()){
+                        b1.setVelocidadX(0);
+                        b1.setVelocidadY(0); 
+                        Puntaje = Puntaje + b1.getPuntaje();
+                        enTronera.add(conjuntoBolas.getConjunto().remove(i));
+                        break;
+                    }
+                }  
             }
         }
-    }    
+    }   
     /**
      * Paint de MesaBillar, hace un llamado a ConjuntoBolas
      * @param g
@@ -71,6 +98,8 @@ public class MesaBillar {
     Constructor de MesaBillar
     */
     public MesaBillar(){
+        enTronera = new ArrayList<>();
+        Puntaje = 0;
         x = 100;
         y = 100;
         conjuntoBolas = new ConjuntoBolas(this);

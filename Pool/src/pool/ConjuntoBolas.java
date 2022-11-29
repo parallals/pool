@@ -15,6 +15,8 @@ public class ConjuntoBolas {
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
     private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
     private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
+    
+    //METODOS
     /**
      * Getter de una bola en el conjunto
      * @param i
@@ -24,19 +26,11 @@ public class ConjuntoBolas {
         return conjunto.get(i);
     }
     /**
-     * Getter de cantidadBolas
-     * @return 
+     * Getter de un conjunto
+     * @return conjunto
      */
-    public int getCantidad(){
-        return cantidadBolas;
-    }    
-    //METODOS
-    /**
-     * Getter de bolaBlanca
-     * @return bolaBlanca
-     */
-    public Bola getBolaBlanca(){
-        return conjunto.get(0);
+    public ArrayList<Bola> getConjunto(){
+        return conjunto;
     }
     /**
      * Detecta si existe alguno Bola que sigue en movimiento.
@@ -62,6 +56,7 @@ public class ConjuntoBolas {
         for(int i=0 ; i<conjunto.size() ; i++){
             if(conjunto.get(i).getEstado() == true){
                 ColisionPared(conjunto.get(i));
+                mesaBillar.bolaCaeTronera(conjunto.get(i));
             }
         }
         for(int i=0 ; i<conjunto.size()-1 ; i++){
@@ -69,7 +64,6 @@ public class ConjuntoBolas {
                 ColisionBolas(conjunto.get(i), conjunto.get(j));
             }
         }
-        mesaBillar.bolaCaeTronera();
     }
     /**
      * Detecta si hay una colision entre una Bola y  la Pared de la mesa
@@ -174,7 +168,7 @@ public class ConjuntoBolas {
         }
         Font f = new Font("Calibri",Font.PLAIN,20);
         g.setFont(f);
-        String s = "Puntaje: " + Integer.toString(recibirPuntaje());
+        String s = "Puntaje: " + Integer.toString(mesaBillar.getPuntaje());
         g.drawString(s, 1100, 700);
      }
     /**
@@ -190,16 +184,6 @@ public class ConjuntoBolas {
             conjunto.add(new Bola(0, 0, 10, i));
         }
         RandomizarBolas();
-    }
-
-    public int recibirPuntaje(){
-        int Sumapuntos = 0;
-        for(int i = 0; i<cantidadBolas;++i){
-            if(conjunto.get(i).getEstado()== false){
-                Sumapuntos = conjunto.get(i).getPuntaje() + Sumapuntos;
-            }
-        }
-        return Sumapuntos;
-    }   
+    } 
 }
 

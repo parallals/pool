@@ -13,9 +13,12 @@ public class Bola {
     private final double aceleracion; // Perdida de velocidad debido al roce.
     private boolean estado; // true si esta en la mesa y false si esta en una tronera.
     private final int puntaje; // cantidad de puntos que da al caer en una tronera.
-    private final int bola; // Diseño que tendra.
+    private final int serie; // Diseño que tendra.
     
     //METODOS
+    public int getSerie(){
+        return serie;
+    }
     /**
      * Getter de x
      * @return x
@@ -138,7 +141,7 @@ public class Bola {
      * @param panel 
      */
     public void paint(Graphics g, JPanel panel){
-        switch(bola){
+        switch(serie){
             case 0 : { // BOLA BLANCA
                 g.setColor(Color.white); 
                 break;
@@ -206,6 +209,6 @@ public class Bola {
         aceleracion = 0.3;
         estado = true;
         this.puntaje = puntaje;
-        this.bola = bola;
+        this.serie = bola;
     }
 }

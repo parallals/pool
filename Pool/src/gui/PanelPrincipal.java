@@ -15,10 +15,11 @@ import java.awt.Graphics;
 import pool.MesaBillar;
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.MouseMotionListener;
 import pool.Taco;
 
 
-class PanelPrincipal extends JPanel implements ActionListener {
+class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener {
     //PROPIEDADES
     MesaBillar mesaBillar;
     Taco taco;
@@ -42,9 +43,9 @@ class PanelPrincipal extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        mesaBillar.getCb().Movimiento();
-        taco.setTurnoAcabado(mesaBillar.getCb().TurnoAcabado());
-        repaint();        
+        mesaBillar.getConjunto().Movimiento();
+        taco.setTurnoAcabado(mesaBillar.getConjunto().TurnoAcabado());
+        repaint();
     }
     /**
      * Funcion que crea los botones
@@ -79,6 +80,21 @@ class PanelPrincipal extends JPanel implements ActionListener {
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         this.add(RadioBoton3);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent arg0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent arg0) {
+        float angulo;
+        Point pointMouse = new Point(arg0.getX(), arg0.getY());
+        Point pointBola = new Point((int)mesaBillar.getBola(0).getX()+15, (int)mesaBillar.getBola(0).getY()+15);   
+        angulo = anguloPI(pointBola, pointMouse);
+        taco.setCosSen((float) Math.cos(angulo), (float) Math.sin(angulo));
+        taco.setXY(pointBola.x, pointBola.y);
     }
     /**
      * Clase EscuchaRaton1
@@ -123,72 +139,15 @@ class PanelPrincipal extends JPanel implements ActionListener {
         }
     }
     /**
-     * Clase EscuchaRaton2
-     */
-    private class EscuchaRaton2 extends MouseInputAdapter {
-        float angulo;
-        Point pointMouse;
-        Point pointBola;
-        /**
-         * funcion mouseMoved
-         * @param me 
-         */
-        @Override
-        public void mouseMoved(MouseEvent me) {
-            pointBola = new Point((int)mesaBillar.getCb().getBolaBlanca().getX()+15, (int)mesaBillar.getCb().getBolaBlanca().getY()+15);
-            pointMouse = new Point(me.getX(), me.getY());        
-            angulo = anguloPI(pointBola, pointMouse);
-            taco.setCosSen((float) Math.cos(angulo), (float) Math.sin(angulo));
-            taco.setXY(pointBola.x, pointBola.y);
-            repaint();
-        }
-        /**
-         * funcion mousePressed
-         * @param me 
-         */
-        @Override
-        public void mousePressed(MouseEvent me){
-        }
-        /**
-         * funcion mouseClicked
-         * @param me 
-         */
-        @Override
-        public void mouseClicked(MouseEvent me) {
-        }
-        /**
-         * funcion mouseReleased
-         * @param me 
-         */
-        @Override
-        public void mouseReleased(MouseEvent me) {
-        }
-        /**
-         * funcion mouseEntered
-         * @param me 
-         */
-        @Override
-        public void mouseEntered(MouseEvent me) {
-        }
-        /**
-         * funcion mouseExited
-         * @param me 
-         */
-       @Override
-        public void mouseExited(MouseEvent me) {
-        }
-    }
-    /**
      * Constructor del PanelPrincipal
      */
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();
-        taco = new Taco(0, 0, mesaBillar.getCb().getBolaBlanca());
+        taco = new Taco(0, 0, mesaBillar.getBola(0));
         EscuchaRaton1 er1 = new EscuchaRaton1();
         this.addMouseListener(er1); 
-        EscuchaRaton2 er2 = new EscuchaRaton2();
-        this.addMouseMotionListener(er2);
         Botones();
+        addMouseMotionListener(this);
         timer = new Timer(16,null);
         timer.addActionListener(this);
         timer.start();
