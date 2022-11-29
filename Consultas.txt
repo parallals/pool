@@ -1,0 +1,31 @@
+Consultas:
+- Preguntar sobre como ocupar Junit a ayudante
+- Pedir ayuda para desbugear ColisionDosBolas()
+- 
+- 
+- 
+- 
+
+
+Por hacer:
+- Arreglar ColisionDosBollas()
+- Re hacer colisiones con las paredes
+- Dimensionar areas de la Troneras
+- Dar la funcion de puntaje a las troneras
+- Implementar sistema de puntaje
+- Agregar forma de disminuir o aumentar fuerza del taco
+- 
+- 
+- 
+- 
+
+
+Nos gustaria agregar:
+- Una forma de ver las Bolas que han caido en las troneras
+- Aumentar la cantidad de bolas mediante un Jslider
+- Modo 2 jugadores
+- Opcion de quitar bola 8 (En este caso la bola 8 te haria perder el juego)
+- Remplazar figuras de Graphics por texturas personalizas 
+- 
+-
+- 
