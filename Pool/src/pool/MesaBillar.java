@@ -50,11 +50,17 @@ public class MesaBillar {
     public int getY(){
         return y;
     }
-        /**
+    /**
      * Verifica si hay bolas que caigan en una tronera
+     * @param b1
      */
     public void bolaCaeTronera(Bola b1){
-        if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 35) ){
+        if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 35) //Tronera 1
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2)-20, y-5) < 35) //Tronera 2
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y-5) < 35) //Tronera 3
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y+501-(40-25)) < 35) //Tronera 4
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2), y+501-(40-25)) < 35) //Tronera 5
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y+501-(40-25)) < 35)){ //Tronera 6
             if(b1.getSerie() == 0){
                 Puntaje = Puntaje + b1.getPuntaje();
                 b1.setVelocidadX(0);

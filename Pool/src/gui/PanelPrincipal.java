@@ -1,6 +1,6 @@
 package gui;
 
-import javax.swing.event.MouseInputAdapter;
+import java.awt.event.MouseMotionListener;
 import static angular.Angular.anguloPI;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionListener;
@@ -15,7 +15,6 @@ import java.awt.Graphics;
 import pool.MesaBillar;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.MouseMotionListener;
 import pool.Taco;
 
 
@@ -50,7 +49,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     /**
      * Funcion que crea los botones
      */
-    public void Botones(){
+    private void Botones(){
         
         JButton Boton1 = new JButton("Reset");
         Boton1.setBounds(100, 700, 100,50);
@@ -83,14 +82,17 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
 
     @Override
-    public void mouseDragged(MouseEvent arg0) {
+    public void mouseDragged(MouseEvent m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    /**
+     * Detecta movimientos del mouse
+     * @param m 
+     */
     @Override
-    public void mouseMoved(MouseEvent arg0) {
+    public void mouseMoved(MouseEvent m) {
         float angulo;
-        Point pointMouse = new Point(arg0.getX(), arg0.getY());
+        Point pointMouse = new Point(m.getX(), m.getY());
         Point pointBola = new Point((int)mesaBillar.getBola(0).getX()+15, (int)mesaBillar.getBola(0).getY()+15);   
         angulo = anguloPI(pointBola, pointMouse);
         taco.setCosSen((float) Math.cos(angulo), (float) Math.sin(angulo));
