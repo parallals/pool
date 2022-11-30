@@ -1,31 +1,46 @@
 Consultas:
-- Preguntar sobre como ocupar Junit a ayudante
-- Pedir ayuda para desbugear ColisionDosBolas()
+- Preguntar sobre como ocupar Junit a ayudante X
+- Pedir ayuda para desbuguear ColisionDosBolas() X
+- 
+- 
+- 
+- 
 - 
 - 
 - 
 - 
 
-
+----------------------------------------------------------------------------------------
 Por hacer:
-- Arreglar ColisionDosBollas()
-- Re hacer colisiones con las paredes
-- Dimensionar areas de la Troneras
-- Dar la funcion de puntaje a las troneras
-- Implementar sistema de puntaje
+- Arreglar ColisionDosBolas() X
+- Dimensionar areas de la Troneras X
+- Dar la funcion de puntaje a las troneras X
+- Implementar sistema de puntaje X
+- Cambiar variables double por float
+- Hacer Math.round() en paint (Para evitar truncar con casteos (int))
+- Re hacer colisiones con las paredes 
 - Agregar forma de disminuir o aumentar fuerza del taco
+- Agregar funcionalidades a Botones()
+- 
+- 
+- 
 - 
 - 
 - 
 - 
 
-
+----------------------------------------------------------------------------------------
 Nos gustaria agregar:
-- Una forma de ver las Bolas que han caido en las troneras
+Permitido por el ayudante:
+- Modo 2 jugadores 
+Sin consultar:
 - Aumentar la cantidad de bolas mediante un Jslider
-- Modo 2 jugadores
+- Una forma de ver las Bolas que han caido en las troneras
 - Opcion de quitar bola 8 (En este caso la bola 8 te haria perder el juego)
 - Remplazar figuras de Graphics por texturas personalizas 
 - 
 -
+- 
+- 
+- 
 - 
