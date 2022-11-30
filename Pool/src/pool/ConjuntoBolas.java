@@ -74,17 +74,17 @@ public class ConjuntoBolas {
      * @param b1 
      */
     public void ColisionPared(Bola b1){
-        if(b1.getX()<mesaBillar.getX() && b1.getVelocidadX()<0){
+        if(b1.getX()<mesaBillar.getX()){
             b1.setVelocidadX(-b1.getVelocidadX());
             b1.setX(mesaBillar.getX());
-        }else if(b1.getX()+30>1064+mesaBillar.getX() && b1.getVelocidadX()>0){
+        }else if(b1.getX()+30>1064+mesaBillar.getX()){
             b1.setVelocidadX(-b1.getVelocidadX());
             b1.setX(1024+mesaBillar.getX());
         }
-        if((b1.getY()<mesaBillar.getY() && b1.getVelocidadY()<0)){
+        if(b1.getY()<mesaBillar.getY()){
             b1.setVelocidadY(-b1.getVelocidadY());
             b1.setY(mesaBillar.getY());
-        }else if(b1.getY()+30>481+mesaBillar.getY() && b1.getVelocidadY()>0){
+        }else if(b1.getY()+30>481+mesaBillar.getY()){
             b1.setVelocidadY(-b1.getVelocidadY());
             b1.setY(451+mesaBillar.getY());
         }
@@ -123,9 +123,10 @@ public class ConjuntoBolas {
          double cos = Math.cos(angulo);
          double sen = Math.sin(angulo);
          
-         double interseccion = 30 - distEntre2Puntos(new Point((int)b1.getX(), (int)b1.getY()), new Point((int)b2.getX(), (int)b2.getY()));
-         b1.setXY(Math.round(b1.getX()-interseccion*cos), Math.round(b1.getY()+interseccion*sen));
-         b2.setXY(Math.round(b2.getX()+interseccion*cos), Math.round(b2.getY()-interseccion*sen));
+         double puntoMedioX = (b1.getX()+b2.getX())/2;
+         double puntoMedioY = (b1.getY()+b2.getY())/2;
+         b1.setXY(puntoMedioX-16*cos, puntoMedioY+16*sen);
+         b2.setXY(puntoMedioX+16*cos, puntoMedioY-16*sen);
          System.out.println("aa");
          
          double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY();
@@ -136,7 +137,6 @@ public class ConjuntoBolas {
          b1.setVelocidadY(auxVelX1*sen + auxVelY1*cos);
          b2.setVelocidadX(auxVelX2*cos - auxVelY2*sen);
          b2.setVelocidadY(auxVelX2*sen + auxVelY2*cos);
-         
     }
     /**
      * Randomiza la posicion de las Bolas

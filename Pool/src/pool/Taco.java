@@ -38,7 +38,7 @@ public class Taco {
      */
     public void golpearBola(){
         if(turnoAcabado == true){
-            double Fuerza = 30;
+            double Fuerza = 25;
             bolaBlanca.setVelocidadX((double)Fuerza*-cos);
             bolaBlanca.setVelocidadY((double)Fuerza*sen);
         }
