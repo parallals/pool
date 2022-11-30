@@ -52,7 +52,7 @@ public class Bola {
      * @param x
      * @param y 
      */
-    public void setXY(int x, int y){
+    public void setXY(double x, double y){
         this.x = x;
         this.y = y;
     }

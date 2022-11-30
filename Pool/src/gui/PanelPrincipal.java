@@ -47,7 +47,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         repaint();
     }
     /**
-     * Funcion que crea los botones
+     * Metodo que crea los botones
      */
     private void Botones(){
         
@@ -80,13 +80,15 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         this.add(RadioBoton3);
     }
-
+    /**
+     * Metodo que detecta el movimiento del mouse cuando el click esta presionado
+     * @param m 
+     */
     @Override
     public void mouseDragged(MouseEvent m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     /**
-     * Detecta movimientos del mouse
+     * Metodo que detecta movimientos del mouse
      * @param m 
      */
     @Override

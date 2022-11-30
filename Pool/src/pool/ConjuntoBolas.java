@@ -53,15 +53,19 @@ public class ConjuntoBolas {
                 conjunto.get(i).movimientoBola();    
             }
         }
+        for(int i=0 ; i<conjunto.size()-1 ; i++){
+            for(int j=i+1 ; j<conjunto.size() ; j++){
+                ColisionDosBolas(conjunto.get(i), conjunto.get(j));
+            }
+        }
         for(int i=0 ; i<conjunto.size() ; i++){
             if(conjunto.get(i).getEstado() == true){
                 ColisionPared(conjunto.get(i));
-                mesaBillar.bolaCaeTronera(conjunto.get(i));
             }
         }
-        for(int i=0 ; i<conjunto.size()-1 ; i++){
-            for(int j=i+1 ; j<conjunto.size() ; j++){
-                ColisionBolas(conjunto.get(i), conjunto.get(j));
+        for(int i=0 ; i<conjunto.size() ; i++){
+            if(conjunto.get(i).getEstado() == true){
+                mesaBillar.bolaCaeTronera(conjunto.get(i));
             }
         }
     }
@@ -90,9 +94,9 @@ public class ConjuntoBolas {
      * @param b1
      * @param b2 
      */
-    public void ColisionBolas(Bola b1, Bola b2){
+    public void ColisionDosBolas(Bola b1, Bola b2){
         if(DetectarColision(b1, b2)){
-            ColisionDosBolas(b1, b2);
+            EfectoDeColision(b1, b2);
         }
     }
     /**
@@ -103,7 +107,7 @@ public class ConjuntoBolas {
      */
     public boolean DetectarColision(Bola b1, Bola b2){
         if(b1.getEstado()==true && b2.getEstado()==true){
-            if(distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY()) <= 30){
+            if(distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY()) < 30){
                 return true;
             }
         }
@@ -114,10 +118,16 @@ public class ConjuntoBolas {
      * @param b1
      * @param b2 
      */
-    public void ColisionDosBolas(Bola b1, Bola b2){
+    public void EfectoDeColision(Bola b1, Bola b2){
          float angulo = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
          double cos = Math.cos(angulo);
          double sen = Math.sin(angulo);
+         
+         double interseccion = 30 - distEntre2Puntos(new Point((int)b1.getX(), (int)b1.getY()), new Point((int)b2.getX(), (int)b2.getY()));
+         b1.setXY(Math.round(b1.getX()-interseccion*cos), Math.round(b1.getY()+interseccion*sen));
+         b2.setXY(Math.round(b2.getX()+interseccion*cos), Math.round(b2.getY()-interseccion*sen));
+         System.out.println("aa");
+         
          double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY();
          double auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
          double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY();
