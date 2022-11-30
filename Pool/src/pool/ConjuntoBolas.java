@@ -49,24 +49,20 @@ public class ConjuntoBolas {
      */
     public void Movimiento(){
         for(int i=0 ; i<conjunto.size() ; i++){
-            if(conjunto.get(i).getEstado() == true){
-                conjunto.get(i).movimientoBola();    
-            }
+            conjunto.get(i).movimientoBola();    
         }
-        for(int i=0 ; i<conjunto.size()-1 ; i++){
-            for(int j=i+1 ; j<conjunto.size() ; j++){
-                ColisionDosBolas(conjunto.get(i), conjunto.get(j));
+        for(int i=0 ; i<conjunto.size() ; i++){
+            for(int j=0 ; j<conjunto.size() ; j++){
+                if(i != j){
+                    ColisionDosBolas(conjunto.get(i), conjunto.get(j));
+                }
             }
         }
         for(int i=0 ; i<conjunto.size() ; i++){
-            if(conjunto.get(i).getEstado() == true){
-                ColisionPared(conjunto.get(i));
-            }
+            ColisionPared(conjunto.get(i));
         }
         for(int i=0 ; i<conjunto.size() ; i++){
-            if(conjunto.get(i).getEstado() == true){
-                mesaBillar.bolaCaeTronera(conjunto.get(i));
-            }
+            mesaBillar.bolaCaeTronera(conjunto.get(i));
         }
     }
     /**
@@ -106,10 +102,8 @@ public class ConjuntoBolas {
      * @return Si hay una colisión, devuelve true, en caso contrario, false
      */
     public boolean DetectarColision(Bola b1, Bola b2){
-        if(b1.getEstado()==true && b2.getEstado()==true){
-            if(distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY()) < 30){
-                return true;
-            }
+        if(distEntre2Puntos(b1.getX(), b1.getY(), b2.getX(), b2.getY()) < 30){
+            return true;
         }
         return false;
     }
@@ -119,19 +113,22 @@ public class ConjuntoBolas {
      * @param b2 
      */
     public void EfectoDeColision(Bola b1, Bola b2){
-         float angulo = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
-         double cos = Math.cos(angulo);
-         double sen = Math.sin(angulo);
-         
+         // Despegar b1 y b2
          double puntoMedioX = (b1.getX()+b2.getX())/2;
          double puntoMedioY = (b1.getY()+b2.getY())/2;
-         b1.setXY(puntoMedioX-16*cos, puntoMedioY+16*sen);
-         b2.setXY(puntoMedioX+16*cos, puntoMedioY-16*sen);
-         System.out.println("aa");
+         double distB1B2 = Math.sqrt(((b1.getX()-b2.getX())*(b1.getX()-b2.getX()))+((b1.getY()-b2.getY())*(b1.getY()-b2.getY())));
+         double distX = (b1.getX() - b2.getX()) / distB1B2;
+         double distY = (b1.getY() - b2.getY()) / distB1B2;
+         b1.setXY(puntoMedioX+16*distX, puntoMedioY+16*distY);
+         b2.setXY(puntoMedioX-15*distX, puntoMedioY-15*distY);
          
-         double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY();
+         // Dar nueva direccion a b1 y b2
+         double angulo = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
+         double cos = Math.cos(angulo);
+         double sen = - Math.sin(angulo);
+         double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY()*sen;
          double auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
-         double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY();
+         double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY()*sen;
          double auxVelY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
          b1.setVelocidadX(auxVelX1*cos - auxVelY1*sen);
          b1.setVelocidadY(auxVelX1*sen + auxVelY1*cos);
@@ -139,12 +136,12 @@ public class ConjuntoBolas {
          b2.setVelocidadY(auxVelX2*sen + auxVelY2*cos);
     }
     /**
+     * 
      * Randomiza la posicion de las Bolas
      */
     private void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
-            conjunto.get(i).setEstado(true);
         }
         for(int i=0 ; i<conjunto.size() ; i++){
             for(int j=1 ; j<conjunto.size() ; j++){
@@ -172,12 +169,9 @@ public class ConjuntoBolas {
      */
      public void paint(Graphics g, JPanel panel){
         for(int j = 0; j < conjunto.size() ; j++){
-            if(conjunto.get(j).getEstado() == true){
-                conjunto.get(j).paint(g, panel);
-            }
+            conjunto.get(j).paint(g, panel);
         }
-        Font f = new Font("Calibri",Font.PLAIN,20);
-        g.setFont(f);
+        g.setFont(new Font("Calibri",Font.PLAIN,20));
         String s = "Puntaje: " + Integer.toString(mesaBillar.getPuntaje());
         g.drawString(s, 1100, 700);
      }

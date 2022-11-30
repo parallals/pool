@@ -26,7 +26,7 @@ public class Angular {
      * @return int el ángulo con respecto a la horizontal
      */
     // ORIGINAL 
-    public static float anguloPI(Point uno, Point dos){
+    public static double anguloPI(Point uno, Point dos){
         float angulo,alto,ancho;       
         alto=dos.y-uno.y;
         ancho=dos.x-uno.x;

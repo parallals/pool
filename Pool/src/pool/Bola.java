@@ -11,7 +11,6 @@ public class Bola {
     private double velocidadX; // Velocidad con respecto a la horizontal.
     private double velocidadY; // Velocidad con respecto a la vertical.
     private final double aceleracion; // Perdida de velocidad debido al roce.
-    private boolean estado; // true si esta en la mesa y false si esta en una tronera.
     private final int puntaje; // cantidad de puntos que da al caer en una tronera.
     private final int serie; // Diseño que tendra.
     
@@ -85,20 +84,6 @@ public class Bola {
         this.velocidadY = velocidadY;
     }
     /**
-     * Getter del Estado de la bola
-     * @return El estado 
-     */
-    public boolean getEstado(){
-        return estado;
-    }
-    /**
-     * Setter del Estado de la bola
-     * @param estado 
-     */
-    public void setEstado(boolean estado){
-        this.estado = estado;
-    }
-    /**
      * Getter del puntaje de la bola
      * @return puntaje de la bola
      */
@@ -113,14 +98,6 @@ public class Bola {
         if(velocidadTotal > 0){
             if(velocidadTotal - aceleracion > 0){
                 velocidadTotal = velocidadTotal - aceleracion;         
-            }else{
-                velocidadX = 0;
-                velocidadY = 0;
-                velocidadTotal = 0; 
-            }
-        }else if(velocidadTotal < 0){
-            if(velocidadTotal + aceleracion < 0){
-                velocidadTotal = velocidadTotal + aceleracion;         
             }else{
                 velocidadX = 0;
                 velocidadY = 0;
@@ -207,7 +184,6 @@ public class Bola {
         velocidadX = 0;
         velocidadY = 0;
         aceleracion = 0.2;
-        estado = true;
         this.puntaje = puntaje;
         this.serie = bola;
     }

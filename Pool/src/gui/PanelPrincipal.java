@@ -93,10 +93,9 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseMoved(MouseEvent m) {
-        float angulo;
         Point pointMouse = new Point(m.getX(), m.getY());
         Point pointBola = new Point((int)mesaBillar.getBola(0).getX()+15, (int)mesaBillar.getBola(0).getY()+15);   
-        angulo = anguloPI(pointBola, pointMouse);
+        double angulo = anguloPI(pointBola, pointMouse);
         taco.setCosSen((float) Math.cos(angulo), (float) Math.sin(angulo));
         taco.setXY(pointBola.x, pointBola.y);
     }

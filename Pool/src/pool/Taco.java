@@ -9,8 +9,8 @@ public class Taco {
     //PROPIEDADES
     private int x; // Posicion con respecto a la horizontal
     private int y; // Posicion con respecto a la vertical
-    private float cos = 0; // Guarda el seno del taco con respecto a la Bola Blanca
-    private float sen = 0; // Guarda el coseno del taco con respecto a la Bola Blanca
+    private double cos = 0; // Guarda el seno del taco con respecto a la Bola Blanca
+    private double sen = 0; // Guarda el coseno del taco con respecto a la Bola Blanca
     private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca
     private boolean turnoAcabado; // guarda true si puedes golpear con el taco y false en caso contrario 
     
