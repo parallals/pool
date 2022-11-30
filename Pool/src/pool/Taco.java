@@ -7,10 +7,10 @@ import java.awt.Color;
 
 public class Taco {
     //PROPIEDADES
-    private int x; // Posicion con respecto a la horizontal
-    private int y; // Posicion con respecto a la vertical
-    private double cos = 0; // Guarda el seno del taco con respecto a la Bola Blanca
-    private double sen = 0; // Guarda el coseno del taco con respecto a la Bola Blanca
+    private double x; // Posicion con respecto a la horizontal
+    private double y; // Posicion con respecto a la vertical
+    private double cos; // Guarda el seno del taco con respecto a la Bola Blanca
+    private double sen; // Guarda el coseno del taco con respecto a la Bola Blanca
     private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca
     private boolean turnoAcabado; // guarda true si puedes golpear con el taco y false en caso contrario 
     
@@ -20,7 +20,7 @@ public class Taco {
      * @param x
      * @param y 
      */
-    public void setXY(int x, int y){
+    public void setXY(double x, double y){
         this.x = x;
         this.y = y;
     }

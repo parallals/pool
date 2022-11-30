@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.awt.Point;
 //import java.util.Random;
 
 
@@ -120,10 +119,10 @@ public class ConjuntoBolas {
          double distX = (b1.getX() - b2.getX()) / distB1B2;
          double distY = (b1.getY() - b2.getY()) / distB1B2;
          b1.setXY(puntoMedioX+16*distX, puntoMedioY+16*distY);
-         b2.setXY(puntoMedioX-15*distX, puntoMedioY-15*distY);
+         b2.setXY(puntoMedioX-16*distX, puntoMedioY-16*distY);
          
          // Dar nueva direccion a b1 y b2
-         double angulo = anguloPI(new Point((int)b1.getX(), (int)b1.getY()),new Point((int)b2.getX(), (int)b2.getY()));
+         double angulo = anguloPI(b1.getX(), b1.getY(), b2.getX(), b2.getY());
          double cos = Math.cos(angulo);
          double sen = - Math.sin(angulo);
          double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY()*sen;
