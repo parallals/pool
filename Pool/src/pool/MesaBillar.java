@@ -19,8 +19,21 @@ public class MesaBillar {
     ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
     private final ArrayList<Bola> enTronera;
     private int Puntaje;
+    private int players;
     
     //METODOS
+    public void OrdenarTronera(){
+        for(int i=0 ; i<enTronera.size() ; i++){
+            enTronera.get(i).setXY(20, 35+40*i);
+        }
+    }
+    /**
+     * Setter de players
+     * @param p 
+     */
+    public void setPlayers(int p){
+        players = p;
+    }
     /**
      * Getter de Bola
      * @return conjuntoBolas
@@ -70,9 +83,9 @@ public class MesaBillar {
                     if(conjuntoBolas.getBola(i).getSerie() == b1.getSerie()){
                         b1.setVelocidadX(0);
                         b1.setVelocidadY(0); 
-                        b1.setXY(0, 400);
                         Puntaje = Puntaje + b1.getPuntaje();
                         enTronera.add(conjuntoBolas.getConjunto().remove(i));
+                        OrdenarTronera();
                         break;
                     }
                 }  
@@ -115,6 +128,9 @@ public class MesaBillar {
         g.drawString(s, 1100, 700);
         //conjuntoBolas
         conjuntoBolas.paint(g, panel);
+        for(int i=0 ; i<enTronera.size() ; i++){
+            enTronera.get(i).paint(g, panel);
+        }
     }
     /*
     Constructor de MesaBillar
@@ -125,6 +141,7 @@ public class MesaBillar {
         x = 100;
         y = 100;
         conjuntoBolas = new ConjuntoBolas(this);
+        players = 1;
     }
  
 }

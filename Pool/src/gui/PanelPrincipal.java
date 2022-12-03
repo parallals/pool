@@ -55,6 +55,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     private void Botones(){
         
         JButton Boton1 = new JButton("Reset");
+        //Boton1
         Boton1.setBounds(100, 700, 100,50);
         Boton1.setEnabled(true);
         Boton1.setForeground(Color.black);
@@ -67,24 +68,37 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         };
         Boton1.addActionListener(oyenteDeAccion1);
         this.add(Boton1);
-        
-        
+        //Boton2
         JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
         RadioBoton1.setBounds(300, 700, 100,50);
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.LIGHT_GRAY);
+        ActionListener oyenteDeAccion2 = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mesaBillar.setPlayers(1);
+            }
+        };
+        RadioBoton1.addActionListener(oyenteDeAccion2);
         this.add(RadioBoton1);
-        
+        //Boton3
         JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
         RadioBoton2.setBounds(300, 750, 100,50);
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
+        ActionListener oyenteDeAccion3 = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mesaBillar.setPlayers(2);
+            }
+        };
+        RadioBoton2.addActionListener(oyenteDeAccion3);
         this.add(RadioBoton2);
         
         ButtonGroup Players = new ButtonGroup();
         Players.add(RadioBoton1);
         Players.add(RadioBoton2);
-        
+        //Boton4
         JRadioButton RadioBoton3 = new JRadioButton("8-Ball", true);
         RadioBoton3.setBounds(500, 700, 100,50);
         RadioBoton3.setForeground(Color.black);
