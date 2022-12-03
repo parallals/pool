@@ -2,13 +2,16 @@ package pool;
 
 import static angular.Angular.distEntre2Puntos;
 import static angular.Angular.anguloPI;
-import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
 //import java.util.Random;
 
-
+/** 
+ * @author Francy Jelvez
+ * @author Diego Venegas
+ * @version versión  1, 03 de diciembre de 2022
+ */
 public class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
@@ -138,9 +141,11 @@ public class ConjuntoBolas {
      * 
      * Randomiza la posicion de las Bolas
      */
-    private void RandomizarBolas(){
+    public void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
+            conjunto.get(i).setVelocidadX(0);
+            conjunto.get(i).setVelocidadY(0);
         }
         for(int i=0 ; i<conjunto.size() ; i++){
             for(int j=1 ; j<conjunto.size() ; j++){
@@ -170,9 +175,6 @@ public class ConjuntoBolas {
         for(int j = 0; j < conjunto.size() ; j++){
             conjunto.get(j).paint(g, panel);
         }
-        g.setFont(new Font("Calibri",Font.PLAIN,20));
-        String s = "Puntaje: " + Integer.toString(mesaBillar.getPuntaje());
-        g.drawString(s, 1100, 700);
      }
     /**
      * Constructor de ConjuntoBolas

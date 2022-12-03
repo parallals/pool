@@ -3,7 +3,11 @@ package gui;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
-
+/** 
+ * @author Francy Jelvez
+ * @author Diego Venegas
+ * @version versión  1, 03 de diciembre de 2022
+ */
 public class Ventana extends JFrame {
     // METODOS
     /**

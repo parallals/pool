@@ -4,6 +4,11 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
 
+/** 
+ * @author Francy Jelvez
+ * @author Diego Venegas
+ * @version versión  1, 03 de diciembre de 2022
+ */
 public class Bola {
     //PROPIEDADES
     private double x; // Posicion con respecto a la horizontal.

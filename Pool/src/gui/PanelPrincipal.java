@@ -16,7 +16,11 @@ import pool.MesaBillar;
 import java.awt.Color;
 import pool.Taco;
 
-
+/** 
+ * @author Francy Jelvez
+ * @author Diego Venegas
+ * @version versión  1, 03 de diciembre de 2022
+ */
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
     MesaBillar mesaBillar;
@@ -55,7 +59,15 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         Boton1.setEnabled(true);
         Boton1.setForeground(Color.black);
         Boton1.setBackground(Color.LIGHT_GRAY);
+        ActionListener oyenteDeAccion1 = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mesaBillar.reiniciarJuego();
+            }
+        };
+        Boton1.addActionListener(oyenteDeAccion1);
         this.add(Boton1);
+        
         
         JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
         RadioBoton1.setBounds(300, 700, 100,50);
