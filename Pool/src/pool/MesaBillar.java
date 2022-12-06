@@ -18,21 +18,42 @@ public class MesaBillar {
     private final int y; // Posicion con respecto a la vertical.
     ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
     private final ArrayList<Bola> enTronera;
-    private int Puntaje;
-    private int players;
-    
+    private ArrayList<Jugador> jugadores;
+    private Jugador jugadorActual;
     //METODOS
     public void OrdenarTronera(){
         for(int i=0 ; i<enTronera.size() ; i++){
             enTronera.get(i).setXY(20, 35+40*i);
         }
     }
+    
+    public int getCantidadJugadores(){
+        return jugadores.size();
+    }
+    /**
+     * Para modo 2 jugadores, funcion que cambia el turno
+     */
+    public void cambiaTurno(){
+        if(jugadores.size() != 1 && conjuntoBolas.getTurno()==1){
+            if(jugadorActual.getNumJugador() == jugadores.size()-1){
+                jugadorActual = jugadores.get(0);
+            }
+            else{
+                jugadorActual = jugadores.get(jugadorActual.getNumJugador()+1);
+            }
+    }
+    }
     /**
      * Setter de players
      * @param p 
      */
     public void setPlayers(int p){
-        players = p;
+        jugadores.clear();
+        for(int i = 0; i<p;++i){
+            Jugador Aux = new Jugador(i);
+            jugadores.add(Aux);
+        }
+        jugadorActual = jugadores.get(0);
     }
     /**
      * Getter de Bola
@@ -74,16 +95,17 @@ public class MesaBillar {
          || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2), y+501-(40-25)) < 35) //Tronera 5
          || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y+501-(40-25)) < 35)){ //Tronera 6
             if(b1.getSerie() == 0){
-                Puntaje = Puntaje + b1.getPuntaje();
+                //Puntaje = Puntaje + b1.getPuntaje();
+                jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
                 b1.setVelocidadX(0);
                 b1.setVelocidadY(0); 
-                b1.setXY((int)((Math.random()*1034)+x), (int)((Math.random()*451)+y));
+                b1.setXY((Math.round(((Math.random()*1034)+x))), Math.round((Math.random()*451)+y));
             }else{
                 for(int i=0 ; i<conjuntoBolas.getConjunto().size() ; i++){
                     if(conjuntoBolas.getBola(i).getSerie() == b1.getSerie()){
                         b1.setVelocidadX(0);
                         b1.setVelocidadY(0); 
-                        Puntaje = Puntaje + b1.getPuntaje();
+                        jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
                         enTronera.add(conjuntoBolas.getConjunto().remove(i));
                         OrdenarTronera();
                         break;
@@ -101,7 +123,10 @@ public class MesaBillar {
             conjuntoBolas.getConjunto().add(enTronera.remove(0));
         }
         conjuntoBolas.RandomizarBolas();
-        Puntaje = 0;
+        for(int i=0; i<jugadores.size(); ++i){
+            jugadores.get(i).setPuntaje(0);
+        }
+        jugadorActual=jugadores.get(0);
     }
     /**
      * Paint de MesaBillar, hace un llamado a ConjuntoBolas
@@ -123,9 +148,11 @@ public class MesaBillar {
         g.fillOval(x+(1064/2)-40/2, y+481-(40-25), 40, 40);
         g.fillOval(x+1064-40+25, y+481-(40-25), 40, 40);
         //Puntaje
-        g.setFont(new Font("Calibri",Font.PLAIN,20));
+        /*g.setFont(new Font("Calibri",Font.PLAIN,20));
         String s = "Puntaje: " + Integer.toString(Puntaje);
-        g.drawString(s, 1100, 700);
+        g.drawString(s, 1100, 700);*/
+        jugadorActual.paintPuntaje(g,panel);
+        jugadorActual.paintImagenJugador(g,panel);
         //conjuntoBolas
         conjuntoBolas.paint(g, panel);
         for(int i=0 ; i<enTronera.size() ; i++){
@@ -137,11 +164,12 @@ public class MesaBillar {
     */
     public MesaBillar(){
         enTronera = new ArrayList<>();
-        Puntaje = 0;
         x = 100;
         y = 100;
         conjuntoBolas = new ConjuntoBolas(this);
-        players = 1;
+        jugadores = new ArrayList<>();
+        jugadorActual = new Jugador(0);
+        jugadores.add(jugadorActual);
     }
  
 }

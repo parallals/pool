@@ -19,6 +19,7 @@ public class Taco {
     private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca
     private boolean turnoAcabado; // guarda true si puedes golpear con el taco y false en caso contrario 
     
+    
     //METODOS
     /**
      * Setter de propiedades x e y

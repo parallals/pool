@@ -17,8 +17,15 @@ public class ConjuntoBolas {
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
     private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
     private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
-    
+    private int turno;
     //METODOS
+    /**
+     * getter de la variable que indica el turno. 
+     * @return 
+     */
+    public int getTurno(){
+        return turno;
+    }
     /**
      * Getter de una bola en el conjunto
      * @param i
@@ -36,14 +43,17 @@ public class ConjuntoBolas {
     }
     /**
      * Detecta si existe alguno Bola que sigue en movimiento.
-     * @return true en caso de que se acabo el turno y false en caso de que aun no.
+     * @return true en caso de que se acabo el turno, y asigna un valor de 0 al turno, y false en caso de que aun no (Y 0 al valor de turno).
      */
     public boolean TurnoAcabado(){
         for(int i=0 ; i<conjunto.size() ; i++){
             if(conjunto.get(i).getVelocidadX()!=0 || conjunto.get(i).getVelocidadY()!=0){
+                turno = 1;
                 return false;
             }
         }
+        mesaBillar.cambiaTurno();
+        turno = 0;
         return true;
     }
     /**
@@ -143,7 +153,7 @@ public class ConjuntoBolas {
      */
     public void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
-            conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
+            conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
             conjunto.get(i).setVelocidadX(0);
             conjunto.get(i).setVelocidadY(0);
         }
@@ -153,7 +163,7 @@ public class ConjuntoBolas {
                     System.out.println("Detectada colision");
                     boolean aux;
                     do{
-                        conjunto.get(i).setXY((int)((Math.random()*1034)+mesaBillar.getX()), (int)((Math.random()*451)+mesaBillar.getY()));
+                        conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
                         aux = false;
                             for(int k=0 ; k<conjunto.size() ; k++){
                                 if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k){
@@ -189,6 +199,7 @@ public class ConjuntoBolas {
             conjunto.add(new Bola(0, 0, 10, i));
         }
         RandomizarBolas();
+        this.turno = 0;
     } 
 }
 
