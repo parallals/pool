@@ -11,10 +11,10 @@ import java.awt.Color;
  */
 public class Bola {
     //PROPIEDADES
-    private double x; // Posicion con respecto a la horizontal.
-    private double y; // Posicion con respecto a la vertical.
-    private double velocidadX; // Velocidad con respecto a la horizontal.
-    private double velocidadY; // Velocidad con respecto a la vertical.
+    private float x; // Posicion con respecto a la horizontal.
+    private float y; // Posicion con respecto a la vertical.
+    private float velocidadX; // Velocidad con respecto a la horizontal.
+    private float velocidadY; // Velocidad con respecto a la vertical.
     private final double aceleracion; // Perdida de velocidad debido al roce.
     private final int puntaje; // cantidad de puntos que da al caer en una tronera.
     private final int serie; // Diseño que tendra.
@@ -27,28 +27,28 @@ public class Bola {
      * Getter de x
      * @return x
      */
-    public double getX(){
+    public float getX(){
         return x;
     }
     /**
      * Getter de y
      * @return y
      */
-    public double getY(){
+    public float getY(){
         return y;
     }
     /**
      * Setter de x
      * @param x 
      */
-    public void setX(double x){
+    public void setX(float x){
         this.x = x;
     }
     /**
      * Setter de y
      * @param y 
      */
-    public void setY(double y){
+    public void setY(float y){
         this.y = y;
     }
     /**
@@ -56,7 +56,7 @@ public class Bola {
      * @param x
      * @param y 
      */
-    public void setXY(double x, double y){
+    public void setXY(float x, float y){
         this.x = x;
         this.y = y;
     }
@@ -64,28 +64,28 @@ public class Bola {
      * Getter de la velocidad en x
      * @return  velocidad en X
      */
-    public double getVelocidadX(){
+    public float getVelocidadX(){
         return velocidadX;
     }
     /**
      * Getter de la velocidad en y
      * @return velocidad en Y
      */
-    public double getVelocidadY(){
+    public float getVelocidadY(){
         return velocidadY;
     }
     /**
      * Setter de la velocidad en x
      * @param velocidadX 
      */
-    public void setVelocidadX(double velocidadX){
+    public void setVelocidadX(float velocidadX){
         this.velocidadX = velocidadX;
     }
     /**
      * Setter de la velocidad en y
      * @param velocidadY 
      */
-    public void setVelocidadY(double velocidadY){
+    public void setVelocidadY(float velocidadY){
         this.velocidadY = velocidadY;
     }
     /**
@@ -111,8 +111,8 @@ public class Bola {
         }
         if(velocidadTotal != 0){
             double angulo = Math.atan2(velocidadY, velocidadX);
-            velocidadX = velocidadTotal*Math.cos(angulo);
-            velocidadY = velocidadTotal*Math.sin(angulo);
+            velocidadX = (float)(velocidadTotal*Math.cos(angulo));
+            velocidadY = (float)(velocidadTotal*Math.sin(angulo));
             x = velocidadX + x;
             y = velocidadY + y;
         }
@@ -183,7 +183,7 @@ public class Bola {
      * @param puntaje Puntaje correspondiente
      * @param bola Tipo de bola (Numero int del 1 al 15)
      */
-    public Bola(double x, double y, int puntaje, int bola){
+    public Bola(float x, float y, int puntaje, int bola){
         this.x = x;
         this.y = y;
         velocidadX = 0;

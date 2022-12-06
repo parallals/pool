@@ -26,7 +26,10 @@ public class MesaBillar {
             enTronera.get(i).setXY(20, 35+40*i);
         }
     }
-    
+    /**
+     * Getter de la cantidad de jugadores
+     * @return 
+     */
     public int getCantidadJugadores(){
         return jugadores.size();
     }
@@ -42,6 +45,9 @@ public class MesaBillar {
                 jugadorActual = jugadores.get(jugadorActual.getNumJugador()+1);
             }
     }
+    }
+    public Jugador getJugadorActual(){
+        return jugadorActual;
     }
     /**
      * Setter de players

@@ -126,13 +126,13 @@ public class ConjuntoBolas {
      */
     public void EfectoDeColision(Bola b1, Bola b2){
          // Despegar b1 y b2
-         double puntoMedioX = (b1.getX()+b2.getX())/2;
-         double puntoMedioY = (b1.getY()+b2.getY())/2;
+         float puntoMedioX = (b1.getX()+b2.getX())/2;
+         float puntoMedioY = (b1.getY()+b2.getY())/2;
          double distB1B2 = Math.sqrt(((b1.getX()-b2.getX())*(b1.getX()-b2.getX()))+((b1.getY()-b2.getY())*(b1.getY()-b2.getY())));
-         double distX = (b1.getX() - b2.getX()) / distB1B2;
+         float distX = (b1.getX() - b2.getX()) / (float)distB1B2;
          double distY = (b1.getY() - b2.getY()) / distB1B2;
-         b1.setXY(puntoMedioX+16*distX, puntoMedioY+16*distY);
-         b2.setXY(puntoMedioX-16*distX, puntoMedioY-16*distY);
+         b1.setXY(puntoMedioX+16*distX, (float) (puntoMedioY+16*distY));
+         b2.setXY(puntoMedioX-16*distX, (float) (puntoMedioY-16*distY));
          
          // Dar nueva direccion a b1 y b2
          double angulo = anguloPI(b1.getX(), b1.getY(), b2.getX(), b2.getY());
@@ -142,10 +142,10 @@ public class ConjuntoBolas {
          double auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
          double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY()*sen;
          double auxVelY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
-         b1.setVelocidadX(auxVelX1*cos - auxVelY1*sen);
-         b1.setVelocidadY(auxVelX1*sen + auxVelY1*cos);
-         b2.setVelocidadX(auxVelX2*cos - auxVelY2*sen);
-         b2.setVelocidadY(auxVelX2*sen + auxVelY2*cos);
+         b1.setVelocidadX((float) (auxVelX1*cos - auxVelY1*sen));
+         b1.setVelocidadY((float) (auxVelX1*sen + auxVelY1*cos));
+         b2.setVelocidadX((float) (auxVelX2*cos - auxVelY2*sen));
+         b2.setVelocidadY((float) (auxVelX2*sen + auxVelY2*cos));
     }
     /**
      * 

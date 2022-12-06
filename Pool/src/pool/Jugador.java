@@ -10,7 +10,7 @@ public class Jugador {
      * paint del Taco del jugador
      * @param g 
      */
-    public void paintTaco (Graphics g){
+    public void paintTaco (Graphics g, JPanel panel){
         switch(numJugador){
             case 0:
                 g.setColor(Color.red);
@@ -18,6 +18,8 @@ public class Jugador {
             case 1:
                 g.setColor(Color.blue);
                 break;
+            default:
+                g.setColor(Color.yellow);
         }
     
     }
