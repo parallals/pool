@@ -35,7 +35,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     @Override
     public void paint(Graphics g){
         super.paint(g);
-        this.setBackground(Color.gray);
+        this.setBackground(Color.black);
         mesaBillar.paint(g, this);
         taco.paint(g, this);
     }
@@ -70,7 +70,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         this.add(Boton1);
         //Boton2
         JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
-        RadioBoton1.setBounds(300, 700, 100,50);
+        RadioBoton1.setBounds(300, 700, 100,40);
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion2 = new ActionListener(){
@@ -83,7 +83,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         this.add(RadioBoton1);
         //Boton3
         JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
-        RadioBoton2.setBounds(300, 750, 100,50);
+        RadioBoton2.setBounds(300, 730, 100,40);
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = new ActionListener(){
@@ -94,12 +94,27 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         };
         RadioBoton2.addActionListener(oyenteDeAccion3);
         this.add(RadioBoton2);
+        //Boton4
+      
+        JRadioButton RadioBoton3 = new JRadioButton("3 Players", false);
+        RadioBoton3.setBounds(300, 770, 100,40);
+        RadioBoton3.setForeground(Color.black);
+        RadioBoton3.setBackground(Color.LIGHT_GRAY);
+        ActionListener oyenteDeAccion4 = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mesaBillar.setPlayers(3);
+            }
+        };
+        RadioBoton3.addActionListener(oyenteDeAccion4);
+        this.add(RadioBoton3);
         
         ButtonGroup Players = new ButtonGroup();
         Players.add(RadioBoton1);
         Players.add(RadioBoton2);
+        Players.add(RadioBoton3);
         //Boton4
-        JRadioButton RadioBoton3 = new JRadioButton("8-Ball", true);
+        JRadioButton RadioBoton4 = new JRadioButton("8-Ball", true);
         RadioBoton3.setBounds(500, 700, 100,50);
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);

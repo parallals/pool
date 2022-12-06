@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1, 03 de diciembre de 2022
+ * @version versión  3.14pi, 03 de diciembre de 2022
  */
 public class MesaBillar {
     //PROPIEDADES
@@ -60,6 +60,7 @@ public class MesaBillar {
             jugadores.add(Aux);
         }
         jugadorActual = jugadores.get(0);
+        reiniciarJuego();
     }
     /**
      * Getter de Bola
