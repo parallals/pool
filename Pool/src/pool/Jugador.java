@@ -21,8 +21,11 @@ public class Jugador {
             case 2:
                 g.setColor(Color.green);
                 break;
-            default:
+            case 3:
                 g.setColor(Color.yellow);
+                break;                
+            default:
+                g.setColor(Color.white);
         }
     
     }
@@ -45,6 +48,11 @@ public class Jugador {
             case 2:
                 Image i2 = new ImageIcon(this.getClass().getResource("../Textures/jugador3.jpeg")).getImage();
                 g.drawImage(i2, 900, 650, 100, 100, panel);
+                break;
+            case 3:
+                Image i3 = new ImageIcon(this.getClass().getResource("../Textures/jugador4.jpg")).getImage();
+                g.drawImage(i3, 900, 650, 100, 100, panel);
+                break;
         }
         }catch(Exception e){
                     System.out.println("Fallo en cargar la imagen");
@@ -64,6 +72,9 @@ public class Jugador {
                 break;
             case 2:
                 g.setColor(Color.green);
+                break;
+            case 3:
+                g.setColor(Color.yellow);
                 break;
         }
                 g.setFont(new Font("Calibri",Font.ITALIC,20));

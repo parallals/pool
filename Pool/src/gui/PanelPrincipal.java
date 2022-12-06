@@ -70,7 +70,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         this.add(Boton1);
         //Boton2
         JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
-        RadioBoton1.setBounds(300, 700, 100,40);
+        RadioBoton1.setBounds(300, 700, 100,20);
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion2 = new ActionListener(){
@@ -83,7 +83,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         this.add(RadioBoton1);
         //Boton3
         JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
-        RadioBoton2.setBounds(300, 730, 100,40);
+        RadioBoton2.setBounds(300, 730, 100,20);
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = new ActionListener(){
@@ -97,7 +97,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         //Boton4
       
         JRadioButton RadioBoton3 = new JRadioButton("3 Players", false);
-        RadioBoton3.setBounds(300, 770, 100,40);
+        RadioBoton3.setBounds(300, 770, 100,20);
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion4 = new ActionListener(){
@@ -107,18 +107,33 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
             }
         };
         RadioBoton3.addActionListener(oyenteDeAccion4);
-        this.add(RadioBoton3);
+        this.add(RadioBoton3); 
+        //Boton 5
+        
+        JRadioButton RadioBoton4 = new JRadioButton("4 Players", false);
+        RadioBoton4.setBounds(300, 800, 100,20);
+        RadioBoton4.setForeground(Color.black);
+        RadioBoton4.setBackground(Color.LIGHT_GRAY);
+        ActionListener oyenteDeAccion5 = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mesaBillar.setPlayers(4);
+            }
+        };        
+        RadioBoton4.addActionListener(oyenteDeAccion5);
+        this.add(RadioBoton4);
         
         ButtonGroup Players = new ButtonGroup();
         Players.add(RadioBoton1);
         Players.add(RadioBoton2);
         Players.add(RadioBoton3);
+        Players.add(RadioBoton4);
         //Boton4
-        JRadioButton RadioBoton4 = new JRadioButton("8-Ball", true);
-        RadioBoton3.setBounds(500, 700, 100,50);
-        RadioBoton3.setForeground(Color.black);
-        RadioBoton3.setBackground(Color.LIGHT_GRAY);
-        this.add(RadioBoton3);
+        JRadioButton RadioBoton5 = new JRadioButton("8-Ball", true);
+        RadioBoton5.setBounds(500, 700, 100,50);
+        RadioBoton5.setForeground(Color.black);
+        RadioBoton5.setBackground(Color.LIGHT_GRAY);
+        this.add(RadioBoton5);
     }
     /**
      * Metodo que detecta movimientos del mouse
