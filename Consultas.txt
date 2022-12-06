@@ -1,7 +1,7 @@
 Consultas:
 - Preguntar sobre como ocupar Junit a ayudante X
 - Pedir ayuda para desbuguear ColisionDosBolas() X
-- 
+- Preguntar sobre los *patrones*
 - 
 - 
 - 
@@ -16,12 +16,12 @@ Por hacer:
 - Dimensionar areas de la Troneras X
 - Dar la funcion de puntaje a las troneras X
 - Implementar sistema de puntaje X
-- Cambiar variables double por float
-- Hacer Math.round() en paint (Para evitar truncar con casteos (int))
-- Re hacer colisiones con las paredes 
+- Cambiar variables double por float X
+- Hacer Math.round() en paint (Para evitar truncar con casteos (int)) X
+- Re hacer colisiones con las paredes ?
 - Agregar forma de disminuir o aumentar fuerza del taco
-- Agregar funcionalidades a Botones()
-- 
+- Agregar funcionalidades a Botones() X
+- Agregar una cantidad de Bolas elegida 
 - 
 - 
 - 
