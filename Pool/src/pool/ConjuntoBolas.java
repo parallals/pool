@@ -2,6 +2,7 @@ package pool;
 
 import static angular.Angular.distEntre2Puntos;
 import static angular.Angular.anguloPI;
+import java.awt.*;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -10,16 +11,29 @@ import java.util.ArrayList;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.1, 07 de diciembre de 2022
+ * @version versión  1.2, 08 de diciembre de 2022
  */
 public final class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
-    private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
+    private int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
     private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
     private int turno;
-    
     //METODOS
+    /**
+     * getter de cantidadBolas
+     * @return 
+     */
+    public int getcantidadBolas(){
+        return cantidadBolas;
+    }
+    /**
+     * setter de cantidadBolas
+     * @param p 
+     */
+    public void setcantidadBolas(int p){
+        this.cantidadBolas = p;
+    }
     /**
      * Metodo Getter de la variable que indica el turno. 
      * @return 
@@ -95,6 +109,24 @@ public final class ConjuntoBolas {
             b1.setVelocidadY(-b1.getVelocidadY());
             b1.setY(451+mesaBillar.getY());
         }
+    }
+    /**
+     * funcion que retira bolas según el parametro que se le da
+     * @param p 
+     */
+    public void retirarBolas(int p){
+        conjunto.remove(p);
+        cantidadBolas = cantidadBolas-1;
+        RandomizarBolas();
+    }
+    /**
+     * funcion que agrega bolas según el parámetro que se le da
+     * @param p 
+     */
+    public void agregarBolas(int p){
+        conjunto.add(new Bola(0, 0, 10, p));
+        cantidadBolas = cantidadBolas+1;
+        RandomizarBolas();
     }
     /**
      * Metodo que detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
@@ -190,6 +222,10 @@ public final class ConjuntoBolas {
         for(int j = 0; j < conjunto.size() ; j++){
             conjunto.get(j).paint(g, panel);
         }
+        //dibujar cantidad de bolas
+        g.setFont(new Font("Calibri",Font.ITALIC,15));
+        String s = Integer.toString(cantidadBolas);
+        g.drawString(s, 150, 775);
      }
     /**
      * Metodo Constructor de ConjuntoBolas
