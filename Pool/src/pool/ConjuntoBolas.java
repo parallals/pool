@@ -183,10 +183,10 @@ public class ConjuntoBolas {
                         conjunto.add(mesaBillar.getenTronera().remove(0));
                     }
                     System.out.println("Vaciada tronera");
-
-                    /*for(int k=0 ; k<conjunto.size();++k){
+                    RandomizarBolas();
+                    for(int k=0 ; k<conjunto.size();++k){
                         conjunto.get(k).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));             
-                    }*/
+                    }
                     System.out.println("Randomizadas");
                     System.out.println("-------------");
                     if(!mesaBillar.troneraEmpty()){
