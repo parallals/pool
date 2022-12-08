@@ -7,7 +7,7 @@ import java.awt.Color;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1, 03 de diciembre de 2022
+ * @version versión  1.1, 07 de diciembre de 2022
  */
 public class Bola {
     //PROPIEDADES
@@ -20,42 +20,42 @@ public class Bola {
     private final int serie; // Diseño que tendra.
     //METODOS
     /**
-     * Getter de serie
-     * @return 
+     * Metodo Getter de serie
+     * @return serie 
      */
     public int getSerie(){
         return serie;
     }
     /**
-     * Getter de x
+     * Metodo Getter de x
      * @return x
      */
     public float getX(){
         return x;
     }
     /**
-     * Getter de y
+     * Metodo Getter de y
      * @return y
      */
     public float getY(){
         return y;
     }
     /**
-     * Setter de x
+     * Metodo Setter de x
      * @param x 
      */
     public void setX(float x){
         this.x = x;
     }
     /**
-     * Setter de y
+     * Metodo Setter de y
      * @param y 
      */
     public void setY(float y){
         this.y = y;
     }
     /**
-     * Setter de x e y
+     * Metodo Setter de x e y
      * @param x
      * @param y 
      */
@@ -64,42 +64,42 @@ public class Bola {
         this.y = y;
     }
     /**
-     * Getter de la velocidad en x
+     * Metodo Getter de la velocidad en x
      * @return  velocidad en X
      */
     public float getVelocidadX(){
         return velocidadX;
     }
     /**
-     * Getter de la velocidad en y
+     * Metodo Getter de la velocidad en y
      * @return velocidad en Y
      */
     public float getVelocidadY(){
         return velocidadY;
     }
     /**
-     * Setter de la velocidad en x
+     * Metodo Setter de la velocidad en x
      * @param velocidadX 
      */
     public void setVelocidadX(float velocidadX){
         this.velocidadX = velocidadX;
     }
     /**
-     * Setter de la velocidad en y
+     * Metodo Setter de la velocidad en y
      * @param velocidadY 
      */
     public void setVelocidadY(float velocidadY){
         this.velocidadY = velocidadY;
     }
     /**
-     * Getter del puntaje de la bola
+     * Metodo Getter del puntaje de la bola
      * @return puntaje de la bola
      */
     public int getPuntaje(){
         return puntaje;
     }
     /**
-     * Funcion que maneja el movimiento que tendra Bola (No contempla colisiones)
+     * Metodo que maneja el movimiento que tendra Bola (No contempla colisiones). ticks sirve para suavizar el movimiento y asi tener mejor deteccion de colision.
      * @param ticks
      */
     public void movimientoBola(int ticks){
@@ -122,7 +122,7 @@ public class Bola {
         }
     }
     /**
-     * Funcion paint de bola
+     * Metodo paint de bola
      * @param g
      * @param panel 
      */
@@ -181,7 +181,7 @@ public class Bola {
         g.fillOval((int)x, (int)y, 30, 30);
     }
     /**
-     * Constructor de Bola
+     * Metodo Constructor de Bola
      * @param x Coordenada x de la bola
      * @param y Coordenada y de la bola
      * @param puntaje Puntaje correspondiente

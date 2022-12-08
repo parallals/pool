@@ -19,7 +19,7 @@ import pool.Taco;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1, 03 de diciembre de 2022
+ * @version versión  1.1, 07 de diciembre de 2022
  */
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
@@ -29,18 +29,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     
     //METODOS
     /**
-     * Funcion paint de PanelPrincipal
-     * @param g 
-     */
-    @Override
-    public void paint(Graphics g){
-        super.paint(g);
-        this.setBackground(Color.black);
-        mesaBillar.paint(g, this);
-        taco.paint(g, this);
-    }
-    /**
-     * 
+     * Metodo que actualiza el programa de acuerdo a los ticks del timer
      * @param ae 
      */
     @Override
@@ -50,12 +39,23 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         repaint();
     }
     /**
-     * Metodo que crea los botones
+     * Metodo paint de PanelPrincipal
+     * @param g 
+     */
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        this.setBackground(Color.gray);
+        mesaBillar.paint(g, this);
+        taco.paint(g, this);
+    }
+    /**
+     * Metodo que crea  botones
      */
     private void Botones(){
         
+        //Boton de Reinicio
         JButton Boton1 = new JButton("Reset");
-        //Boton1
         Boton1.setBounds(100, 700, 100,50);
         Boton1.setEnabled(true);
         Boton1.setForeground(Color.black);
@@ -65,9 +65,10 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         };
         Boton1.addActionListener(oyenteDeAccion1);
         this.add(Boton1);
-        //Boton2
+        
+        //Boton de 1 jugador
         JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
-        RadioBoton1.setBounds(300, 700, 100,15);
+        RadioBoton1.setBounds(300, 700, 100,20);
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion2 = (ActionEvent e) -> {
@@ -75,9 +76,10 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         };
         RadioBoton1.addActionListener(oyenteDeAccion2);
         this.add(RadioBoton1);
-        //Boton3
+        
+        //Boton de 2 jugadores
         JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
-        RadioBoton2.setBounds(300, 720, 100,15);
+        RadioBoton2.setBounds(300, 720, 100,20);
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = new ActionListener(){
@@ -88,10 +90,10 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         };
         RadioBoton2.addActionListener(oyenteDeAccion3);
         this.add(RadioBoton2);
-        //Boton4
-      
+        
+        //Boton de 3 jugadores
         JRadioButton RadioBoton3 = new JRadioButton("3 Players", false);
-        RadioBoton3.setBounds(300, 740, 100,15);
+        RadioBoton3.setBounds(300, 740, 100,20);
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion4 = new ActionListener(){
@@ -102,10 +104,10 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         };
         RadioBoton3.addActionListener(oyenteDeAccion4);
         this.add(RadioBoton3); 
-        //Boton 5
         
+        //Boton de 4 jugadores
         JRadioButton RadioBoton4 = new JRadioButton("4 Players", false);
-        RadioBoton4.setBounds(300, 760, 100,15);
+        RadioBoton4.setBounds(300, 760, 100,20);
         RadioBoton4.setForeground(Color.black);
         RadioBoton4.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion5 = new ActionListener(){
@@ -113,21 +115,16 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
             public void actionPerformed(ActionEvent e) {
                 mesaBillar.setPlayers(4);
             }
-        };        
+        };
         RadioBoton4.addActionListener(oyenteDeAccion5);
         this.add(RadioBoton4);
         
+        //Enlazamiento de RadioButtons de jugadores
         ButtonGroup Players = new ButtonGroup();
         Players.add(RadioBoton1);
         Players.add(RadioBoton2);
         Players.add(RadioBoton3);
         Players.add(RadioBoton4);
-        //Boton4
-        JRadioButton RadioBoton5 = new JRadioButton("8-Ball", true);
-        RadioBoton5.setBounds(500, 700, 100,50);
-        RadioBoton5.setForeground(Color.black);
-        RadioBoton5.setBackground(Color.LIGHT_GRAY);
-        this.add(RadioBoton5);
     }
     /**
      * Metodo que detecta movimientos del mouse
@@ -139,7 +136,6 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         taco.setCosSen((float) Math.cos(angulo), (float) Math.sin(angulo));
         taco.setXY(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15);
     }
-
     /**
      * Metodo mousePressed
      * @param me 
@@ -157,35 +153,35 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     public void mouseDragged(MouseEvent m) {
     }
     /**
-     * funcion mouseClicked
+     * Metodo mouseClicked
      * @param me 
      */
     @Override
     public void mouseClicked(MouseEvent me) { 
     }
     /**
-     * funcion mouseReleased
+     * Metodo mouseReleased
      * @param me 
      */
     @Override
     public void mouseReleased(MouseEvent me) {
     }
     /**
-     * funcion mouseEntered
+     * Metodo mouseEntered
      * @param me 
      */
     @Override
     public void mouseEntered(MouseEvent me) {
     }
     /**
-     * funcion mouseExited
+     * Metodo mouseExited
      * @param me 
      */
    @Override
     public void mouseExited(MouseEvent me) {
     }
     /**
-     * Constructor del PanelPrincipal
+     * Metodo Constructor del PanelPrincipal
      */
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();
