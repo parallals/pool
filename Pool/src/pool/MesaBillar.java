@@ -92,7 +92,7 @@ public class MesaBillar {
      * Verifica si hay bolas que caigan en una tronera
      * @param b1
      */
-    public void bolaCaeTronera(Bola b1){
+    public boolean bolaCaeTronera(Bola b1){
         if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 40) //Tronera 1
          || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2)-20, y-5) < 40) //Tronera 2
          || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y-5) < 40) //Tronera 3
@@ -113,11 +113,12 @@ public class MesaBillar {
                         jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
                         enTronera.add(conjuntoBolas.getConjunto().remove(i));
                         OrdenarTronera();
-                        break;
+                        return true;
                     }
                 }  
             }
         }
+        return false;
     }   
     /**
      * Metodo que reinicia el puntaje, velocidad y posicion de Bolas .

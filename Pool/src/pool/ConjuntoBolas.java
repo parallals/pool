@@ -60,17 +60,19 @@ public class ConjuntoBolas {
      * Funcion que procesa la trayectoria que tedra cada Bola del Conjunto
      */
     public void Movimiento(){
-        int ticks = 6;
-        for(int j=0 ; j<ticks ; j++){
-            for(int i=0 ; i<conjunto.size() ; i++){
+        int ticks = 10;
+        for(int i=0 ; i<conjunto.size() ; i++){
+            for(int j=0 ; j<ticks ; j++){
                 conjunto.get(i).movimientoBola(ticks); 
                 for(int k=0 ; k<conjunto.size() ; k++){
                     if(i != k){
                         ColisionDosBolas(conjunto.get(i), conjunto.get(k));
                     }
                 }
-                mesaBillar.bolaCaeTronera(conjunto.get(i));
                 ColisionPared(conjunto.get(i));
+                if(mesaBillar.bolaCaeTronera(conjunto.get(i)) == true){
+                    break;
+                }
             }
         }
     }
