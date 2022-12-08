@@ -14,6 +14,7 @@ import javax.swing.Timer;
 import java.awt.Graphics;
 import pool.MesaBillar;
 import java.awt.Color;
+import pool.Bola;
 import pool.Taco;
 
 /** 
@@ -72,7 +73,14 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion2 = (ActionEvent e) -> {
-            mesaBillar.setPlayers(1);
+            for(int i = 0; i < mesaBillar.getConjunto().getConjunto().size();++i){
+                Bola aux = mesaBillar.getConjunto().getConjunto().get(i);
+                aux.setVelocidadX(0);
+                aux.setVelocidadY(0);
+            }
+            if(mesaBillar.getConjunto().getTurno()==0){
+            mesaBillar.setPlayers(1);            
+            }
         };
         RadioBoton1.addActionListener(oyenteDeAccion2);
         this.add(RadioBoton1);
@@ -83,7 +91,9 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = (ActionEvent e) -> {
-            mesaBillar.setPlayers(2);
+            if(mesaBillar.getConjunto().getTurno()==0){
+            mesaBillar.setPlayers(2);            
+            }
         };
         RadioBoton2.addActionListener(oyenteDeAccion3);
         this.add(RadioBoton2);
@@ -94,7 +104,9 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion4 = (ActionEvent e) -> {
-            mesaBillar.setPlayers(3);
+            if(mesaBillar.getConjunto().getTurno()==0){
+            mesaBillar.setPlayers(3);            
+            }
         };
         RadioBoton3.addActionListener(oyenteDeAccion4);
         this.add(RadioBoton3); 
@@ -105,7 +117,9 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton4.setForeground(Color.black);
         RadioBoton4.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion5 = (ActionEvent e) -> {
+            if(mesaBillar.getConjunto().getTurno()==0){
             mesaBillar.setPlayers(4);
+            }
         };
         RadioBoton4.addActionListener(oyenteDeAccion5);
         this.add(RadioBoton4);
