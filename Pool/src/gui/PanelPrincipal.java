@@ -74,8 +74,9 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmas.setForeground(Color.white);
         BotonCmas.setBackground(Color.black);
         ActionListener oyenteDeAccion1a = (ActionEvent e) -> {
-        int aux = mesaBillar.getConjunto().getcantidadBolas();
-            if(aux<15){
+
+        if(mesaBillar.getConjunto().getcantidadBolas()<15 && mesaBillar.getConjunto().getTurno()==0){
+            int aux = mesaBillar.getConjunto().getcantidadBolas();                
             mesaBillar.getConjunto().agregarBolas(aux+1);
             repaint();
             }
@@ -89,7 +90,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmenos.setForeground(Color.black);
         BotonCmas.setBackground(Color.black);
         ActionListener oyenteDeAccion1b = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getcantidadBolas()>1){
+            if(mesaBillar.getConjunto().getcantidadBolas()>1 && mesaBillar.getConjunto().getTurno()==0){
                 int aux = mesaBillar.getConjunto().getcantidadBolas();                
                 mesaBillar.getConjunto().retirarBolas(aux);
                 repaint();
