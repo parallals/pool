@@ -159,14 +159,14 @@ public class ConjuntoBolas {
         }
         for(int i=0 ; i<conjunto.size() ; i++){
             for(int j=1 ; j<conjunto.size() ; j++){
-                if((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j){
+                if(((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j)||!mesaBillar.getenTronera().isEmpty()){
                     System.out.println("Detectada colision");
                     boolean aux;
                     do{
                         conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
                         aux = false;
                             for(int k=0 ; k<conjunto.size() ; k++){
-                                if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k){
+                                if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k||!mesaBillar.getenTronera().isEmpty()){
                                     System.out.println("Detectada colision luego del randomizer");
                                     aux = true; 
                                 }
@@ -175,6 +175,12 @@ public class ConjuntoBolas {
                 }
             }
         }
+    }
+    /**
+     * getter de la cantidad
+     */
+    public int getCantidad(){
+        return cantidadBolas;
     }
     /**
      * Funcion paint de ConjuntoBolas, hace un llamado al paint de cada Bola
