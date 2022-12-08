@@ -8,11 +8,10 @@ public class Angular {
      * @param dos: otro punto
      * @return double el ángulo con respecto a la horizontal
      */
-    public static double anguloPI(double x1, double y1, double x2, double y2){
-        double angulo,alto,ancho;       
-        alto = y2-y1;
-        ancho = x2-x1;
-        angulo = Math.atan2(-alto,ancho);      
+    public static float anguloPI(float x1, float y1, float x2, float y2){    
+        float alto = y2-y1;
+        float ancho = x2-x1;
+        float angulo = (float)Math.atan2(-alto,ancho);      
         return angulo; //sin radianes
     }
     /**
@@ -23,13 +22,8 @@ public class Angular {
      * @param y2 Coordenada y del punto 2
      * @return double distancia
      */
-    public static double distEntre2Puntos(double x1, double y1, double x2, double y2){ 
-        double d = Math.sqrt(
-               (((double)x1-(double)x2)*
-               ((double)x1-(double)x2))+
-               (((double)y1-(double)y2)* 
-               ((double)y1-(double)y2))
-            );
+    public static float distEntre2Puntos(float x1, float y1, float x2, float y2){ 
+        float d = (float)Math.sqrt(((x1-x2)*(x1-x2)) + ((y1-y2)* (y1-y2)));
         return d;
     }
 }

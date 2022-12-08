@@ -15,7 +15,7 @@ public class Bola {
     private float y; // Posicion con respecto a la vertical.
     private float velocidadX; // Velocidad con respecto a la horizontal.
     private float velocidadY; // Velocidad con respecto a la vertical.
-    private final double aceleracion; // Perdida de velocidad debido al roce.
+    private final float aceleracion; // Perdida de velocidad debido al roce.
     private final int puntaje; // cantidad de puntos que da al caer en una tronera.
     private final int serie; // Diseño que tendra.
     //METODOS
@@ -103,10 +103,10 @@ public class Bola {
      * @param ticks
      */
     public void movimientoBola(int ticks){
-        double velocidadTotal = Math.sqrt((velocidadX*velocidadX)+(velocidadY*velocidadY));
+        float velocidadTotal = (float)Math.sqrt((velocidadX*velocidadX)+(velocidadY*velocidadY));
         if(velocidadTotal > 0){
             if(velocidadTotal - aceleracion/ticks > 0){
-                velocidadTotal = velocidadTotal - aceleracion/ticks;         
+                velocidadTotal = velocidadTotal - (float)aceleracion/ticks;         
             }else{
                 velocidadX = 0;
                 velocidadY = 0;
@@ -178,7 +178,7 @@ public class Bola {
                 break;
             }
         }
-        g.fillOval((int)x, (int)y, 30, 30);
+        g.fillOval(Math.round(x), Math.round(y), 30, 30);
     }
     /**
      * Metodo Constructor de Bola
@@ -192,7 +192,7 @@ public class Bola {
         this.y = y;
         velocidadX = 0;
         velocidadY = 0;
-        aceleracion = 0.2;
+        aceleracion = 0.2f;
         this.puntaje = puntaje;
         this.serie = bola;
     }

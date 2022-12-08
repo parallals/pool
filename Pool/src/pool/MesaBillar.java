@@ -16,9 +16,9 @@ public class MesaBillar {
     private final int x; // Posicion con respecto a la horizontal.
     private final int y; // Posicion con respecto a la vertical.
     ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
-    private final ArrayList<Bola> enTronera;
-    private final ArrayList<Jugador> jugadores;
-    private Jugador jugadorActual;
+    private final ArrayList<Bola> Tronera ;// Guarda las Bolas que cayeron en alguna Tronera
+    private final ArrayList<Jugador> jugadores; // Guarda una referencia de los Jugadores actuales
+    private Jugador jugadorActual; // Guarda una referencia al Jugador actual
     
     //METODOS
     /**
@@ -80,19 +80,19 @@ public class MesaBillar {
      * Metodo que quita bolas que hay en tronera
      * @return 
      */
-    public void VaciarenTronera(){
-        int aux = enTronera.size();
+    public void VaciarTronera(){
+        int aux = Tronera.size();
         for(int i=0 ; i<aux ; i++){
             conjuntoBolas.getConjunto().get(0).setXY(0, 400);
-            conjuntoBolas.getConjunto().add(enTronera.remove(0));
+            conjuntoBolas.getConjunto().add(Tronera.remove(0));
         }
     }  
     /**
      * Metodo que revisa cuantas bolas hay en tronera
      * @return 
      */
-    public boolean enTroneraVacia(){
-        return enTronera.isEmpty();
+    public boolean TroneraVacia(){
+        return Tronera.isEmpty();
     }    
     /**
      * Getter de X
@@ -125,8 +125,8 @@ public class MesaBillar {
                 b1.setVelocidadY(0);
                 boolean aux = false;
                 do{
-                    b1.setXY((Math.round(((Math.random()*1034)+x))), Math.round((Math.random()*451)+y));
-                    for(int i = 1; i<conjuntoBolas.getCantidad();++i){
+                    b1.setXY( (float)(Math.random()*1034)+x, (float)(Math.random()*451)+y);
+                    for(int i = 1; i<conjuntoBolas.getConjunto().size() ; ++i){
                         if(conjuntoBolas.DetectarColision(b1,getBola(i))== true){
                             aux = true;
                         }
@@ -138,7 +138,7 @@ public class MesaBillar {
                         b1.setVelocidadX(0);
                         b1.setVelocidadY(0); 
                         jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
-                        enTronera.add(conjuntoBolas.getConjunto().remove(i));
+                        Tronera.add(conjuntoBolas.getConjunto().remove(i));
                         OrdenarTronera();
                         return true;
                     }
@@ -151,15 +151,15 @@ public class MesaBillar {
      * Metodo que Ordena Bolas que no estan en la mesa
      */
     public void OrdenarTronera(){
-        for(int i=0 ; i<enTronera.size() ; i++){
-            enTronera.get(i).setXY(20, 35+40*i);
+        for(int i=0 ; i<Tronera.size() ; i++){
+            Tronera.get(i).setXY(20, 35+40*i);
         }
     }
     /**
      * Metodo que reinicia el puntaje, velocidad y posicion de Bolas .
      */
     public void reiniciarJuego(){
-        VaciarenTronera();
+        VaciarTronera();
         conjuntoBolas.RandomizarBolas();
         for(int i=0; i<jugadores.size(); ++i){
             jugadores.get(i).setPuntaje(0);
@@ -174,30 +174,30 @@ public class MesaBillar {
     public void paint(Graphics g, JPanel panel){
         //Mesa
         g.setColor(new Color(100, 60, 50)); 
-        g.fillRect(x-30, y-30, 1064+60, 481+60);
+        g.fillRect(x-30, y-30, 1124, 531);
         g.setColor(new Color(30, 130, 80)); // Zona Verde
         g.fillRect(x, y, 1064, 481);
         //Troneras
         g.setColor(new Color(0, 0, 0)); 
         g.fillOval(x-20, y-20, 40, 40);
-        g.fillOval(x+(1064/2)-40/2, y-20, 40, 40);
-        g.fillOval(x+1064-40+20, y-20, 40, 40);
-        g.fillOval(x-20, y+481-(40-20), 40, 40);
-        g.fillOval(x+(1064/2)-40/2, y+481-(40-20), 40, 40);
-        g.fillOval(x+1064-40+20, y+481-(40-20), 40, 40);
+        g.fillOval(x+512, y-20, 40, 40);
+        g.fillOval(x+1044, y-20, 40, 40);
+        g.fillOval(x-20, y+461, 40, 40);
+        g.fillOval(x+512, y+461, 40, 40);
+        g.fillOval(x+1044, y+461, 40, 40);
         //Jugador
         jugadorActual.paintJugador(g,panel);
         //conjuntoBolas
         conjuntoBolas.paint(g, panel);
-        for(int i=0 ; i<enTronera.size() ; i++){
-            enTronera.get(i).paint(g, panel);
+        for(int i=0 ; i<Tronera.size() ; i++){
+            Tronera.get(i).paint(g, panel);
         }
     }
     /**
      * Metodo Contructor de MesaBillar
      */
     public MesaBillar(){
-        enTronera = new ArrayList<>();
+        Tronera = new ArrayList<>();
         x = 100;
         y = 100;
         conjuntoBolas = new ConjuntoBolas(this);

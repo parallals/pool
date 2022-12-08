@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Diego Venegas
  * @version versión  1.1, 07 de diciembre de 2022
  */
-public class ConjuntoBolas {
+public final class ConjuntoBolas {
     //PROPIEDADES
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
     private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
@@ -127,24 +127,24 @@ public class ConjuntoBolas {
          // Despegar b1 y b2
          float puntoMedioX = (b1.getX()+b2.getX())/2;
          float puntoMedioY = (b1.getY()+b2.getY())/2;
-         double distB1B2 = Math.sqrt(((b1.getX()-b2.getX())*(b1.getX()-b2.getX()))+((b1.getY()-b2.getY())*(b1.getY()-b2.getY())));
+         float distB1B2 = (float)Math.sqrt(((b1.getX()-b2.getX())*(b1.getX()-b2.getX()))+((b1.getY()-b2.getY())*(b1.getY()-b2.getY())));
          float distX = (b1.getX() - b2.getX()) / (float)distB1B2;
-         double distY = (b1.getY() - b2.getY()) / distB1B2;
+         float distY = (b1.getY() - b2.getY()) / distB1B2;
          b1.setXY(puntoMedioX+16*distX, (float) (puntoMedioY+16*distY));
          b2.setXY(puntoMedioX-16*distX, (float) (puntoMedioY-16*distY));
          
          // Dar nueva direccion a b1 y b2
-         double angulo = anguloPI(b1.getX(), b1.getY(), b2.getX(), b2.getY());
-         double cos = Math.cos(angulo);
-         double sen = - Math.sin(angulo);
-         double auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY()*sen;
-         double auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
-         double auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY()*sen;
-         double auxVelY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
-         b1.setVelocidadX((float) (auxVelX1*cos - auxVelY1*sen));
-         b1.setVelocidadY((float) (auxVelX1*sen + auxVelY1*cos));
-         b2.setVelocidadX((float) (auxVelX2*cos - auxVelY2*sen));
-         b2.setVelocidadY((float) (auxVelX2*sen + auxVelY2*cos));
+         float angulo = anguloPI(b1.getX(), b1.getY(), b2.getX(), b2.getY());
+         float cos = (float)Math.cos(angulo);
+         float sen = (float)-Math.sin(angulo);
+         float auxVelX1 = b2.getVelocidadX()*cos + b2.getVelocidadY()*sen;
+         float auxVelY1 = - b1.getVelocidadX()*sen + b1.getVelocidadY()*cos;
+         float auxVelX2 = b1.getVelocidadX()*cos + b1.getVelocidadY()*sen;
+         float auxVelY2 = - b2.getVelocidadX()*sen + b2.getVelocidadY()*cos;
+         b1.setVelocidadX(auxVelX1*cos - auxVelY1*sen);
+         b1.setVelocidadY(auxVelX1*sen + auxVelY1*cos);
+         b2.setVelocidadX(auxVelX2*cos - auxVelY2*sen);
+         b2.setVelocidadY(auxVelX2*sen + auxVelY2*cos);
     }
     /**
      * 
@@ -153,7 +153,7 @@ public class ConjuntoBolas {
     public void RandomizarBolas(){
 
         for(int i=0 ; i<conjunto.size() ; i++){
-            conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
+            conjunto.get(i).setXY((float)(Math.random()*1034)+mesaBillar.getX(), (float)(Math.random()*451)+mesaBillar.getY());
             conjunto.get(i).setVelocidadX(0);
             conjunto.get(i).setVelocidadY(0);
         }     
@@ -162,7 +162,7 @@ public class ConjuntoBolas {
                 if(((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j)){
                     boolean aux;
                     do{
-                        conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
+                        conjunto.get(i).setXY((float)(Math.random()*1034)+mesaBillar.getX(), (float)(Math.random()*451)+mesaBillar.getY());
                         aux = false;
                             for(int k=0 ; k<conjunto.size() ; k++){
                                 if(((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k )){
@@ -176,19 +176,10 @@ public class ConjuntoBolas {
         for(int i=0 ; i<conjunto.size() ; i++){
             mesaBillar.bolaCaeTronera(conjunto.get(i));
         }
-        if(mesaBillar.enTroneraVacia() == false){ 
-            System.out.println("dasasfgsd");
-            mesaBillar.VaciarenTronera();
+        if(mesaBillar.TroneraVacia() == false){
+            mesaBillar.VaciarTronera();
             RandomizarBolas();
         }
-    }
-
-    //mesaBillar.bolaCaeTronera(conjunto.get(i))
-    /**
-     * getter de la cantidad
-     */
-    public int getCantidad(){
-        return cantidadBolas;
     }
     /**
      * Metodo paint de ConjuntoBolas, hace un llamado al paint de cada Bola
