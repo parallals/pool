@@ -4,7 +4,6 @@ import static angular.Angular.distEntre2Puntos;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Font;
 import java.util.ArrayList;
 
 /** 
@@ -18,7 +17,7 @@ public class MesaBillar {
     private final int y; // Posicion con respecto a la vertical.
     ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
     private final ArrayList<Bola> enTronera;
-    private ArrayList<Jugador> jugadores;
+    private final ArrayList<Jugador> jugadores;
     private Jugador jugadorActual;
     //METODOS
     public void OrdenarTronera(){
@@ -105,13 +104,13 @@ public class MesaBillar {
      * Verifica si hay bolas que caigan en una tronera
      * @param b1
      */
-    public void bolaCaeTronera(Bola b1){
-        if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 35) //Tronera 1
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2)-20, y-5) < 35) //Tronera 2
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y-5) < 35) //Tronera 3
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y+501-(40-25)) < 35) //Tronera 4
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2), y+501-(40-25)) < 35) //Tronera 5
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y+501-(40-25)) < 35)){ //Tronera 6
+    public boolean bolaCaeTronera(Bola b1){
+        if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 40) //Tronera 1
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2)-20, y-5) < 40) //Tronera 2
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y-5) < 40) //Tronera 3
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y+501-(40-25)) < 40) //Tronera 4
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2), y+501-(40-25)) < 40) //Tronera 5
+         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y+501-(40-25)) < 40)){ //Tronera 6
             if(b1.getSerie() == 0){
                 //Puntaje = Puntaje + b1.getPuntaje();
                 jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
@@ -134,11 +133,12 @@ public class MesaBillar {
                         jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
                         enTronera.add(conjuntoBolas.getConjunto().remove(i));
                         OrdenarTronera();
-                        break;
+                        return true;
                     }
                 }  
             }
         }
+        return false;
     }   
     /**
      * Metodo que reinicia el puntaje, velocidad y posicion de Bolas .
@@ -167,12 +167,12 @@ public class MesaBillar {
         g.fillRect(x, y, 1064, 481);
         //Troneras
         g.setColor(new Color(0, 0, 0)); 
-        g.fillOval(x-25, y-25, 40, 40);
-        g.fillOval(x+(1064/2)-40/2, y-25, 40, 40);
-        g.fillOval(x+1064-40+25, y-25, 40, 40);
-        g.fillOval(x-25, y+481-(40-25), 40, 40);
-        g.fillOval(x+(1064/2)-40/2, y+481-(40-25), 40, 40);
-        g.fillOval(x+1064-40+25, y+481-(40-25), 40, 40);
+        g.fillOval(x-20, y-20, 40, 40);
+        g.fillOval(x+(1064/2)-40/2, y-20, 40, 40);
+        g.fillOval(x+1064-40+20, y-20, 40, 40);
+        g.fillOval(x-20, y+481-(40-20), 40, 40);
+        g.fillOval(x+(1064/2)-40/2, y+481-(40-20), 40, 40);
+        g.fillOval(x+1064-40+20, y+481-(40-20), 40, 40);
         //Puntaje
         /*g.setFont(new Font("Calibri",Font.PLAIN,20));
         String s = "Puntaje: " + Integer.toString(Puntaje);

@@ -4,9 +4,6 @@
  */
 package pool;
 
-import java.awt.Graphics;
-import java.util.ArrayList;
-import javax.swing.JPanel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
