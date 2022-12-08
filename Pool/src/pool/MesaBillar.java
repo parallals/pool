@@ -83,7 +83,7 @@ public class MesaBillar {
      * getter del conjunto en tronera
      * @return 
      */
-    public ArrayList getenTronera(){
+    public ArrayList<Bola> getenTronera(){
         return enTronera;
     }
     /**
@@ -139,7 +139,19 @@ public class MesaBillar {
             }
         }
         return false;
-    }   
+    }  
+    /**
+     * Revisa si tronera está vacía, devuelve true si lo esta, false si no
+     * @return 
+     */
+    public boolean troneraEmpty(){
+        if(enTronera.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     /**
      * Metodo que reinicia el puntaje, velocidad y posicion de Bolas .
      */

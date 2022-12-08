@@ -151,30 +151,49 @@ public class ConjuntoBolas {
      * Randomiza la posicion de las Bolas
      */
     public void RandomizarBolas(){
+
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
             conjunto.get(i).setVelocidadX(0);
             conjunto.get(i).setVelocidadY(0);
+            boolean aux = mesaBillar.bolaCaeTronera(conjunto.get(i));
         }
+        if(!mesaBillar.troneraEmpty()){
+        }        
         for(int i=0 ; i<conjunto.size() ; i++){
             for(int j=1 ; j<conjunto.size() ; j++){
-                if(((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j)||!mesaBillar.getenTronera().isEmpty()){
-                    System.out.println("Detectada colision");
-                    boolean aux;
+                if(((DetectarColision(conjunto.get(i), conjunto.get(j)) == true) && i != j)){
+                    boolean aux1;
                     do{
                         conjunto.get(i).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));
-                        aux = false;
+                        aux1 = false;
                             for(int k=0 ; k<conjunto.size() ; k++){
-                                if((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k||!mesaBillar.getenTronera().isEmpty()){
-                                    System.out.println("Detectada colision luego del randomizer");
-                                    aux = true; 
+                                if(((DetectarColision(conjunto.get(i), conjunto.get(k)) == true) && i != k )){
+                                    aux1 = true; 
                                 }
                             }
-                    }while(aux == true);
+                    }while(aux1 == true);
                 }
             }
         }
-    }
+        if(!mesaBillar.troneraEmpty()){ 
+                Boolean aux = false;
+                do{
+                    int aux1 = mesaBillar.getenTronera().size();
+                    for(int i=0 ; i<aux1 ; i++){
+                        conjunto.add(mesaBillar.getenTronera().remove(0));
+                    }
+                    for(int k=0 ; k<conjunto.size();++k){
+                        conjunto.get(k).setXY(Math.round((Math.random()*1034)+mesaBillar.getX()), Math.round((Math.random()*451)+mesaBillar.getY()));             
+                    }
+
+                        if(!mesaBillar.troneraEmpty()){
+                            aux = true;
+                        }
+                    }while(aux);
+            }
+        }
+    //mesaBillar.bolaCaeTronera(conjunto.get(i))
     /**
      * getter de la cantidad
      */
