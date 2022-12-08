@@ -63,6 +63,13 @@ public class MesaBillar {
         reiniciarJuego();
     }
     /**
+     * getter de bolas en Troneras
+     * @return 
+     */
+    public ArrayList<Bola> getenTronera(){
+        return enTronera;
+    }    
+    /**
      * Metodo Getter de Bola
      * @return conjuntoBolas
      */
@@ -120,6 +127,13 @@ public class MesaBillar {
         }
         return false;
     }   
+    /**
+     * Revisa si tronera está vacía, devuelve true si lo esta, false si no
+     * @return 
+     */
+    public boolean troneraEmpty(){
+        return enTronera.isEmpty();
+    }
     /**
      * Metodo que Ordena Bolas que no estan en la mesa
      */
