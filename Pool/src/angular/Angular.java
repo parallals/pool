@@ -3,7 +3,7 @@ package angular;
 
 public class Angular {
     /**
-     * Calcula el angulo respecto a la horizontal
+     * Metodo que calcula el angulo respecto a la horizontal
      * @param uno: punto de referencia
      * @param dos: otro punto
      * @return double el ángulo con respecto a la horizontal
@@ -16,7 +16,7 @@ public class Angular {
         return angulo; //sin radianes
     }
     /**
-     * Distancia en pixeles entre dos puntos
+     * Metodo que da la distancia entre dos puntos
      * @param x1 Coordenada x del punto 1
      * @param y1 Coordenada y del punto 1
      * @param x2 Coordenada x del punto 2

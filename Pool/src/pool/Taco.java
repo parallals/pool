@@ -17,12 +17,12 @@ public class Taco {
     private float cos; // Guarda el seno del taco con respecto a la Bola Blanca
     private float sen; // Guarda el coseno del taco con respecto a la Bola Blanca
     private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca
-    private boolean turnoAcabado; // guarda true si puedes golpear con el taco y false en caso contrario 
-    private MesaBillar mesaBillar;
+    private boolean turnoAcabado; // Guarda true si puedes golpear con el taco y false en caso contrario 
+    private final MesaBillar mesaBillar; // Referencia a MesaBillar 
     
     //METODOS
     /**
-     * Setter de propiedades x e y
+     * Metodo Setter de propiedades x e y
      * @param x
      * @param y 
      */
@@ -31,7 +31,7 @@ public class Taco {
         this.y = y;
     }
     /**
-     * Setter de propiedades cos y sen
+     * Metodo Setter de propiedades cos y sen
      * @param cos
      * @param sen 
      */
@@ -40,7 +40,14 @@ public class Taco {
         this.sen = sen;
     }
     /**
-     * Funcion que cambia la velocidad de la Bola Blanca con respecto a la fuerza que se le golpea 
+     * Metodo Setter de propiedad turnoAcabado
+     * @param turnoAcabado 
+     */
+    public void setTurnoAcabado(boolean turnoAcabado){
+        this.turnoAcabado = turnoAcabado;
+    }
+    /**
+     * Metodo que cambia la velocidad de la Bola Blanca con respecto a la fuerza que se le golpea 
      */
     public void golpearBola(){
         if(turnoAcabado == true){
@@ -50,20 +57,13 @@ public class Taco {
         }
     }
     /**
-     * Setter de propiedad turnoAcabado
-     * @param turnoAcabado 
-     */
-    public void setTurnoAcabado(boolean turnoAcabado){
-        this.turnoAcabado = turnoAcabado;
-    }
-    /**
-     * Método paint de Taco
+     * Metodo paint de Taco
      * @param g
      * @param panel 
      */
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
-            mesaBillar.getJugadorActual().paintTaco(g,panel);
+            mesaBillar.getJugadorActual().colorTaco(g);
             Polygon taco = new Polygon();
             taco.addPoint(Math.round(x+30*cos+2*sen),Math.round(y-30*sen+2*cos)); //Parte cercana a la bola
             taco.addPoint(Math.round(x+30*cos-2*sen),Math.round(y-30*sen-2*cos));
@@ -84,7 +84,7 @@ public class Taco {
         }
     }
     /**
-     * Constructor Taco
+     * Metodo Constructor de Taco
      * @param x
      * @param y 
      * @param bolaBlanca

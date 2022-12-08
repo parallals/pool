@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1, 03 de diciembre de 2022
+ * @version versión  1.1, 07 de diciembre de 2022
  */
 public class ConjuntoBolas {
     //PROPIEDADES
@@ -18,16 +18,17 @@ public class ConjuntoBolas {
     private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
     private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
     private int turno;
+    
     //METODOS
     /**
-     * getter de la variable que indica el turno. 
+     * Metodo Getter de la variable que indica el turno. 
      * @return 
      */
     public int getTurno(){
         return turno;
     }
     /**
-     * Getter de una bola en el conjunto
+     * Metodo Getter de una bola en el conjunto
      * @param i
      * @return 
      */
@@ -35,14 +36,14 @@ public class ConjuntoBolas {
         return conjunto.get(i);
     }
     /**
-     * Getter de un conjunto
+     * Metodo Getter de un conjunto
      * @return conjunto
      */
     public ArrayList<Bola> getConjunto(){
         return conjunto;
     }
     /**
-     * Detecta si existe alguno Bola que sigue en movimiento.
+     * Metodo que detecta si existe alguno Bola que sigue en movimiento.
      * @return true en caso de que se acabo el turno, y asigna un valor de 0 al turno, y false en caso de que aun no (Y 0 al valor de turno).
      */
     public boolean TurnoAcabado(){
@@ -57,27 +58,26 @@ public class ConjuntoBolas {
         return true;
     }
     /**
-     * Funcion que procesa la trayectoria que tedra cada Bola del Conjunto
+     * Metodo que procesa la trayectoria que tedra cada Bola del Conjunto. Mientras en pantalla mostramos un frame, internamente procesa 10 posiciones y sus colisiones.
      */
     public void Movimiento(){
         int ticks = 10;
-        for(int i=0 ; i<conjunto.size() ; i++){
-            for(int j=0 ; j<ticks ; j++){
+        for(int j=0 ; j<ticks ; j++){
+            for(int i=0 ; i<conjunto.size() ; i++){
                 conjunto.get(i).movimientoBola(ticks); 
                 for(int k=0 ; k<conjunto.size() ; k++){
                     if(i != k){
                         ColisionDosBolas(conjunto.get(i), conjunto.get(k));
                     }
                 }
-                ColisionPared(conjunto.get(i));
-                if(mesaBillar.bolaCaeTronera(conjunto.get(i)) == true){
-                    break;
+                if(mesaBillar.bolaCaeTronera(conjunto.get(i)) == false){
+                    ColisionPared(conjunto.get(i));
                 }
             }
         }
     }
     /**
-     * Detecta si hay una colision entre una Bola y  la Pared de la mesa
+     * Metodo que detecta si hay una colision entre una Bola y  la Pared de la mesa
      * @param b1 
      */
     public void ColisionPared(Bola b1){
@@ -97,7 +97,7 @@ public class ConjuntoBolas {
         }
     }
     /**
-     * Detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
+     * Metodo que detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
      * @param b1
      * @param b2 
      */
@@ -107,7 +107,7 @@ public class ConjuntoBolas {
         }
     }
     /**
-     * Detecta si hay una colision entre dos bolas
+     * Metodo que detecta si hay una colision entre dos bolas
      * @param b1
      * @param b2
      * @return Si hay una colisión, devuelve true, en caso contrario, false
@@ -119,7 +119,7 @@ public class ConjuntoBolas {
         return false;
     }
     /**
-     * Cambia la dirreccion y sentido con respecto a cada tipo de colision entre dos Bolas
+     * Metodo que cambia la dirreccion y sentido con respecto a cada tipo de colision entre dos Bolas
      * @param b1
      * @param b2 
      */
@@ -148,7 +148,7 @@ public class ConjuntoBolas {
     }
     /**
      * 
-     * Randomiza la posicion de las Bolas
+     * Metodo que randomiza la posicion de las Bolas
      */
     public void RandomizarBolas(){
         for(int i=0 ; i<conjunto.size() ; i++){
@@ -176,7 +176,7 @@ public class ConjuntoBolas {
         }
     }
     /**
-     * Funcion paint de ConjuntoBolas, hace un llamado al paint de cada Bola
+     * Metodo paint de ConjuntoBolas, hace un llamado al paint de cada Bola
      * @param g
      * @param panel 
      */
@@ -186,7 +186,7 @@ public class ConjuntoBolas {
         }
      }
     /**
-     * Constructor de ConjuntoBolas
+     * Metodo Constructor de ConjuntoBolas
      * @param mesa 
      */
     public ConjuntoBolas(MesaBillar mesa){

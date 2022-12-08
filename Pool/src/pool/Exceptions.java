@@ -4,7 +4,7 @@ package pool;
 class Exception extends RuntimeException{
     public Exception(){}
     /**
-     * Constructor Exception
+     * Metodo Constructor Exception
      * @param mensaje 
      */
     public Exception(String mensaje){
