@@ -192,7 +192,7 @@ public class Bola {
         this.y = y;
         velocidadX = 0;
         velocidadY = 0;
-        aceleracion = 0.2f;
+        aceleracion = 0.3f;
         this.puntaje = puntaje;
         this.serie = bola;
     }

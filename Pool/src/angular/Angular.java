@@ -1,5 +1,7 @@
 package angular;
 
+import java.awt.Point;
+
 
 public class Angular {
     /**
@@ -24,6 +26,11 @@ public class Angular {
      */
     public static float distEntre2Puntos(float x1, float y1, float x2, float y2){ 
         float d = (float)Math.sqrt(((x1-x2)*(x1-x2)) + ((y1-y2)* (y1-y2)));
+        return d;
+    }
+    
+    public static float distEntre2Puntos(Point p1, Point p2){ 
+        float d = (float)Math.sqrt(((p1.getX()-p2.getX())*(p1.getX()-p2.getX())) + ((p1.getY()-p2.getY())* (p1.getY()-p2.getY())));
         return d;
     }
 }

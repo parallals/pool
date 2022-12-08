@@ -36,6 +36,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     public void actionPerformed(ActionEvent ae) {
         mesaBillar.getConjunto().Movimiento();
         taco.setTurnoAcabado(mesaBillar.getConjunto().TurnoAcabado());
+        taco.setXY(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15);
         repaint();
     }
     /**
@@ -119,13 +120,12 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
     /**
      * Metodo que detecta movimientos del mouse
-     * @param m 
+     * @param me 
      */
     @Override
-    public void mouseMoved(MouseEvent m) {
-        float angulo = anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, m.getX(), m.getY());
+    public void mouseMoved(MouseEvent me) {
+        float angulo = anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, me.getX(), me.getY());
         taco.setCosSen((float)Math.cos(angulo), (float)Math.sin(angulo));
-        taco.setXY(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15);
     }
     /**
      * Metodo mousePressed
@@ -133,15 +133,17 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mousePressed(MouseEvent me){
-        taco.golpearBola();                
-        repaint();
+        taco.setPulsado(me.getPoint());
     }
     /**
      * Metodo que detecta el movimiento del mouse cuando el click esta presionado
      * @param m 
      */
     @Override
-    public void mouseDragged(MouseEvent m) {
+    public void mouseDragged(MouseEvent me) {
+        float angulo = anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, me.getX(), me.getY());
+        taco.setCosSen((float)Math.cos(angulo), (float)Math.sin(angulo));
+        taco.setSuelto(me.getPoint());
     }
     /**
      * Metodo mouseClicked
@@ -156,6 +158,9 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseReleased(MouseEvent me) {
+        taco.setSuelto(me.getPoint());
+        taco.golpearBola();                
+        repaint();
     }
     /**
      * Metodo mouseEntered
@@ -176,7 +181,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();
-        taco = new Taco(0, 0, mesaBillar.getBola(0),mesaBillar);
+        taco = new Taco((int)mesaBillar.getBola(0).getX()+15, (int)mesaBillar.getBola(0). getY()+15, mesaBillar.getBola(0),mesaBillar);
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);

@@ -174,7 +174,7 @@ public class MesaBillar {
     public void paint(Graphics g, JPanel panel){
         //Mesa
         g.setColor(new Color(100, 60, 50)); 
-        g.fillRect(x-30, y-30, 1124, 531);
+        g.fillRect(x-30, y-30, 1124, 541);
         g.setColor(new Color(30, 130, 80)); // Zona Verde
         g.fillRect(x, y, 1064, 481);
         //Troneras
