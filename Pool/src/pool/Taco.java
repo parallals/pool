@@ -10,7 +10,7 @@ import java.awt.Point;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1, 03 de diciembre de 2022
+ * @version versión  1.1, 08 de diciembre de 2022
  */
 public class Taco {
     //PROPIEDADES
@@ -70,8 +70,8 @@ public class Taco {
     public void golpearBola(){
         if(turnoAcabado == true){
             float fuerzaAcumulada = distEntre2Puntos(pulsado, suelto)/6;
-            if(fuerzaAcumulada > 60){
-                fuerzaAcumulada = 60;
+            if(fuerzaAcumulada > 50){
+                fuerzaAcumulada = 50;
             }
             bolaBlanca.setVelocidadX(fuerzaAcumulada*-cos);
             bolaBlanca.setVelocidadY(fuerzaAcumulada*sen);
@@ -94,15 +94,17 @@ public class Taco {
             g.drawPolygon(taco);
             g.fillPolygon(taco);
             if(pintarTrayectoria ==true){
-            Color c = new Color(255, 255, 255, 100 );
-            g.setColor(c);
-            Polygon trayectoria = new Polygon();
-            trayectoria.addPoint(Math.round(x-30*cos+1*sen),Math.round(y+30*sen+1*cos)); //Parte cercana a la bola
-            trayectoria.addPoint(Math.round(x-30*cos-1*sen),Math.round(y+30*sen-1*cos));
-            trayectoria.addPoint(Math.round(x-(distEntre2Puntos(pulsado, suelto)+40)*cos-1*sen), Math.round(y+(distEntre2Puntos(pulsado, suelto)+40)*sen-1*cos)); // Parte lejana a la bola 
-            trayectoria.addPoint(Math.round(x-(distEntre2Puntos(pulsado, suelto)+40)*cos+1*sen), Math.round(y+(distEntre2Puntos(pulsado, suelto)+40)*sen+1*cos));
-            g.drawPolygon(trayectoria);
-            g.fillPolygon(trayectoria);
+                float magnitudTrayectoria = distEntre2Puntos(pulsado, suelto)+40;
+                if((magnitudTrayectoria-40)/6 > 50){
+                    magnitudTrayectoria = 340;
+                }
+                g.setColor(new Color(255, 255, 255, 100));
+                Polygon trayectoria = new Polygon();
+                trayectoria.addPoint(Math.round(x-30*cos+1*sen),Math.round(y+30*sen+1*cos)); //Parte cercana a la bola
+                trayectoria.addPoint(Math.round(x-30*cos-1*sen),Math.round(y+30*sen-1*cos));
+                trayectoria.addPoint(Math.round(x-magnitudTrayectoria*cos-1*sen), Math.round(y+magnitudTrayectoria*sen-1*cos)); // Parte lejana a la bola 
+                trayectoria.addPoint(Math.round(x-magnitudTrayectoria*cos+1*sen), Math.round(y+magnitudTrayectoria*sen+1*cos));
+                g.fillPolygon(trayectoria);
             }
         }
     }
