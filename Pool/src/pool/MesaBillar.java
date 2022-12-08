@@ -60,7 +60,7 @@ public class MesaBillar {
             jugadores.add(Aux);
         }
         jugadorActual = jugadores.get(0);
-        reiniciarJuego();
+        reiniciarJuego();      
     }
     /**
      * Metodo Getter de Bola
