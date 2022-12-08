@@ -23,8 +23,8 @@ import pool.Taco;
  */
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
-    MesaBillar mesaBillar;
-    Taco taco;
+    private final MesaBillar mesaBillar;
+    private final Taco taco;
     private final Timer timer;
     
     //METODOS
@@ -60,11 +60,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         Boton1.setEnabled(true);
         Boton1.setForeground(Color.black);
         Boton1.setBackground(Color.LIGHT_GRAY);
-        ActionListener oyenteDeAccion1 = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mesaBillar.reiniciarJuego();
-            }
+        ActionListener oyenteDeAccion1 = (ActionEvent e) -> {
+            mesaBillar.reiniciarJuego();
         };
         Boton1.addActionListener(oyenteDeAccion1);
         this.add(Boton1);
@@ -73,11 +70,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton1.setBounds(300, 700, 100,20);
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.LIGHT_GRAY);
-        ActionListener oyenteDeAccion2 = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mesaBillar.setPlayers(1);
-            }
+        ActionListener oyenteDeAccion2 = (ActionEvent e) -> {
+            mesaBillar.setPlayers(1);
         };
         RadioBoton1.addActionListener(oyenteDeAccion2);
         this.add(RadioBoton1);

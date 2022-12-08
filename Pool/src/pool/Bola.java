@@ -97,12 +97,13 @@ public class Bola {
     }
     /**
      * Funcion que maneja el movimiento que tendra Bola (No contempla colisiones)
+     * @param ticks
      */
-    public void movimientoBola(){
+    public void movimientoBola(int ticks){
         double velocidadTotal = Math.sqrt((velocidadX*velocidadX)+(velocidadY*velocidadY));
         if(velocidadTotal > 0){
-            if(velocidadTotal - aceleracion > 0){
-                velocidadTotal = velocidadTotal - aceleracion;         
+            if(velocidadTotal - aceleracion/ticks > 0){
+                velocidadTotal = velocidadTotal - aceleracion/ticks;         
             }else{
                 velocidadX = 0;
                 velocidadY = 0;
@@ -113,8 +114,8 @@ public class Bola {
             double angulo = Math.atan2(velocidadY, velocidadX);
             velocidadX = (float)(velocidadTotal*Math.cos(angulo));
             velocidadY = (float)(velocidadTotal*Math.sin(angulo));
-            x = velocidadX + x;
-            y = velocidadY + y;
+            x = velocidadX/ticks + x;
+            y = velocidadY/ticks+ y;
         }
     }
     /**
