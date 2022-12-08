@@ -18,7 +18,6 @@ public class Bola {
     private final double aceleracion; // Perdida de velocidad debido al roce.
     private final int puntaje; // cantidad de puntos que da al caer en una tronera.
     private final int serie; // Diseño que tendra.
-    
     //METODOS
     /**
      * Metodo Getter de serie

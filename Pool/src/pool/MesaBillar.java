@@ -84,8 +84,9 @@ public class MesaBillar {
         return conjuntoBolas;
     }
     /**
+     * Getter de X
      * Metodo que cambia el turno para multiples jugadores
-     */
+     * @return x     */
     public void cambiaTurno(){
         if(jugadores.size() != 1 && conjuntoBolas.getTurno()==1){
             if(jugadorActual.getNumJugador() == jugadores.size()-1){
@@ -110,8 +111,16 @@ public class MesaBillar {
                 //Puntaje = Puntaje + b1.getPuntaje();
                 jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
                 b1.setVelocidadX(0);
-                b1.setVelocidadY(0); 
-                b1.setXY((Math.round(((Math.random()*1034)+x))), Math.round((Math.random()*451)+y));
+                b1.setVelocidadY(0);
+                boolean aux = false;
+                do{
+                    b1.setXY((Math.round(((Math.random()*1034)+x))), Math.round((Math.random()*451)+y));
+                    for(int i = 1; i<conjuntoBolas.getCantidad();++i){
+                        if(conjuntoBolas.DetectarColision(b1,getBola(i))== true){
+                            aux = true;
+                        }
+                    }
+                }while(aux == true);
             }else{
                 for(int i=0 ; i<conjuntoBolas.getConjunto().size() ; i++){
                     if(conjuntoBolas.getBola(i).getSerie() == b1.getSerie()){
@@ -126,13 +135,18 @@ public class MesaBillar {
             }
         }
         return false;
-    }   
+    }  
     /**
      * Revisa si tronera está vacía, devuelve true si lo esta, false si no
      * @return 
      */
     public boolean troneraEmpty(){
-        return enTronera.isEmpty();
+        if(enTronera.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     /**
      * Metodo que Ordena Bolas que no estan en la mesa

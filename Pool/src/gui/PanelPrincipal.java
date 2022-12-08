@@ -79,7 +79,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 2 jugadores
         JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
-        RadioBoton2.setBounds(300, 730, 100,20);
+        RadioBoton2.setBounds(300, 720, 100,20);
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = new ActionListener(){
@@ -93,7 +93,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 3 jugadores
         JRadioButton RadioBoton3 = new JRadioButton("3 Players", false);
-        RadioBoton3.setBounds(300, 770, 100,20);
+        RadioBoton3.setBounds(300, 740, 100,20);
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion4 = new ActionListener(){
@@ -107,7 +107,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 4 jugadores
         JRadioButton RadioBoton4 = new JRadioButton("4 Players", false);
-        RadioBoton4.setBounds(300, 800, 100,20);
+        RadioBoton4.setBounds(300, 760, 100,20);
         RadioBoton4.setForeground(Color.black);
         RadioBoton4.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion5 = new ActionListener(){

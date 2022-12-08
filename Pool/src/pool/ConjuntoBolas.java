@@ -196,6 +196,14 @@ public class ConjuntoBolas {
                     }while(aux);
             }
         }
+
+    //mesaBillar.bolaCaeTronera(conjunto.get(i))
+    /**
+     * getter de la cantidad
+     */
+    public int getCantidad(){
+        return cantidadBolas;
+    }
     /**
      * Metodo paint de ConjuntoBolas, hace un llamado al paint de cada Bola
      * @param g
