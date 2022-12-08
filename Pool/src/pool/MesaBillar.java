@@ -63,13 +63,6 @@ public class MesaBillar {
         reiniciarJuego();
     }
     /**
-     * getter de bolas en Troneras
-     * @return 
-     */
-    public ArrayList<Bola> getenTronera(){
-        return enTronera;
-    }    
-    /**
      * Metodo Getter de Bola
      * @return conjuntoBolas
      */
@@ -83,6 +76,24 @@ public class MesaBillar {
     public ConjuntoBolas getConjunto(){
         return conjuntoBolas;
     }
+    /**
+     * Metodo que quita bolas que hay en tronera
+     * @return 
+     */
+    public void VaciarenTronera(){
+        int aux = enTronera.size();
+        for(int i=0 ; i<aux ; i++){
+            conjuntoBolas.getConjunto().get(0).setXY(0, 400);
+            conjuntoBolas.getConjunto().add(enTronera.remove(0));
+        }
+    }  
+    /**
+     * Metodo que revisa cuantas bolas hay en tronera
+     * @return 
+     */
+    public boolean enTroneraVacia(){
+        return enTronera.isEmpty();
+    }    
     /**
      * Getter de X
      * Metodo que cambia el turno para multiples jugadores
@@ -137,18 +148,6 @@ public class MesaBillar {
         return false;
     }  
     /**
-     * Revisa si tronera está vacía, devuelve true si lo esta, false si no
-     * @return 
-     */
-    public boolean troneraEmpty(){
-        if(enTronera.isEmpty()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    /**
      * Metodo que Ordena Bolas que no estan en la mesa
      */
     public void OrdenarTronera(){
@@ -160,10 +159,7 @@ public class MesaBillar {
      * Metodo que reinicia el puntaje, velocidad y posicion de Bolas .
      */
     public void reiniciarJuego(){
-        int aux = enTronera.size();
-        for(int i=0 ; i<aux ; i++){
-            conjuntoBolas.getConjunto().add(enTronera.remove(0));
-        }
+        VaciarenTronera();
         conjuntoBolas.RandomizarBolas();
         for(int i=0; i<jugadores.size(); ++i){
             jugadores.get(i).setPuntaje(0);

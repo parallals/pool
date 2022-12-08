@@ -82,11 +82,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton2.setBounds(300, 720, 100,20);
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
-        ActionListener oyenteDeAccion3 = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mesaBillar.setPlayers(2);
-            }
+        ActionListener oyenteDeAccion3 = (ActionEvent e) -> {
+            mesaBillar.setPlayers(2);
         };
         RadioBoton2.addActionListener(oyenteDeAccion3);
         this.add(RadioBoton2);
@@ -96,11 +93,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton3.setBounds(300, 740, 100,20);
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
-        ActionListener oyenteDeAccion4 = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mesaBillar.setPlayers(3);
-            }
+        ActionListener oyenteDeAccion4 = (ActionEvent e) -> {
+            mesaBillar.setPlayers(3);
         };
         RadioBoton3.addActionListener(oyenteDeAccion4);
         this.add(RadioBoton3); 
@@ -110,11 +104,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton4.setBounds(300, 760, 100,20);
         RadioBoton4.setForeground(Color.black);
         RadioBoton4.setBackground(Color.LIGHT_GRAY);
-        ActionListener oyenteDeAccion5 = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mesaBillar.setPlayers(4);
-            }
+        ActionListener oyenteDeAccion5 = (ActionEvent e) -> {
+            mesaBillar.setPlayers(4);
         };
         RadioBoton4.addActionListener(oyenteDeAccion5);
         this.add(RadioBoton4);
