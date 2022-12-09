@@ -24,7 +24,7 @@ public class Taco {
     private float sen; // Guarda el coseno del taco con respecto a la Bola Blanca.
     private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca.
     private boolean turnoAcabado; // Guarda true si puedes golpear con el taco y false en caso contrario.
-    private final MesaBillar mesaBillar; // Referencia a MesaBillar.
+    private final ConjuntoJugadores conjuntoJugadores;
     
     //METODOS
     /**
@@ -91,7 +91,7 @@ public class Taco {
      */
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
-            mesaBillar.getJugadorActual().colorTaco(g);
+            conjuntoJugadores.getJugadorActual().colorTaco(g);
             Polygon taco = new Polygon();
             taco.addPoint(Math.round(x+30*cos+2*sen),Math.round(y-30*sen+2*cos)); //Parte cercana a la bola
             taco.addPoint(Math.round(x+30*cos-2*sen),Math.round(y-30*sen-2*cos));
@@ -118,7 +118,7 @@ public class Taco {
      * @param bolaBlanca Bola a la que golpeara.
      * @param mesaBillar MesaBillar en la que sera ocupado.
      */
-    public Taco(Bola bolaBlanca, MesaBillar mesaBillar){
+    public Taco(Bola bolaBlanca, ConjuntoJugadores conjuntoJugadores){
         this.bolaBlanca = bolaBlanca;
         this.x = bolaBlanca.getX();
         this.y = bolaBlanca.getY();
@@ -127,7 +127,7 @@ public class Taco {
         mousePulsado = new Point(0,0);
         mouseSuelto = new Point(40,40);
         pintarTrayectoria = false;
-        this.mesaBillar = mesaBillar;
+        this.conjuntoJugadores = conjuntoJugadores;
         turnoAcabado = true;
     }
 }

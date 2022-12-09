@@ -14,6 +14,7 @@ import javax.swing.Timer;
 import java.awt.Graphics;
 import pool.MesaBillar;
 import java.awt.Color;
+import pool.ConjuntoJugadores;
 import pool.Taco;
 
 /** 
@@ -26,6 +27,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     private final MesaBillar mesaBillar;
     private final Taco taco;
     private final Timer timer;
+    private final ConjuntoJugadores conjuntoJugadores;
     
     //METODOS
     /**
@@ -48,6 +50,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         super.paint(g);
         this.setBackground(Color.gray);
         mesaBillar.paint(g, this);
+        conjuntoJugadores.paint(g, this);
         taco.paint(g, this);
     }
     /**
@@ -97,9 +100,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton1Player.setForeground(Color.black);
         boton1Player.setBackground(Color.white);
         ActionListener oyenteBoton1Player = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
-            mesaBillar.setPlayers(1);            
-            }
+            conjuntoJugadores.setPlayers(1);
         };
         boton1Player.addActionListener(oyenteBoton1Player);
         this.add(boton1Player);
@@ -110,9 +111,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton2Players.setForeground(Color.black);
         boton2Players.setBackground(Color.white);
         ActionListener oyenteBoton2Players = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
-            mesaBillar.setPlayers(2);            
-            }
+            conjuntoJugadores.setPlayers(2);
         };
         boton2Players.addActionListener(oyenteBoton2Players);
         this.add(boton2Players);
@@ -123,9 +122,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton3Players.setForeground(Color.black);
         boton3Players.setBackground(Color.white);
         ActionListener oyenteBoton3Players = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
-            mesaBillar.setPlayers(3);            
-            }
+            conjuntoJugadores.setPlayers(3);
         };
         boton3Players.addActionListener(oyenteBoton3Players);
         this.add(boton3Players); 
@@ -136,9 +133,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton4Players.setForeground(Color.black);
         boton4Players.setBackground(Color.white);
         ActionListener oyenteBoton4Players = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
-            mesaBillar.setPlayers(4);
-            }
+            conjuntoJugadores.setPlayers(4);
         };
         boton4Players.addActionListener(oyenteBoton4Players);
         this.add(boton4Players);
@@ -208,9 +203,11 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     /**
      * Metodo Constructor del PanelPrincipal
      */
-    public PanelPrincipal() { 
-        mesaBillar = new MesaBillar();
-        taco = new Taco(mesaBillar.getBola(0),mesaBillar);
+    public PanelPrincipal() {
+        conjuntoJugadores = new ConjuntoJugadores();
+        mesaBillar = new MesaBillar(conjuntoJugadores);
+        conjuntoJugadores.setMesaBillar(mesaBillar);
+        taco = new Taco(mesaBillar.getBola(0), conjuntoJugadores);
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);

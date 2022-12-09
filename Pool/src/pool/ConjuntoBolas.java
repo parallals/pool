@@ -16,10 +16,11 @@ import java.util.ArrayList;
  */
 public final class ConjuntoBolas {
     //PROPIEDADES
-    private final ArrayList<Bola> conjunto; // Guarda las Bolas
-    private int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
-    private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
+    private final ArrayList<Bola> conjunto; // Guarda las Bolas.
+    private int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar.
+    private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar.
     private boolean turnoAcabado;
+    private final ConjuntoJugadores conjuntoJugadores;
     
     //METODOS
     /**
@@ -37,13 +38,6 @@ public final class ConjuntoBolas {
         this.cantidadBolas = p;
     }
     /**
-     * Metodo Getter de la variable que indica el turno. 
-     * @return int A que jugador le toca golpear la bolaBlanca.
-     */
-    public boolean getTurnoAcabado(){
-        return turnoAcabado;
-    }
-    /**
      * Metodo Getter de una bola en el conjunto (no la quita del conjunto).
      * @param numero de Bola se quiere obtener.
      * @return Bola que se obtendra. 
@@ -59,7 +53,14 @@ public final class ConjuntoBolas {
         return conjunto;
     }
     /**
-     * Metodo que detecta si existe algun Bola que sigue en movimiento.
+     * Metodo Getter de la variable que indica el turno. 
+     * @return int A que jugador le toca golpear la bolaBlanca.
+     */
+    public boolean getTurnoAcabado(){
+        return turnoAcabado;
+    }
+    /**
+     * Metodo que detecta si existe alguno Bola que sigue en movimiento.
      * @return Retorna y guarda true en caso de que se acabo el turno, y false en caso caso contrario.
      */
     public boolean TurnoAcabado(){
@@ -69,8 +70,8 @@ public final class ConjuntoBolas {
                 return false;
             }
         }
-        mesaBillar.cambiaTurno();
         turnoAcabado = true;
+        conjuntoJugadores.cambiaTurno();
         return true;
     }
     /**
@@ -239,7 +240,8 @@ public final class ConjuntoBolas {
      * Metodo Constructor de ConjuntoBolas.
      * @param mesaBillar Referencia  a mesaBillar en que se encuentra. 
      */
-    public ConjuntoBolas(MesaBillar mesaBillar){
+    public ConjuntoBolas(MesaBillar mesaBillar, ConjuntoJugadores conjuntoJugadores){
+        this.conjuntoJugadores = conjuntoJugadores;
         this.mesaBillar = mesaBillar;
         conjunto = new ArrayList<>();
         cantidadBolas = 8;
@@ -248,7 +250,5 @@ public final class ConjuntoBolas {
             conjunto.add(new Bola(100, 50, 10, i));
         }
         RandomizarBolas();
-        this.turnoAcabado = true;
     } 
 }
-
