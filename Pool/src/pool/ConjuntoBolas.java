@@ -119,8 +119,9 @@ public final class ConjuntoBolas {
         if(cantidadBolas>0 && turnoAcabado==true){
             mesaBillar.VaciarTronera();
             for(int i = 0; i < conjunto.size();++i){
-                if(conjunto.get(i).getSerie() == conjunto.size()-1){
+                if(conjunto.get(i).getSerie() == cantidadBolas){
                     conjunto.remove(i);
+                    break;
                 }
             }
             cantidadBolas = cantidadBolas-1;
@@ -133,7 +134,7 @@ public final class ConjuntoBolas {
     public void agregarBolas(){
         if(cantidadBolas<15 && turnoAcabado==true){   
             mesaBillar.VaciarTronera();
-            conjunto.add(new Bola(0,0,10,conjunto.size()));
+            conjunto.add(new Bola(0, 0, 10, cantidadBolas+1));
             cantidadBolas = cantidadBolas+1;
             mesaBillar.reiniciarJuego();
         }
