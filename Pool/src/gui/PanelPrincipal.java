@@ -14,7 +14,6 @@ import javax.swing.Timer;
 import java.awt.Graphics;
 import pool.MesaBillar;
 import java.awt.Color;
-import pool.Bola;
 import pool.Taco;
 
 /** 
@@ -64,7 +63,6 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         Boton1.setBackground(Color.white);
         ActionListener oyenteDeAccion1 = (ActionEvent e) -> {
             mesaBillar.reiniciarJuego();
-            repaint();
         };
         Boton1.addActionListener(oyenteDeAccion1);        
         this.add(Boton1);
@@ -77,7 +75,6 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmas.setBackground(Color.white);
         ActionListener oyenteDeAccion1a = (ActionEvent e) -> {
             mesaBillar.getConjunto().agregarBolas();
-            repaint();
         };
         BotonCmas.addActionListener(oyenteDeAccion1a);
         this.add(BotonCmas);
@@ -90,7 +87,6 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmenos.setBackground(Color.white);
         ActionListener oyenteDeAccion1b = (ActionEvent e) -> {            
             mesaBillar.getConjunto().retirarBolas();
-            repaint();
         };
         BotonCmenos.addActionListener(oyenteDeAccion1b);
         this.add(BotonCmenos);
@@ -101,11 +97,6 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton1.setForeground(Color.black);
         RadioBoton1.setBackground(Color.white);
         ActionListener oyenteDeAccion2 = (ActionEvent e) -> {
-            for(int i = 0; i < mesaBillar.getConjunto().getConjunto().size();++i){
-                Bola aux = mesaBillar.getConjunto().getConjunto().get(i);
-                aux.setVelocidadX(0);
-                aux.setVelocidadY(0);
-            }
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(1);            
             }
@@ -165,8 +156,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseMoved(MouseEvent me) {
-        float angulo = anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, me.getX(), me.getY());
-        taco.setCosSen((float)Math.cos(angulo), (float)Math.sin(angulo));
+        taco.setCosSen(anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, me.getX(), me.getY()));
     }
     /**
      * Metodo mousePressed
@@ -182,8 +172,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseDragged(MouseEvent me) {
-        float angulo = anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, me.getX(), me.getY());
-        taco.setCosSen((float)Math.cos(angulo), (float)Math.sin(angulo));
+        taco.setCosSen(anguloPI(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15, me.getX(), me.getY()));
         taco.setSuelto(me.getPoint());
     }
     /**
@@ -200,8 +189,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     @Override
     public void mouseReleased(MouseEvent me) {
         taco.setSuelto(me.getPoint());
-        taco.golpearBola();                
-        repaint();
+        taco.golpearBola();
     }
     /**
      * Metodo mouseEntered

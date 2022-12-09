@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /** 
- * Clase mesaBillar
+ * Clase mesaBillar que contiene al ConjuntoBolas.
  * @author Francy Jelvez
  * @author Diego Venegas
  * @version versión  1.1, 03 de diciembre de 2022
@@ -17,69 +17,68 @@ public class MesaBillar {
     private final int x; // Posicion con respecto a la horizontal.
     private final int y; // Posicion con respecto a la vertical.
     ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
-    private final ArrayList<Bola> Tronera ;// Guarda las Bolas que cayeron en alguna Tronera
-    private final ArrayList<Jugador> jugadores; // Guarda una referencia de los Jugadores actuales
-    private Jugador jugadorActual; // Guarda una referencia al Jugador actual
+    private final ArrayList<Bola> Tronera ;// Guarda las Bolas que cayeron en alguna Tronera.
+    private final ArrayList<Jugador> jugadores; // Guarda una referencia de los Jugadores actuales.
+    private Jugador jugadorActual; // Guarda una referencia al Jugador actual.
     
     //METODOS
     /**
-     * Metodo Getter de X
-     * @return x
+     * Metodo Getter de x.
+     * @return int posicion con respecto a la horizontal.
      */
     public int getX(){
         return x;
     }
     /**
-     * Metodo Getter de y
-     * @return y
+     * Metodo Getter de y.
+     * @return int posicion con respecto a la vertical.
      */
     public int getY(){
         return y;
     }
     /**
-     * Metodo Getter de la cantidad de jugadores
-     * @return 
+     * Metodo Getter de la cantidad de jugadores.
+     * @return int cantidad de jugadores actuales.
      */
     public int getCantidadJugadores(){
         return jugadores.size();
     }
     /**
-     * Metodo Getter de jugadorActual
-     * @return Jugador el jugador con el turno actual
+     * Metodo Getter de jugadorActual.
+     * @return Jugador del el turno actual.
      */
     public Jugador getJugadorActual(){
         return jugadorActual;
     }
     /**
-     * Metodo Setter de players
-     * @param p 
+     * Metodo Setter de players.
+     * @param cantidad Numero de jugadores.
      */
-    public void setPlayers(int p){
+    public void setPlayers(int cantidad){
         jugadores.clear();
-        for(int i = 0; i<p;++i){
-            Jugador Aux = new Jugador(i);
-            jugadores.add(Aux);
+        for(int i = 0 ; i<cantidad ; i++){
+            jugadores.add(new Jugador(i));
         }
         jugadorActual = jugadores.get(0);
         reiniciarJuego();      
     }
     /**
-     * Metodo Getter de Bola
-     * @return conjuntoBolas
+     * Metodo Getter de Bola.
+     * @param numero Numero de bola a retirar.
+     * @return Bola elegida.
      */
-    public Bola getBola(int i){
-        return conjuntoBolas.getBola(i);   
+    public Bola getBola(int numero){
+        return conjuntoBolas.getBola(numero);   
     }
     /**
-     * Metodo Getter de conjuntoBolas
-     * @return  conjuntoBolas
+     * Metodo Getter de conjuntoBolas.
+     * @return ConjuntoBolas retorna todo el conjunto de bolas.
      */
     public ConjuntoBolas getConjunto(){
         return conjuntoBolas;
     }
     /**
-     * Metodo que quita bolas que hay en tronera
-     * @return 
+     * Metodo que quita bolas que hay en Tronera y los devuelve al conjuntoBolas.
      */
     public void VaciarTronera(){
         int aux = Tronera.size();
@@ -89,16 +88,15 @@ public class MesaBillar {
         }
     }  
     /**
-     * Metodo que revisa cuantas bolas hay en tronera
-     * @return 
+     * Metodo que revisa cuantas bolas hay en Tronera.
+     * @return boolean, true en caso de estar vacia, false en caso contrario.
      */
     public boolean TroneraVacia(){
         return Tronera.isEmpty();
     }    
     /**
-     * Getter de X
-     * Metodo que cambia el turno para multiples jugadores
-     * @return x     */
+     * Metodo que cambia el turno para multiples jugadores.
+    */
     public void cambiaTurno(){
         if(jugadores.size() != 1 && conjuntoBolas.getTurnoAcabado()==false){
             if(jugadorActual.getNumJugador() == jugadores.size()-1){
@@ -109,36 +107,37 @@ public class MesaBillar {
         }
     }
     /**
-     * Metodo que verifica si hay bolas que caigan en una tronera
-     * @param b1
+     * Metodo que verifica si cayo alguna bola en las troneras.
+     * @param bola Bola a revisar.
+     * @return true en caso de que haya caido una Bola y false en caso contrario.
      */
-    public boolean bolaCaeTronera(Bola b1){
-        if((distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y-5) < 40) //Tronera 1
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2), y-5) < 40) //Tronera 2
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y-5) < 40) //Tronera 3
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x-5, y+501-(40-25)) < 40) //Tronera 4
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+(1064/2), y+501-(40-25)) < 40) //Tronera 5
-         || (distEntre2Puntos(b1.getX()+15, b1.getY()+15, x+1064-40+45, y+501-(40-25)) < 40)){ //Tronera 6
-            if(b1.getSerie() == 0){
+    public boolean bolaCaeTronera(Bola bola){
+        if((distEntre2Puntos(bola.getX()+15, bola.getY()+15, x-5, y-5) < 40) //Tronera 1
+         || (distEntre2Puntos(bola.getX()+15, bola.getY()+15, x+532, y-5) < 40) //Tronera 2
+         || (distEntre2Puntos(bola.getX()+15, bola.getY()+15, x+1059, y-5) < 40) //Tronera 3
+         || (distEntre2Puntos(bola.getX()+15, bola.getY()+15, x-5, y+486) < 40) //Tronera 4
+         || (distEntre2Puntos(bola.getX()+15, bola.getY()+15, x+532, y+486) < 40) //Tronera 5
+         || (distEntre2Puntos(bola.getX()+15, bola.getY()+15, x+1059, y+486) < 40)){ //Tronera 6
+            if(bola.getSerie() == 0){
                 //Puntaje = Puntaje + b1.getPuntaje();
-                jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
-                b1.setVelocidadX(0);
-                b1.setVelocidadY(0);
+                jugadorActual.setPuntaje(bola.getPuntaje());
+                bola.setVelocidadX(0);
+                bola.setVelocidadY(0);
                 boolean aux = false;
                 do{
-                    b1.setXY( (float)(Math.random()*1034)+x, (float)(Math.random()*451)+y);
+                    bola.setXY( (float)(Math.random()*1034)+x, (float)(Math.random()*451)+y);
                     for(int i = 1; i<conjuntoBolas.getConjunto().size() ; ++i){
-                        if(conjuntoBolas.DetectarColision(b1,getBola(i))== true){
+                        if(conjuntoBolas.DetectarColision(bola,getBola(i))== true){
                             aux = true;
                         }
                     }
                 }while(aux == true);
             }else{
                 for(int i=0 ; i<conjuntoBolas.getConjunto().size() ; i++){
-                    if(conjuntoBolas.getBola(i).getSerie() == b1.getSerie()){
-                        b1.setVelocidadX(0);
-                        b1.setVelocidadY(0); 
-                        jugadorActual.setPuntaje(jugadorActual.getPuntaje()+b1.getPuntaje());
+                    if(conjuntoBolas.getBola(i).getSerie() == bola.getSerie()){
+                        bola.setVelocidadX(0);
+                        bola.setVelocidadY(0); 
+                        jugadorActual.setPuntaje(bola.getPuntaje());
                         Tronera.add(conjuntoBolas.getConjunto().remove(i));
                         OrdenarTronera();
                         return true;
@@ -149,7 +148,7 @@ public class MesaBillar {
         return false;
     }  
     /**
-     * Metodo que Ordena Bolas que no estan en la mesa
+     * Metodo que Ordena Bolas que no estan en la mesa.
      */
     public void OrdenarTronera(){
         for(int i=0 ; i<Tronera.size() ; i++){
@@ -157,7 +156,7 @@ public class MesaBillar {
         }
     }
     /**
-     * Metodo que reinicia el puntaje, velocidad y posicion de Bolas .
+     * Metodo que reinicia el puntaje, velocidad y posicion de Bolas.
      */
     public void reiniciarJuego(){
         VaciarTronera();
@@ -168,9 +167,9 @@ public class MesaBillar {
         jugadorActual=jugadores.get(0);
     }
     /**
-     * Metodo paint de MesaBillar, hace un llamado a ConjuntoBolas
-     * @param g clase Graphics
-     * @param panel clase JPanel 
+     * Metodo paint de MesaBillar, hace un llamado a ConjuntoBolas.
+     * @param g clase Graphics.
+     * @param panel clase JPanel.
      */
     public void paint(Graphics g, JPanel panel){
         //Mesa
@@ -195,7 +194,7 @@ public class MesaBillar {
         }
     }
     /**
-     * Metodo Contructor de MesaBillar
+     * Metodo Contructor de MesaBillar.
      */
     public MesaBillar(){
         Tronera = new ArrayList<>();
@@ -206,5 +205,4 @@ public class MesaBillar {
         jugadorActual = new Jugador(0);
         jugadores.add(jugadorActual);
     }
- 
 }

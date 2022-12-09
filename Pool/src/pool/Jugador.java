@@ -4,42 +4,34 @@ import java.awt.*;
 import javax.swing.*;
 
 /** 
- * a
+ * Clase Jugador.
  * @author Francy Jelvez
  * @author Diego Venegas
  * @version versión  1.2, 08 de diciembre de 2022
  */
 public class Jugador {
     //PROPIEDADES
-    private int Puntaje;
+    private int puntaje;
     private final int numJugador;
     
     //METODOS
     /**
-     * Metodo Getter del numero del jugador
-     * @return numJugador
+     * Metodo Getter del numero del jugador.
+     * @return int numero del Jugador.
      */
     public int getNumJugador(){
         return numJugador;
     }
     /**
-     * Metodo Getter del puntaje del jugador
-     * @return Puntaje
+     * Metodo Getter del puntaje.
+     * @param puntaje.
      */
-    public int getPuntaje(){
-        return Puntaje;
-    }    
-    /**
-     * Metodo Getter del puntaje
-     * @param n 
-     */
-    public void setPuntaje(int n){
-        Puntaje = n;
+    public void setPuntaje(int puntaje){
+        this.puntaje = this.puntaje+puntaje;
     }        
     /**
-     * Metodo que da el color de Taco segun el Jugador
-     * @param g 
-     * @param panel 
+     * Metodo que da el color de Taco segun el Jugador.
+     * @param g clase Graphics.
      */
     public void colorTaco (Graphics g){
         switch(numJugador){
@@ -57,9 +49,9 @@ public class Jugador {
         }
     }
     /**
-     * Metodo paint de Jugador
-     * @param g clase Graphics
-     * @param panel clase JPanel 
+     * Metodo paint del Jugador.
+     * @param g clase Graphics.
+     * @param panel clase JPanel.
      */
     public void paintJugador(Graphics g, JPanel panel){
         try{
@@ -86,15 +78,15 @@ public class Jugador {
                     System.out.println("Fallo al cargar la imagen");
         }
         g.setFont(new Font("Calibri",Font.ITALIC,20));
-        String s = "Puntaje: " + Integer.toString(Puntaje);
+        String s = "Puntaje: " + Integer.toString(puntaje);
         g.drawString(s, 1100, 700);
     }
     /**
-     * Metodo Constructor de Jugador
-     * @param n 
+     * Metodo Constructor de Jugador.
+     * @param numJugador Numero del jugador.
      */
-    public Jugador(int n){
-        this.numJugador = n;
-        this.Puntaje = 0;
+    public Jugador(int numJugador){
+        this.numJugador = numJugador;
+        this.puntaje = 0;
     }
 }
