@@ -18,10 +18,10 @@ import pool.Bola;
 import pool.Taco;
 
 /** 
+ * a
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.2, 07 de diciembre de 2022
- */
+ * @version versión  1.2, 08 de diciembre de 2022*/
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
     private final MesaBillar mesaBillar;
@@ -42,7 +42,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
     /**
      * Metodo paint de PanelPrincipal
-     * @param g 
+     * @param g
      */
     @Override
     public void paint(Graphics g){
@@ -75,7 +75,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmas.setBackground(Color.black);
         ActionListener oyenteDeAccion1a = (ActionEvent e) -> {
 
-        if(mesaBillar.getConjunto().getcantidadBolas()<15 && mesaBillar.getConjunto().getTurno()==0){
+        if(mesaBillar.getConjunto().getcantidadBolas()<15 && mesaBillar.getConjunto().getTurnoAcabado()==true){
             int aux = mesaBillar.getConjunto().getcantidadBolas();                
             mesaBillar.getConjunto().agregarBolas();
             repaint();
@@ -90,7 +90,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmenos.setForeground(Color.black);
         BotonCmas.setBackground(Color.black);
         ActionListener oyenteDeAccion1b = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getcantidadBolas()>1 && mesaBillar.getConjunto().getTurno()==0){            
+            if(mesaBillar.getConjunto().getcantidadBolas()>1 && mesaBillar.getConjunto().getTurnoAcabado()==true){            
                 mesaBillar.getConjunto().retirarBolas();
                 repaint();
             }
@@ -109,7 +109,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
                 aux.setVelocidadX(0);
                 aux.setVelocidadY(0);
             }
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(1);            
             }
         };
@@ -122,7 +122,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(2);            
             }
         };
@@ -135,7 +135,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion4 = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(3);            
             }
         };
@@ -148,7 +148,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton4.setForeground(Color.black);
         RadioBoton4.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion5 = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(4);
             }
         };
@@ -225,7 +225,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();
-        taco = new Taco((int)mesaBillar.getBola(0).getX()+15, (int)mesaBillar.getBola(0). getY()+15, mesaBillar.getBola(0),mesaBillar);
+        taco = new Taco(mesaBillar.getBola(0),mesaBillar);
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);

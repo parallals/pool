@@ -4,9 +4,10 @@ import java.awt.*;
 import javax.swing.*;
 
 /** 
+ * a
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.1, 07 de diciembre de 2022
+ * @version versión  1.2, 08 de diciembre de 2022
  */
 public class Jugador {
     //PROPIEDADES
@@ -42,50 +43,44 @@ public class Jugador {
      */
     public void colorTaco (Graphics g){
         switch(numJugador){
-            case 0:
+            case 0 -> {
                 g.setColor(Color.red);
-                break;
-            case 1:
-                g.setColor(Color.blue);
-                break;
-            case 2:
-                g.setColor(Color.green);
-                break;
-            case 3:
-                g.setColor(Color.yellow);
-                break;                
-            default:
-                g.setColor(Color.white);
+            } case 1 -> {
+            g.setColor(Color.blue);
+            } case 2 -> {
+            g.setColor(Color.green);
+            } case 3 -> {
+            g.setColor(Color.yellow);
+            } default -> {
+            g.setColor(Color.white);
+            }
         }
     }
     /**
      * Metodo paint de Jugador
-     * @param g
-     * @param panel 
+     * @param g clase Graphics
+     * @param panel clase JPanel 
      */
     public void paintJugador(Graphics g, JPanel panel){
         try{
             switch(numJugador){
-            case 0:
-                Image i0 = new ImageIcon(this.getClass().getResource("../Textures/jugador1.jpg")).getImage();
-                g.drawImage(i0, 900, 650, 100, 100, panel);
-                g.setColor(Color.red);
-                break;
-            case 1:
-                Image i1 = new ImageIcon(this.getClass().getResource("../Textures/jugador2.png")).getImage();
-                g.drawImage(i1, 900, 650, 100, 100, panel);
-                g.setColor(Color.blue);
-                break; 
-            case 2:
-                Image i2 = new ImageIcon(this.getClass().getResource("../Textures/jugador3.jpeg")).getImage();
-                g.drawImage(i2, 900, 650, 100, 100, panel);
-                g.setColor(Color.green);
-                break;
-            case 3:
-                Image i3 = new ImageIcon(this.getClass().getResource("../Textures/jugador4.jpg")).getImage();
-                g.drawImage(i3, 900, 650, 100, 100, panel);
-                g.setColor(Color.yellow);
-                break;
+                case 0 -> {
+                    Image i0 = new ImageIcon(this.getClass().getResource("../Textures/jugador1.jpg")).getImage();
+                    g.drawImage(i0, 900, 650, 100, 100, panel);
+                    g.setColor(Color.red);
+                } case 1 -> {
+                    Image i1 = new ImageIcon(this.getClass().getResource("../Textures/jugador2.png")).getImage();
+                    g.drawImage(i1, 900, 650, 100, 100, panel);
+                    g.setColor(Color.blue);
+                } case 2 -> {
+                    Image i2 = new ImageIcon(this.getClass().getResource("../Textures/jugador3.jpeg")).getImage();
+                    g.drawImage(i2, 900, 650, 100, 100, panel);
+                    g.setColor(Color.green);
+                } case 3 -> {
+                    Image i3 = new ImageIcon(this.getClass().getResource("../Textures/jugador4.jpg")).getImage();
+                    g.drawImage(i3, 900, 650, 100, 100, panel);
+                    g.setColor(Color.yellow);
+                }
             }
         }catch(Exception e){
                     System.out.println("Fallo al cargar la imagen");

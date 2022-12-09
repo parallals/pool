@@ -100,7 +100,7 @@ public class MesaBillar {
      * Metodo que cambia el turno para multiples jugadores
      * @return x     */
     public void cambiaTurno(){
-        if(jugadores.size() != 1 && conjuntoBolas.getTurno()==1){
+        if(jugadores.size() != 1 && conjuntoBolas.getTurnoAcabado()==false){
             if(jugadorActual.getNumJugador() == jugadores.size()-1){
                 jugadorActual = jugadores.get(0);
             }else{
@@ -169,8 +169,8 @@ public class MesaBillar {
     }
     /**
      * Metodo paint de MesaBillar, hace un llamado a ConjuntoBolas
-     * @param g
-     * @param panel 
+     * @param g clase Graphics
+     * @param panel clase JPanel 
      */
     public void paint(Graphics g, JPanel panel){
         //Mesa

@@ -8,27 +8,28 @@ import java.awt.Color;
 import java.awt.Point;
 
 /** 
+ * a
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.1, 08 de diciembre de 2022
+ * @version versión  1.2, 08 de diciembre de 2022
  */
 public class Taco {
     //PROPIEDADES
-    private float x; // Posicion con respecto a la horizontal
-    private float y; // Posicion con respecto a la vertical
-    private Point pulsado;
-    private Point suelto;
+    private float x; // Posicion x con respecto a bolaBlanca.
+    private float y; // Posicion y con respecto a bolaBlanca.
+    private Point mousePulsado; // Punto en el que el cursor fue presionado.
+    private Point mouseSuelto;  // Punto en el que el cursor fue soltado.
     boolean pintarTrayectoria; //Si es falso la trayectoria no se pintara, de lo contrario si lo hara.
-    private float cos; // Guarda el seno del taco con respecto a la Bola Blanca
-    private float sen; // Guarda el coseno del taco con respecto a la Bola Blanca
-    private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca
-    private boolean turnoAcabado; // Guarda true si puedes golpear con el taco y false en caso contrario 
-    private final MesaBillar mesaBillar; // Referencia a MesaBillar 
+    private float cos; // Guarda el seno del taco con respecto a la Bola Blanca.
+    private float sen; // Guarda el coseno del taco con respecto a la Bola Blanca.
+    private final Bola bolaBlanca; // Se usa para poder alterar la velocidad de la Bola Blanca.
+    private boolean turnoAcabado; // Guarda true si puedes golpear con el taco y false en caso contrario.
+    private final MesaBillar mesaBillar; // Referencia a MesaBillar.
     
     //METODOS
     /**
      * Metodo Setter de propiedades x e y
-     * @param x
+     * @param x 
      * @param y 
      */
     public void setXY(float x, float y){
@@ -44,16 +45,22 @@ public class Taco {
         this.cos = cos;
         this.sen = sen;
     }
-    
+    /**
+     * Metodo Setter de mousePulsado
+     * @param pulsado 
+     */
     public void setPulsado(Point pulsado){
         if(turnoAcabado == true){
-            this.pulsado = pulsado;
+            this.mousePulsado = pulsado;
         }
     }
-    
+    /**
+     * Metodo Setter de mouseSuelto
+     * @param suelto 
+     */
     public void setSuelto(Point suelto){
         if(turnoAcabado == true){
-            this.suelto = suelto;
+            this.mouseSuelto = suelto;
             pintarTrayectoria = true;
         }
     }
@@ -69,7 +76,7 @@ public class Taco {
      */
     public void golpearBola(){
         if(turnoAcabado == true){
-            float fuerzaAcumulada = distEntre2Puntos(pulsado, suelto)/6;
+            float fuerzaAcumulada = distEntre2Puntos(mousePulsado, mouseSuelto)/6;
             if(fuerzaAcumulada > 50){
                 fuerzaAcumulada = 50;
             }
@@ -80,8 +87,8 @@ public class Taco {
     }
     /**
      * Metodo paint de Taco
-     * @param g
-     * @param panel 
+     * @param g clase Graphics
+     * @param panel clase JPanel 
      */
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
@@ -91,10 +98,9 @@ public class Taco {
             taco.addPoint(Math.round(x+30*cos-2*sen),Math.round(y-30*sen-2*cos));
             taco.addPoint(Math.round(x+400*cos-5*sen), Math.round(y-400*sen-5*cos)); // Parte lejana a la bola 
             taco.addPoint(Math.round(x+400*cos+5*sen), Math.round(y-400*sen+5*cos));
-            g.drawPolygon(taco);
             g.fillPolygon(taco);
             if(pintarTrayectoria ==true){
-                float magnitudTrayectoria = distEntre2Puntos(pulsado, suelto)+40;
+                float magnitudTrayectoria = distEntre2Puntos(mousePulsado, mouseSuelto)+40;
                 if((magnitudTrayectoria-40)/6 > 50){
                     magnitudTrayectoria = 340;
                 }
@@ -109,17 +115,20 @@ public class Taco {
         }
     }
     /**
-     * Metodo Constructor de Taco
-     * @param x
-     * @param y 
-     * @param bolaBlanca
+     * Metodo Constructor de Taco.
+     * @param bolaBlanca a la que golpeara.
+     * @param mesaBillar En la que sera ocupado.
      */
-    public Taco(int x,int y, Bola bolaBlanca, MesaBillar mb){
-        pulsado = new Point(0,0);
-        suelto = new Point(40,40);
+    public Taco(Bola bolaBlanca, MesaBillar mesaBillar){
         this.bolaBlanca = bolaBlanca;
-        this.x = x;
-        this.y = y;
-        this.mesaBillar = mb;
+        this.x = bolaBlanca.getX();
+        this.y = bolaBlanca.getY();
+        cos = 0;
+        sen = 0;
+        mousePulsado = new Point(0,0);
+        mouseSuelto = new Point(40,40);
+        pintarTrayectoria = false;
+        this.mesaBillar = mesaBillar;
+        turnoAcabado = true;
     }
 }

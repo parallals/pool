@@ -1,7 +1,7 @@
 Consultas:
 - Preguntar sobre como ocupar Junit a ayudante X
 - Pedir ayuda para desbuguear ColisionDosBolas() X
-- Preguntar sobre los *patrones*
+- Preguntar sobre los *patrones* X
 - 
 - 
 - 
@@ -18,8 +18,8 @@ Por hacer:
 - Implementar sistema de puntaje X
 - Cambiar variables double por float X
 - Hacer Math.round() en paint (Para evitar truncar con casteos (int)) X
-- Re hacer colisiones con las paredes ?
-- Agregar forma de disminuir o aumentar fuerza del taco
+- Re hacer colisiones con las paredes X
+- Agregar forma de disminuir o aumentar fuerza del taco X
 - Agregar funcionalidades a Botones() X
 - Agregar una cantidad de Bolas elegida 
 - 
@@ -32,12 +32,12 @@ Por hacer:
 ----------------------------------------------------------------------------------------
 Nos gustaria agregar:
 Permitido por el ayudante:
-- Modo 2 jugadores 
+- Modo 2 jugadores X
 Sin consultar:
-- Aumentar la cantidad de bolas mediante un Jslider
-- Una forma de ver las Bolas que han caido en las troneras
+- Aumentar la cantidad de bolas
+- Una forma de ver las Bolas que han caido en las troneras X
 - Opcion de quitar bola 8 (En este caso la bola 8 te haria perder el juego)
-- Remplazar figuras de Graphics por texturas personalizas 
+- Remplazar figuras de Graphics por texturas personalizas X
 - 
 -
 - 
