@@ -20,7 +20,7 @@ import pool.Taco;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.1, 07 de diciembre de 2022
+ * @version versión  1.2, 07 de diciembre de 2022
  */
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
@@ -77,7 +77,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
 
         if(mesaBillar.getConjunto().getcantidadBolas()<15 && mesaBillar.getConjunto().getTurno()==0){
             int aux = mesaBillar.getConjunto().getcantidadBolas();                
-            mesaBillar.getConjunto().agregarBolas(aux+1);
+            mesaBillar.getConjunto().agregarBolas();
             repaint();
             }
         };
@@ -90,9 +90,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         BotonCmenos.setForeground(Color.black);
         BotonCmas.setBackground(Color.black);
         ActionListener oyenteDeAccion1b = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getcantidadBolas()>1 && mesaBillar.getConjunto().getTurno()==0){
-                int aux = mesaBillar.getConjunto().getcantidadBolas();                
-                mesaBillar.getConjunto().retirarBolas(aux);
+            if(mesaBillar.getConjunto().getcantidadBolas()>1 && mesaBillar.getConjunto().getTurno()==0){            
+                mesaBillar.getConjunto().retirarBolas();
                 repaint();
             }
         };

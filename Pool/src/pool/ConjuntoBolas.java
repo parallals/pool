@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /** 
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.2, 08 de diciembre de 2022
+ * @version versión  1.3, 08 de diciembre de 2022
  */
 public final class ConjuntoBolas {
     //PROPIEDADES
@@ -58,7 +58,7 @@ public final class ConjuntoBolas {
     }
     /**
      * Metodo que detecta si existe alguno Bola que sigue en movimiento.
-     * @return true en caso de que se acabo el turno, y asigna un valor de 0 al turno, y false en caso de que aun no (Y 0 al valor de turno).
+     * @return true en caso de que se acabo el turno, y asigna un valor de 0 al turno, y false en caso de que aun no (Y 1 al valor de turno).
      */
     public boolean TurnoAcabado(){
         for(int i=0 ; i<conjunto.size() ; i++){
@@ -111,22 +111,28 @@ public final class ConjuntoBolas {
         }
     }
     /**
-     * funcion que retira bolas según el parametro que se le da
+     * Método que retira bolas según el parametro que se le da
      * @param p 
      */
-    public void retirarBolas(int p){
-        conjunto.remove(p);
+    public void retirarBolas(){
+        mesaBillar.VaciarTronera();
+        for(int i = 0; i < conjunto.size();++i){
+            if(conjunto.get(i).getSerie() == conjunto.size()-1){
+                conjunto.remove(i);
+            }
+        }
         cantidadBolas = cantidadBolas-1;
-        RandomizarBolas();
+        mesaBillar.reiniciarJuego();
     }
     /**
-     * funcion que agrega bolas según el parámetro que se le da
+     * Método que agrega bolas según el parámetro que se le da
      * @param p 
      */
-    public void agregarBolas(int p){
-        conjunto.add(new Bola(0, 0, 10, p));
+    public void agregarBolas(){
+        mesaBillar.VaciarTronera();
+        conjunto.add(new Bola(0,0,10,conjunto.size()));
         cantidadBolas = cantidadBolas+1;
-        RandomizarBolas();
+        mesaBillar.reiniciarJuego();
     }
     /**
      * Metodo que detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
@@ -237,7 +243,7 @@ public final class ConjuntoBolas {
         cantidadBolas = 8;
         conjunto.add(new Bola(0, 0, -10, 0));
         for(int i=1 ; i<=cantidadBolas ; i++){
-            conjunto.add(new Bola(0, 0, 10, i));
+            conjunto.add(new Bola(100, 50, 10, i));
         }
         RandomizarBolas();
         this.turno = 0;

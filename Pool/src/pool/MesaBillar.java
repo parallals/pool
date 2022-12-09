@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /** 
+ * Clase mesaBillar
  * @author Francy Jelvez
  * @author Diego Venegas
  * @version versión  1.1, 03 de diciembre de 2022
@@ -44,7 +45,7 @@ public class MesaBillar {
     }
     /**
      * Metodo Getter de jugadorActual
-     * @return 
+     * @return Jugador el jugador con el turno actual
      */
     public Jugador getJugadorActual(){
         return jugadorActual;
