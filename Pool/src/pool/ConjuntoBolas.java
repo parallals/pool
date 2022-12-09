@@ -70,8 +70,8 @@ public final class ConjuntoBolas {
                 return false;
             }
         }
-        turnoAcabado = true;
         conjuntoJugadores.cambiaTurno();
+        turnoAcabado = true;
         return true;
     }
     /**
@@ -234,7 +234,7 @@ public final class ConjuntoBolas {
         }
         g.setFont(new Font("Calibri",Font.ITALIC,15));
         String s = Integer.toString(cantidadBolas+1);
-        g.drawString(s, 149, 775);
+        g.drawString(s, 149, 725);
      }
     /**
      * Metodo Constructor de ConjuntoBolas.
@@ -245,6 +245,7 @@ public final class ConjuntoBolas {
         this.mesaBillar = mesaBillar;
         conjunto = new ArrayList<>();
         cantidadBolas = 8;
+        turnoAcabado = true;
         conjunto.add(new Bola(0, 0, -10, 0));
         for(int i=1 ; i<=cantidadBolas ; i++){
             conjunto.add(new Bola(100, 50, 10, i));

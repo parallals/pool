@@ -183,6 +183,14 @@ public class Bola {
         }
     }
     /**
+     * Metodo paint para el contorno blanco de Bola
+     * @param g clase Graphics
+     */
+    public void paintContorno(Graphics g){
+        g.setColor(Color.white);
+        g.drawOval((int)x, (int)y, 30, 30);
+    }
+    /**
      * Metodo Constructor de Bola
      * @param x Coordenada x de la bola
      * @param y Coordenada y de la bola

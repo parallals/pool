@@ -28,6 +28,7 @@ public class ConjuntoJugadores {
                 jugadorActual = jugadores.get(jugadorActual.getNumJugador()+1);
             }
         }
+        System.out.println("cambio");
     }
     
     /**

@@ -48,7 +48,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     @Override
     public void paint(Graphics g){
         super.paint(g);
-        this.setBackground(Color.gray);
+        this.setBackground(new Color(20,20,20));
         mesaBillar.paint(g, this);
         conjuntoJugadores.paint(g, this);
         taco.paint(g, this);
@@ -60,7 +60,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de Reinicio
         JButton botonReset = new JButton("Reset");
-        botonReset.setBounds(100, 700, 110,40);
+        botonReset.setBounds(100, 650, 110,40);
         botonReset.setEnabled(true);
         botonReset.setForeground(Color.black);
         botonReset.setBackground(Color.white);
@@ -72,7 +72,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Botones para aumentar cantidad de bolas
         JButton botonSumaBola = new JButton("+");
-        botonSumaBola.setBounds(165, 750, 45,45);
+        botonSumaBola.setBounds(165, 700, 45,45);
         botonSumaBola.setEnabled(true);
         botonSumaBola.setForeground(Color.black);
         botonSumaBola.setBackground(Color.white);
@@ -84,7 +84,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Botones para disminuir cantidad de bolas
         JButton botonRestaBola = new JButton("-");
-        botonRestaBola.setBounds(100, 750, 45,45);
+        botonRestaBola.setBounds(100, 700, 45,45);
         botonRestaBola.setEnabled(true);
         botonRestaBola.setForeground(Color.black);
         botonRestaBola.setBackground(Color.white);
@@ -96,7 +96,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 1 jugador
         JRadioButton boton1Player = new JRadioButton("1 Player", true);
-        boton1Player.setBounds(300, 700, 100,20);
+        boton1Player.setBounds(300, 650, 100,20);
         boton1Player.setForeground(Color.black);
         boton1Player.setBackground(Color.white);
         ActionListener oyenteBoton1Player = (ActionEvent e) -> {
@@ -107,7 +107,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 2 jugadores
         JRadioButton boton2Players = new JRadioButton("2 Players", false);
-        boton2Players.setBounds(300, 725, 100,20);
+        boton2Players.setBounds(300, 675, 100,20);
         boton2Players.setForeground(Color.black);
         boton2Players.setBackground(Color.white);
         ActionListener oyenteBoton2Players = (ActionEvent e) -> {
@@ -118,7 +118,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 3 jugadores
         JRadioButton boton3Players = new JRadioButton("3 Players", false);
-        boton3Players.setBounds(300, 750, 100,20);
+        boton3Players.setBounds(300, 700, 100,20);
         boton3Players.setForeground(Color.black);
         boton3Players.setBackground(Color.white);
         ActionListener oyenteBoton3Players = (ActionEvent e) -> {
@@ -129,7 +129,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         
         //Boton de 4 jugadores
         JRadioButton boton4Players = new JRadioButton("4 Players", false);
-        boton4Players.setBounds(300, 775, 100,20);
+        boton4Players.setBounds(300, 725, 100,20);
         boton4Players.setForeground(Color.black);
         boton4Players.setBackground(Color.white);
         ActionListener oyenteBoton4Players = (ActionEvent e) -> {

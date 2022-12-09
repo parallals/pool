@@ -146,10 +146,12 @@ public class MesaBillar {
         conjuntoBolas.paint(g, panel);
         for(int i=0 ; i<Tronera.size() ; i++){
             Tronera.get(i).paint(g, panel);
+            Tronera.get(i).paintContorno(g);
         }
     }
     /**
      * Metodo Contructor de MesaBillar.
+     * @param conjuntoJugadores Clase Conjunto Jugadores
      */
     public MesaBillar(ConjuntoJugadores conjuntoJugadores){
         this.conjuntoJugadores = conjuntoJugadores;
