@@ -19,7 +19,6 @@ public class MesaBillar {
     private final int y; // Posicion con respecto a la vertical.
     private final ConjuntoBolas conjuntoBolas; // Guarda el Conjunto de Bolas.
     private final ArrayList<Bola> Tronera ;// Guarda las Bolas que cayeron en alguna Tronera.
-    private boolean turnoAcabado;
     
     //METODOS
     /**
@@ -35,31 +34,6 @@ public class MesaBillar {
      */
     public int getY(){
         return y;
-    }
-    /**
-     * Metodo Getter de la variable que indica el turno. 
-     * @return int A que jugador le toca golpear la bolaBlanca.
-     */
-    public boolean getTurnoAcabado(){
-        return turnoAcabado;
-    }
-    
-    public void setTurnoAcabado(boolean turnoAcabado){
-        this.turnoAcabado = turnoAcabado;
-    }
-    /**
-     * Metodo que detecta si existe alguno Bola que sigue en movimiento.
-     * @return Retorna y guarda true en caso de que se acabo el turno, y false en caso caso contrario.
-     */
-    public boolean TurnoAcabado(){
-        for(int i=0 ; i<conjuntoBolas.getConjunto().size() ; i++){
-            if(conjuntoBolas.getConjunto().get(i).getVelocidadX()!=0 || conjuntoBolas.getConjunto().get(i).getVelocidadY()!=0){
-                return false;
-            }
-        }
-        turnoAcabado = true;
-        conjuntoJugadores.cambiaTurno();
-        return true;
     }
     /**
      * Metodo Getter de Bola.
@@ -182,6 +156,6 @@ public class MesaBillar {
         Tronera = new ArrayList<>();
         x = 100;
         y = 100;
-        conjuntoBolas = new ConjuntoBolas(this);
+        conjuntoBolas = new ConjuntoBolas(this, conjuntoJugadores);
     }
 }

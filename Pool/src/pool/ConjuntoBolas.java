@@ -16,9 +16,11 @@ import java.util.ArrayList;
  */
 public final class ConjuntoBolas {
     //PROPIEDADES
-    private final ArrayList<Bola> conjunto; // Guarda las Bolas
-    private int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
-    private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
+    private final ArrayList<Bola> conjunto; // Guarda las Bolas.
+    private int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar.
+    private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar.
+    private boolean turnoAcabado;
+    private final ConjuntoJugadores conjuntoJugadores;
     
     //METODOS
     /**
@@ -49,6 +51,28 @@ public final class ConjuntoBolas {
      */
     public ArrayList<Bola> getConjunto(){
         return conjunto;
+    }
+    /**
+     * Metodo Getter de la variable que indica el turno. 
+     * @return int A que jugador le toca golpear la bolaBlanca.
+     */
+    public boolean getTurnoAcabado(){
+        return turnoAcabado;
+    }
+    /**
+     * Metodo que detecta si existe alguno Bola que sigue en movimiento.
+     * @return Retorna y guarda true en caso de que se acabo el turno, y false en caso caso contrario.
+     */
+    public boolean TurnoAcabado(){
+        for(int i=0 ; i<conjunto.size() ; i++){
+            if(conjunto.get(i).getVelocidadX()!=0 || conjunto.get(i).getVelocidadY()!=0){
+                turnoAcabado = false;
+                return false;
+            }
+        }
+        turnoAcabado = true;
+        conjuntoJugadores.cambiaTurno();
+        return true;
     }
     /**
      * Metodo que procesa la trayectoria que tedra cada Bola del Conjunto. Mientras en pantalla mostramos un frame, internamente procesa 10 posiciones y sus colisiones.
@@ -93,7 +117,7 @@ public final class ConjuntoBolas {
      * Método que retira bolas según el parametro que se le da
      */
     public void retirarBolas(){
-        if(cantidadBolas>0 && mesaBillar.getTurnoAcabado()==true){
+        if(cantidadBolas>0 && turnoAcabado==true){
             mesaBillar.VaciarTronera();
             for(int i = 0; i < conjunto.size();++i){
                 if(conjunto.get(i).getSerie() == conjunto.size()-1){
@@ -108,7 +132,7 @@ public final class ConjuntoBolas {
      * Método que agrega bolas según el parámetro que se le da
      */
     public void agregarBolas(){
-        if(cantidadBolas<15 && mesaBillar.getTurnoAcabado()==true){   
+        if(cantidadBolas<15 && turnoAcabado==true){   
             mesaBillar.VaciarTronera();
             conjunto.add(new Bola(0,0,10,conjunto.size()));
             cantidadBolas = cantidadBolas+1;
@@ -215,7 +239,8 @@ public final class ConjuntoBolas {
      * Metodo Constructor de ConjuntoBolas.
      * @param mesaBillar Referencia  a mesaBillar en que se encuentra. 
      */
-    public ConjuntoBolas(MesaBillar mesaBillar){
+    public ConjuntoBolas(MesaBillar mesaBillar, ConjuntoJugadores conjuntoJugadores){
+        this.conjuntoJugadores = conjuntoJugadores;
         this.mesaBillar = mesaBillar;
         conjunto = new ArrayList<>();
         cantidadBolas = 8;

@@ -21,7 +21,7 @@ public class ConjuntoJugadores {
      * Metodo que cambia el turno para multiples jugadores.
     */
     public void cambiaTurno(){
-        if(jugadores.size() != 1 && mesaBillar.getTurnoAcabado()==false){
+        if(jugadores.size() != 1 && mesaBillar.getConjunto().getTurnoAcabado()==false){
             if(jugadorActual.getNumJugador() == jugadores.size()-1){
                 jugadorActual = jugadores.get(0);
             }else{
@@ -47,7 +47,7 @@ public class ConjuntoJugadores {
      * @param cantidad Numero de jugadores.
      */
     public void setPlayers(int cantidad){
-        if(mesaBillar.getTurnoAcabado()==true){
+        if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             jugadores.clear();
             for(int i = 0 ; i<cantidad ; i++){
                 jugadores.add(new Jugador(i));

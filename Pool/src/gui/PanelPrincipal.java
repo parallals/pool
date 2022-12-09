@@ -37,7 +37,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     @Override
     public void actionPerformed(ActionEvent ae) {
         mesaBillar.getConjunto().Movimiento();
-        taco.setTurnoAcabado(mesaBillar.TurnoAcabado());
+        taco.setTurnoAcabado(mesaBillar.getConjunto().TurnoAcabado());
         taco.setXY(mesaBillar.getBola(0).getX()+15, mesaBillar.getBola(0).getY()+15);
         repaint();
     }
@@ -50,6 +50,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         super.paint(g);
         this.setBackground(Color.gray);
         mesaBillar.paint(g, this);
+        conjuntoJugadores.paint(g, this);
         taco.paint(g, this);
     }
     /**
