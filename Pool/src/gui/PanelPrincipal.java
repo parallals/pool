@@ -56,103 +56,103 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     private void Botones(){
         
         //Boton de Reinicio
-        JButton Boton1 = new JButton("Reset");
-        Boton1.setBounds(100, 700, 110,40);
-        Boton1.setEnabled(true);
-        Boton1.setForeground(Color.black);
-        Boton1.setBackground(Color.white);
-        ActionListener oyenteDeAccion1 = (ActionEvent e) -> {
+        JButton botonReset = new JButton("Reset");
+        botonReset.setBounds(100, 700, 110,40);
+        botonReset.setEnabled(true);
+        botonReset.setForeground(Color.black);
+        botonReset.setBackground(Color.white);
+        ActionListener oyenteBotonReset = (ActionEvent e) -> {
             mesaBillar.reiniciarJuego();
         };
-        Boton1.addActionListener(oyenteDeAccion1);        
-        this.add(Boton1);
+        botonReset.addActionListener(oyenteBotonReset);        
+        this.add(botonReset);
         
         //Botones para aumentar cantidad de bolas
-        JButton BotonCmas = new JButton("+");
-        BotonCmas.setBounds(165, 750, 45,45);
-        BotonCmas.setEnabled(true);
-        BotonCmas.setForeground(Color.black);
-        BotonCmas.setBackground(Color.white);
-        ActionListener oyenteDeAccion1a = (ActionEvent e) -> {
+        JButton botonSumaBola = new JButton("+");
+        botonSumaBola.setBounds(165, 750, 45,45);
+        botonSumaBola.setEnabled(true);
+        botonSumaBola.setForeground(Color.black);
+        botonSumaBola.setBackground(Color.white);
+        ActionListener oyenteBotonSumaBola = (ActionEvent e) -> {
             mesaBillar.getConjunto().agregarBolas();
         };
-        BotonCmas.addActionListener(oyenteDeAccion1a);
-        this.add(BotonCmas);
+        botonSumaBola.addActionListener(oyenteBotonSumaBola);
+        this.add(botonSumaBola);
         
         //Botones para disminuir cantidad de bolas
-        JButton BotonCmenos = new JButton("-");
-        BotonCmenos.setBounds(100, 750, 45,45);
-        BotonCmenos.setEnabled(true);
-        BotonCmenos.setForeground(Color.black);
-        BotonCmenos.setBackground(Color.white);
-        ActionListener oyenteDeAccion1b = (ActionEvent e) -> {            
+        JButton botonRestaBola = new JButton("-");
+        botonRestaBola.setBounds(100, 750, 45,45);
+        botonRestaBola.setEnabled(true);
+        botonRestaBola.setForeground(Color.black);
+        botonRestaBola.setBackground(Color.white);
+        ActionListener oyenteBotonRestaBola = (ActionEvent e) -> {            
             mesaBillar.getConjunto().retirarBolas();
         };
-        BotonCmenos.addActionListener(oyenteDeAccion1b);
-        this.add(BotonCmenos);
+        botonRestaBola.addActionListener(oyenteBotonRestaBola);
+        this.add(botonRestaBola);
         
         //Boton de 1 jugador
-        JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
-        RadioBoton1.setBounds(300, 700, 100,20);
-        RadioBoton1.setForeground(Color.black);
-        RadioBoton1.setBackground(Color.white);
-        ActionListener oyenteDeAccion2 = (ActionEvent e) -> {
+        JRadioButton boton1Player = new JRadioButton("1 Player", true);
+        boton1Player.setBounds(300, 700, 100,20);
+        boton1Player.setForeground(Color.black);
+        boton1Player.setBackground(Color.white);
+        ActionListener oyenteBoton1Player = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(1);            
             }
         };
-        RadioBoton1.addActionListener(oyenteDeAccion2);
-        this.add(RadioBoton1);
+        boton1Player.addActionListener(oyenteBoton1Player);
+        this.add(boton1Player);
         
         //Boton de 2 jugadores
-        JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
-        RadioBoton2.setBounds(300, 725, 100,20);
-        RadioBoton2.setForeground(Color.black);
-        RadioBoton2.setBackground(Color.white);
-        ActionListener oyenteDeAccion3 = (ActionEvent e) -> {
+        JRadioButton boton2Players = new JRadioButton("2 Players", false);
+        boton2Players.setBounds(300, 725, 100,20);
+        boton2Players.setForeground(Color.black);
+        boton2Players.setBackground(Color.white);
+        ActionListener oyenteBoton2Players = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(2);            
             }
         };
-        RadioBoton2.addActionListener(oyenteDeAccion3);
-        this.add(RadioBoton2);
+        boton2Players.addActionListener(oyenteBoton2Players);
+        this.add(boton2Players);
         
         //Boton de 3 jugadores
-        JRadioButton RadioBoton3 = new JRadioButton("3 Players", false);
-        RadioBoton3.setBounds(300, 750, 100,20);
-        RadioBoton3.setForeground(Color.black);
-        RadioBoton3.setBackground(Color.white);
-        ActionListener oyenteDeAccion4 = (ActionEvent e) -> {
+        JRadioButton boton3Players = new JRadioButton("3 Players", false);
+        boton3Players.setBounds(300, 750, 100,20);
+        boton3Players.setForeground(Color.black);
+        boton3Players.setBackground(Color.white);
+        ActionListener oyenteBoton3Players = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(3);            
             }
         };
-        RadioBoton3.addActionListener(oyenteDeAccion4);
-        this.add(RadioBoton3); 
+        boton3Players.addActionListener(oyenteBoton3Players);
+        this.add(boton3Players); 
         
         //Boton de 4 jugadores
-        JRadioButton RadioBoton4 = new JRadioButton("4 Players", false);
-        RadioBoton4.setBounds(300, 775, 100,20);
-        RadioBoton4.setForeground(Color.black);
-        RadioBoton4.setBackground(Color.white);
-        ActionListener oyenteDeAccion5 = (ActionEvent e) -> {
+        JRadioButton boton4Players = new JRadioButton("4 Players", false);
+        boton4Players.setBounds(300, 775, 100,20);
+        boton4Players.setForeground(Color.black);
+        boton4Players.setBackground(Color.white);
+        ActionListener oyenteBoton4Players = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(4);
             }
         };
-        RadioBoton4.addActionListener(oyenteDeAccion5);
-        this.add(RadioBoton4);
+        boton4Players.addActionListener(oyenteBoton4Players);
+        this.add(boton4Players);
         
         //Enlazamiento de RadioButtons de jugadores
         ButtonGroup Players = new ButtonGroup();
-        Players.add(RadioBoton1);
-        Players.add(RadioBoton2);
-        Players.add(RadioBoton3);
-        Players.add(RadioBoton4);
+        Players.add(boton1Player);
+        Players.add(boton2Players);
+        Players.add(boton3Players);
+        Players.add(boton4Players);
     }
     /**
      * Metodo que detecta movimientos del mouse
-     * @param me 
+     * @param me Mouse Event.
      */
     @Override
     public void mouseMoved(MouseEvent me) {
@@ -160,7 +160,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
     /**
      * Metodo mousePressed
-     * @param me 
+     * @param me Mouse Event.
      */
     @Override
     public void mousePressed(MouseEvent me){
@@ -168,7 +168,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
     /**
      * Metodo que detecta el movimiento del mouse cuando el click esta presionado
-     * @param m 
+     * @param m Mouse Event.
      */
     @Override
     public void mouseDragged(MouseEvent me) {
@@ -177,14 +177,14 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
     /**
      * Metodo mouseClicked
-     * @param me 
+     * @param me Mouse Event.
      */
     @Override
     public void mouseClicked(MouseEvent me) { 
     }
     /**
      * Metodo mouseReleased
-     * @param me 
+     * @param me Mouse Event.
      */
     @Override
     public void mouseReleased(MouseEvent me) {
@@ -193,14 +193,14 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     }
     /**
      * Metodo mouseEntered
-     * @param me 
+     * @param me Mouse Event.
      */
     @Override
     public void mouseEntered(MouseEvent me) {
     }
     /**
      * Metodo mouseExited
-     * @param me 
+     * @param me Mouse Event.
      */
    @Override
     public void mouseExited(MouseEvent me) {

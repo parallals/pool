@@ -28,7 +28,7 @@ public class Taco {
     
     //METODOS
     /**
-     * Metodo Setter de propiedades x e y
+     * Metodo Setter de propiedades x e y.
      * @param x Posicion x con respecto a bolaBlanca.
      * @param y Posicion y con respecto a bolaBlanca.
      */
@@ -46,7 +46,7 @@ public class Taco {
     }
     /**
      * Metodo Setter de mousePulsado.
-     * @param pulsado posicion al pulsar el mouse.
+     * @param pulsado Posicion del mouse al ser presionado.
      */
     public void setPulsado(Point pulsado){
         if(turnoAcabado == true){
@@ -55,7 +55,7 @@ public class Taco {
     }
     /**
      * Metodo Setter de mouseSuelto.
-     * @param suelto posicion al soltar el mouse.
+     * @param suelto Posicion del mouse al ser soltado.
      */
     public void setSuelto(Point suelto){
         if(turnoAcabado == true){
@@ -65,7 +65,7 @@ public class Taco {
     }
     /**
      * Metodo Setter de propiedad turnoAcabado.
-     * @param turnoAcabado true en caso de turno acabado y false en caso contrario.
+     * @param turnoAcabado Retorna true en caso de turno acabado y false en caso contrario.
      */
     public void setTurnoAcabado(boolean turnoAcabado){
         this.turnoAcabado = turnoAcabado;
@@ -86,8 +86,8 @@ public class Taco {
     }
     /**
      * Metodo paint de Taco.
-     * @param g clase Graphics.
-     * @param panel clase JPanel.
+     * @param g Clase Graphics.
+     * @param panel Clase JPanel.
      */
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
@@ -115,8 +115,8 @@ public class Taco {
     }
     /**
      * Metodo Constructor de Taco.
-     * @param bolaBlanca a la que golpeara.
-     * @param mesaBillar En la que sera ocupado.
+     * @param bolaBlanca Bola a la que golpeara.
+     * @param mesaBillar MesaBillar en la que sera ocupado.
      */
     public Taco(Bola bolaBlanca, MesaBillar mesaBillar){
         this.bolaBlanca = bolaBlanca;

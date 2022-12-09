@@ -20,10 +20,12 @@ Por hacer:
 - Hacer Math.round() en paint (Para evitar truncar con casteos (int)) X
 - Re hacer colisiones con las paredes X
 - Agregar forma de disminuir o aumentar fuerza del taco X
+- Una forma de ver las Bolas que han caido en las troneras X
 - Agregar funcionalidades a Botones() X
-- Agregar una cantidad de Bolas elegida 
-- 
-- 
+- Agregar una cantidad de Bolas elegida X
+- Remplazar figuras de Graphics por texturas personalizas 
+- Hacer que la bola al caer en una tronera aparezca luego de terminar el turno.
+- Implementar que al meter una Bola en Tronera no se cambie el turno del jugador actual
 - 
 - 
 - 
@@ -35,9 +37,8 @@ Permitido por el ayudante:
 - Modo 2 jugadores X
 Sin consultar:
 - Aumentar la cantidad de bolas
-- Una forma de ver las Bolas que han caido en las troneras X
 - Opcion de quitar bola 8 (En este caso la bola 8 te haria perder el juego)
-- Remplazar figuras de Graphics por texturas personalizas X
+- Remplazar figuras de Graphics por texturas personalizas 
 - 
 -
 - 

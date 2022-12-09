@@ -7,7 +7,7 @@ import javax.swing.*;
  * Clase Jugador.
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.2, 08 de diciembre de 2022
+ * @version versión  1.3, 09 de diciembre de 2022
  */
 public class Jugador {
     //PROPIEDADES
@@ -21,14 +21,21 @@ public class Jugador {
      */
     public int getNumJugador(){
         return numJugador;
-    }
+    } 
     /**
      * Metodo Getter del puntaje.
      * @param puntaje.
      */
     public void setPuntaje(int puntaje){
+        this.puntaje = puntaje;
+    }
+    /**
+     * Metodo que suma puntaje.
+     * @param puntaje.
+     */
+    public void sumarPuntaje(int puntaje){
         this.puntaje = this.puntaje+puntaje;
-    }        
+    }       
     /**
      * Metodo que da el color de Taco segun el Jugador.
      * @param g clase Graphics.

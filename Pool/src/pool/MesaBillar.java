@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Clase mesaBillar que contiene al ConjuntoBolas.
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.1, 03 de diciembre de 2022
+ * @version versión  1.2, 09 de diciembre de 2022
  */
 public class MesaBillar {
     //PROPIEDADES
@@ -45,7 +45,7 @@ public class MesaBillar {
     }
     /**
      * Metodo Getter de jugadorActual.
-     * @return Jugador del el turno actual.
+     * @return Jugador del turno actual.
      */
     public Jugador getJugadorActual(){
         return jugadorActual;
@@ -120,7 +120,7 @@ public class MesaBillar {
          || (distEntre2Puntos(bola.getX()+15, bola.getY()+15, x+1059, y+486) < 40)){ //Tronera 6
             if(bola.getSerie() == 0){
                 //Puntaje = Puntaje + b1.getPuntaje();
-                jugadorActual.setPuntaje(bola.getPuntaje());
+                jugadorActual.sumarPuntaje(bola.getPuntaje());
                 bola.setVelocidadX(0);
                 bola.setVelocidadY(0);
                 boolean aux = false;
@@ -137,7 +137,7 @@ public class MesaBillar {
                     if(conjuntoBolas.getBola(i).getSerie() == bola.getSerie()){
                         bola.setVelocidadX(0);
                         bola.setVelocidadY(0); 
-                        jugadorActual.setPuntaje(bola.getPuntaje());
+                        jugadorActual.sumarPuntaje(bola.getPuntaje());
                         Tronera.add(conjuntoBolas.getConjunto().remove(i));
                         OrdenarTronera();
                         return true;
@@ -161,7 +161,7 @@ public class MesaBillar {
     public void reiniciarJuego(){
         VaciarTronera();
         conjuntoBolas.RandomizarBolas();
-        for(int i=0; i<jugadores.size(); ++i){
+        for(int i=0 ; i<jugadores.size() ; i++){
             jugadores.get(i).setPuntaje(0);
         }
         jugadorActual=jugadores.get(0);

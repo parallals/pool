@@ -187,15 +187,15 @@ public class Bola {
      * @param x Coordenada x de la bola
      * @param y Coordenada y de la bola
      * @param puntaje Puntaje correspondiente
-     * @param bola Tipo de bola (Numero int del 1 al 15)
+     * @param serie Serie de bola (Numero int del 1 al 15)
      */
-    public Bola(float x, float y, int puntaje, int bola){
+    public Bola(float x, float y, int puntaje, int serie){
         this.x = x;
         this.y = y;
         velocidadX = 0;
         velocidadY = 0;
         aceleracion = 0.3f;
         this.puntaje = puntaje;
-        this.serie = bola;
+        this.serie = serie;
     }
 }
