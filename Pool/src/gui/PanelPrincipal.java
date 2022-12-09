@@ -18,9 +18,10 @@ import pool.Bola;
 import pool.Taco;
 
 /** 
+ * a
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.1, 07 de diciembre de 2022
+ * @version versión  1.2, 08 de diciembre de 2022
  */
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
@@ -79,7 +80,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
                 aux.setVelocidadX(0);
                 aux.setVelocidadY(0);
             }
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(1);            
             }
         };
@@ -92,7 +93,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton2.setForeground(Color.black);
         RadioBoton2.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion3 = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(2);            
             }
         };
@@ -105,7 +106,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton3.setForeground(Color.black);
         RadioBoton3.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion4 = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(3);            
             }
         };
@@ -118,7 +119,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         RadioBoton4.setForeground(Color.black);
         RadioBoton4.setBackground(Color.LIGHT_GRAY);
         ActionListener oyenteDeAccion5 = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getTurno()==0){
+            if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(4);
             }
         };
@@ -195,7 +196,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     public PanelPrincipal() { 
         mesaBillar = new MesaBillar();
-        taco = new Taco((int)mesaBillar.getBola(0).getX()+15, (int)mesaBillar.getBola(0). getY()+15, mesaBillar.getBola(0),mesaBillar);
+        taco = new Taco(mesaBillar.getBola(0),mesaBillar);
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);

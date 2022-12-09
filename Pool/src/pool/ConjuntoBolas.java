@@ -8,6 +8,7 @@ import java.util.ArrayList;
 //import java.util.Random;
 
 /** 
+ * Clase que almacena las Bolas en la mesaBillar.
  * @author Francy Jelvez
  * @author Diego Venegas
  * @version versión  1.1, 07 de diciembre de 2022
@@ -17,44 +18,44 @@ public final class ConjuntoBolas {
     private final ArrayList<Bola> conjunto; // Guarda las Bolas
     private final int cantidadBolas; // Define la cantidad de Bolas que habran en la mesa de billar 
     private final MesaBillar mesaBillar; // Se usa para tener posiciones relativas de las bolas con repecto a la mesa de billar
-    private int turno;
+    private boolean turnoAcabado;
     
     //METODOS
     /**
      * Metodo Getter de la variable que indica el turno. 
-     * @return 
+     * @return int A que jugador le toca golpear la bolaBlanca.
      */
-    public int getTurno(){
-        return turno;
+    public boolean getTurnoAcabado(){
+        return turnoAcabado;
     }
     /**
-     * Metodo Getter de una bola en el conjunto
-     * @param i
-     * @return 
+     * Metodo Getter de una bola en el conjunto (no la quita del conjunto).
+     * @param numero de Bola se quiere obtener.
+     * @return Bola que se obtendra. 
      */
-    public Bola getBola(int i){
-        return conjunto.get(i);
+    public Bola getBola(int numero){
+        return conjunto.get(numero);
     }
     /**
-     * Metodo Getter de un conjunto
-     * @return conjunto
+     * Metodo Getter de un conjunto.
+     * @return conjunto ArrayList de Bolas .
      */
     public ArrayList<Bola> getConjunto(){
         return conjunto;
     }
     /**
      * Metodo que detecta si existe alguno Bola que sigue en movimiento.
-     * @return true en caso de que se acabo el turno, y asigna un valor de 0 al turno, y false en caso de que aun no (Y 0 al valor de turno).
+     * @return true en caso de que se acabe el turno y asigna un valor de 0 al turno, y false en caso de que aun no (Y 0 al valor de turno).
      */
     public boolean TurnoAcabado(){
         for(int i=0 ; i<conjunto.size() ; i++){
             if(conjunto.get(i).getVelocidadX()!=0 || conjunto.get(i).getVelocidadY()!=0){
-                turno = 1;
+                turnoAcabado = false;
                 return false;
             }
         }
         mesaBillar.cambiaTurno();
-        turno = 0;
+        turnoAcabado = true;
         return true;
     }
     /**
@@ -183,8 +184,8 @@ public final class ConjuntoBolas {
     }
     /**
      * Metodo paint de ConjuntoBolas, hace un llamado al paint de cada Bola
-     * @param g
-     * @param panel 
+     * @param g clase Graphics
+     * @param panel clase JPanel 
      */
      public void paint(Graphics g, JPanel panel){
         for(int j = 0; j < conjunto.size() ; j++){
@@ -192,11 +193,11 @@ public final class ConjuntoBolas {
         }
      }
     /**
-     * Metodo Constructor de ConjuntoBolas
-     * @param mesa 
+     * Metodo Constructor de ConjuntoBolas.
+     * @param mesaBillar Referencia  a mesaBillar en que se encuentra. 
      */
-    public ConjuntoBolas(MesaBillar mesa){
-        mesaBillar = mesa;
+    public ConjuntoBolas(MesaBillar mesaBillar){
+        this.mesaBillar = mesaBillar;
         conjunto = new ArrayList<>();
         cantidadBolas = 8;
         conjunto.add(new Bola(0, 0, -10, 0));
@@ -204,7 +205,7 @@ public final class ConjuntoBolas {
             conjunto.add(new Bola(0, 0, 10, i));
         }
         RandomizarBolas();
-        this.turno = 0;
+        this.turnoAcabado = true;
     } 
 }
 

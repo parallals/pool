@@ -3,6 +3,7 @@ package pool;
 import gui.Ventana;
 
 /** 
+ * a
  * @author Francy Jelvez
  * @author Diego Venegas
  * @version versión  1, 03 de diciembre de 2022
