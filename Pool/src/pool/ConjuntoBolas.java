@@ -24,14 +24,14 @@ public final class ConjuntoBolas {
     //METODOS
     /**
      * getter de cantidadBolas
-     * @return 
+     * @return cantidadBolas
      */
     public int getcantidadBolas(){
         return cantidadBolas;
     }
     /**
      * setter de cantidadBolas
-     * @param p 
+     * @param int nueva cantidadBolas 
      */
     public void setcantidadBolas(int p){
         this.cantidadBolas = p;
@@ -59,7 +59,7 @@ public final class ConjuntoBolas {
         return conjunto;
     }
     /**
-     * Metodo que detecta si existe alguno Bola que sigue en movimiento.
+     * Metodo que detecta si existe algun Bola que sigue en movimiento.
      * @return Retorna y guarda true en caso de que se acabo el turno, y false en caso caso contrario.
      */
     public boolean TurnoAcabado(){
@@ -94,7 +94,7 @@ public final class ConjuntoBolas {
     }
     /**
      * Metodo que detecta si hay una colision entre una Bola y  la Pared de la mesa
-     * @param b1 
+     * @param b1 Bola a analizar
      */
     public void ColisionPared(Bola b1){
         if(b1.getX()<mesaBillar.getX()){
@@ -113,8 +113,7 @@ public final class ConjuntoBolas {
         }
     }
     /**
-     * Método que retira bolas según el parametro que se le da
-     * @param p 
+     * Método que que vacía el conjunto enTronera y retura una bola (En orden de numSerie, mayor a menor) 
      */
     public void retirarBolas(){
         mesaBillar.VaciarTronera();
@@ -127,8 +126,7 @@ public final class ConjuntoBolas {
         mesaBillar.reiniciarJuego();
     }
     /**
-     * Método que agrega bolas según el parámetro que se le da
-     * @param p 
+     * Método que vacía el conjunto enTronera y agrega una bola (En orden de numSerie)
      */
     public void agregarBolas(){
         mesaBillar.VaciarTronera();
@@ -138,8 +136,8 @@ public final class ConjuntoBolas {
     }
     /**
      * Metodo que detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
-     * @param b1
-     * @param b2 
+     * @param b1 Primera bola a comparar
+     * @param b2 Segunda bola a comparar
      */
     public void ColisionDosBolas(Bola b1, Bola b2){
         if(DetectarColision(b1, b2)){
@@ -148,8 +146,8 @@ public final class ConjuntoBolas {
     }
     /**
      * Metodo que detecta si hay una colision entre dos bolas
-     * @param b1
-     * @param b2
+     * @param b1 Primera bola a comparar
+     * @param b2 Segunda bola a comparar
      * @return Si hay una colisión, devuelve true, en caso contrario, false
      */
     public boolean DetectarColision(Bola b1, Bola b2){
@@ -160,8 +158,8 @@ public final class ConjuntoBolas {
     }
     /**
      * Metodo que cambia la dirreccion y sentido con respecto a cada tipo de colision entre dos Bolas
-     * @param b1
-     * @param b2 
+     * @param b1 Primera bola a comparar
+     * @param b2 Segunda bola a comparar
      */
     public void EfectoDeColision(Bola b1, Bola b2){
          // Despegar b1 y b2
