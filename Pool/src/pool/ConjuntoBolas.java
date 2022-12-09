@@ -117,24 +117,28 @@ public final class ConjuntoBolas {
      * @param p 
      */
     public void retirarBolas(){
-        mesaBillar.VaciarTronera();
-        for(int i = 0; i < conjunto.size();++i){
-            if(conjunto.get(i).getSerie() == conjunto.size()-1){
-                conjunto.remove(i);
+        if(cantidadBolas>0 && turnoAcabado==true){
+            mesaBillar.VaciarTronera();
+            for(int i = 0; i < conjunto.size();++i){
+                if(conjunto.get(i).getSerie() == conjunto.size()-1){
+                    conjunto.remove(i);
+                }
             }
+            cantidadBolas = cantidadBolas-1;
+            mesaBillar.reiniciarJuego();
         }
-        cantidadBolas = cantidadBolas-1;
-        mesaBillar.reiniciarJuego();
     }
     /**
      * Método que agrega bolas según el parámetro que se le da
      * @param p 
      */
     public void agregarBolas(){
-        mesaBillar.VaciarTronera();
-        conjunto.add(new Bola(0,0,10,conjunto.size()));
-        cantidadBolas = cantidadBolas+1;
-        mesaBillar.reiniciarJuego();
+        if(cantidadBolas<15 && turnoAcabado==true){   
+            mesaBillar.VaciarTronera();
+            conjunto.add(new Bola(0,0,10,conjunto.size()));
+            cantidadBolas = cantidadBolas+1;
+            mesaBillar.reiniciarJuego();
+        }
     }
     /**
      * Metodo que detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
@@ -232,7 +236,7 @@ public final class ConjuntoBolas {
         }
         //dibujar cantidad de bolas
         g.setFont(new Font("Calibri",Font.ITALIC,15));
-        String s = Integer.toString(cantidadBolas);
+        String s = Integer.toString(cantidadBolas+1);
         g.drawString(s, 150, 775);
      }
     /**

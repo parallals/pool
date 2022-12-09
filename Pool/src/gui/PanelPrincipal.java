@@ -61,39 +61,36 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         Boton1.setBounds(100, 700, 110,40);
         Boton1.setEnabled(true);
         Boton1.setForeground(Color.black);
-        Boton1.setBackground(Color.LIGHT_GRAY);
+        Boton1.setBackground(Color.white);
         ActionListener oyenteDeAccion1 = (ActionEvent e) -> {
             mesaBillar.reiniciarJuego();
+            repaint();
         };
         Boton1.addActionListener(oyenteDeAccion1);        
         this.add(Boton1);
-        //Botones de cantidad de bolas
+        
+        //Botones para aumentar cantidad de bolas
         JButton BotonCmas = new JButton("+");
-        BotonCmas.setBounds(100, 750, 45,45);
+        BotonCmas.setBounds(165, 750, 45,45);
         BotonCmas.setEnabled(true);
-        BotonCmas.setForeground(Color.white);
-        BotonCmas.setBackground(Color.black);
+        BotonCmas.setForeground(Color.black);
+        BotonCmas.setBackground(Color.white);
         ActionListener oyenteDeAccion1a = (ActionEvent e) -> {
-
-        if(mesaBillar.getConjunto().getcantidadBolas()<15 && mesaBillar.getConjunto().getTurnoAcabado()==true){
-            int aux = mesaBillar.getConjunto().getcantidadBolas();                
             mesaBillar.getConjunto().agregarBolas();
             repaint();
-            }
         };
         BotonCmas.addActionListener(oyenteDeAccion1a);
         this.add(BotonCmas);
         
-                JButton BotonCmenos = new JButton("-");
-        BotonCmenos.setBounds(165, 750, 45,45);
+        //Botones para disminuir cantidad de bolas
+        JButton BotonCmenos = new JButton("-");
+        BotonCmenos.setBounds(100, 750, 45,45);
         BotonCmenos.setEnabled(true);
         BotonCmenos.setForeground(Color.black);
-        BotonCmas.setBackground(Color.black);
-        ActionListener oyenteDeAccion1b = (ActionEvent e) -> {
-            if(mesaBillar.getConjunto().getcantidadBolas()>1 && mesaBillar.getConjunto().getTurnoAcabado()==true){            
-                mesaBillar.getConjunto().retirarBolas();
-                repaint();
-            }
+        BotonCmenos.setBackground(Color.white);
+        ActionListener oyenteDeAccion1b = (ActionEvent e) -> {            
+            mesaBillar.getConjunto().retirarBolas();
+            repaint();
         };
         BotonCmenos.addActionListener(oyenteDeAccion1b);
         this.add(BotonCmenos);
@@ -102,7 +99,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         JRadioButton RadioBoton1 = new JRadioButton("1 Player", true);
         RadioBoton1.setBounds(300, 700, 100,20);
         RadioBoton1.setForeground(Color.black);
-        RadioBoton1.setBackground(Color.LIGHT_GRAY);
+        RadioBoton1.setBackground(Color.white);
         ActionListener oyenteDeAccion2 = (ActionEvent e) -> {
             for(int i = 0; i < mesaBillar.getConjunto().getConjunto().size();++i){
                 Bola aux = mesaBillar.getConjunto().getConjunto().get(i);
@@ -120,7 +117,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         JRadioButton RadioBoton2 = new JRadioButton("2 Players", false);
         RadioBoton2.setBounds(300, 725, 100,20);
         RadioBoton2.setForeground(Color.black);
-        RadioBoton2.setBackground(Color.LIGHT_GRAY);
+        RadioBoton2.setBackground(Color.white);
         ActionListener oyenteDeAccion3 = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(2);            
@@ -133,7 +130,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         JRadioButton RadioBoton3 = new JRadioButton("3 Players", false);
         RadioBoton3.setBounds(300, 750, 100,20);
         RadioBoton3.setForeground(Color.black);
-        RadioBoton3.setBackground(Color.LIGHT_GRAY);
+        RadioBoton3.setBackground(Color.white);
         ActionListener oyenteDeAccion4 = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(3);            
@@ -146,7 +143,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         JRadioButton RadioBoton4 = new JRadioButton("4 Players", false);
         RadioBoton4.setBounds(300, 775, 100,20);
         RadioBoton4.setForeground(Color.black);
-        RadioBoton4.setBackground(Color.LIGHT_GRAY);
+        RadioBoton4.setBackground(Color.white);
         ActionListener oyenteDeAccion5 = (ActionEvent e) -> {
             if(mesaBillar.getConjunto().getTurnoAcabado()==true){
             mesaBillar.setPlayers(4);
