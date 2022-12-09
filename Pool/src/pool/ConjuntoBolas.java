@@ -31,7 +31,7 @@ public final class ConjuntoBolas {
     }
     /**
      * setter de cantidadBolas
-     * @param int nueva cantidadBolas 
+     * @param p int nueva cantidadBolas 
      */
     public void setcantidadBolas(int p){
         this.cantidadBolas = p;
@@ -116,23 +116,27 @@ public final class ConjuntoBolas {
      * Método que que vacía el conjunto enTronera y retura una bola (En orden de numSerie, mayor a menor) 
      */
     public void retirarBolas(){
-        mesaBillar.VaciarTronera();
-        for(int i = 0; i < conjunto.size();++i){
-            if(conjunto.get(i).getSerie() == conjunto.size()-1){
-                conjunto.remove(i);
+        if(cantidadBolas>0 && turnoAcabado==true){
+            mesaBillar.VaciarTronera();
+            for(int i = 0; i < conjunto.size();++i){
+                if(conjunto.get(i).getSerie() == conjunto.size()-1){
+                    conjunto.remove(i);
+                }
             }
+            cantidadBolas = cantidadBolas-1;
+            mesaBillar.reiniciarJuego();
         }
-        cantidadBolas = cantidadBolas-1;
-        mesaBillar.reiniciarJuego();
     }
     /**
      * Método que vacía el conjunto enTronera y agrega una bola (En orden de numSerie)
      */
     public void agregarBolas(){
-        mesaBillar.VaciarTronera();
-        conjunto.add(new Bola(0,0,10,conjunto.size()));
-        cantidadBolas = cantidadBolas+1;
-        mesaBillar.reiniciarJuego();
+        if(cantidadBolas<15 && turnoAcabado==true){   
+            mesaBillar.VaciarTronera();
+            conjunto.add(new Bola(0,0,10,conjunto.size()));
+            cantidadBolas = cantidadBolas+1;
+            mesaBillar.reiniciarJuego();
+        }
     }
     /**
      * Metodo que detecta si hay una colision entre dos Bolas, y luego cambia sus direcciones.
@@ -170,7 +174,6 @@ public final class ConjuntoBolas {
          float distY = (b1.getY() - b2.getY()) / distB1B2;
          b1.setXY(puntoMedioX+16*distX, (float) (puntoMedioY+16*distY));
          b2.setXY(puntoMedioX-16*distX, (float) (puntoMedioY-16*distY));
-         
          // Dar nueva direccion a b1 y b2
          float angulo = anguloPI(b1.getX(), b1.getY(), b2.getX(), b2.getY());
          float cos = (float)Math.cos(angulo);
@@ -189,7 +192,6 @@ public final class ConjuntoBolas {
      * Metodo que randomiza la posicion de las Bolas
      */
     public void RandomizarBolas(){
-
         for(int i=0 ; i<conjunto.size() ; i++){
             conjunto.get(i).setXY((float)(Math.random()*1034)+mesaBillar.getX(), (float)(Math.random()*451)+mesaBillar.getY());
             conjunto.get(i).setVelocidadX(0);
@@ -228,10 +230,9 @@ public final class ConjuntoBolas {
         for(int j = 0; j < conjunto.size() ; j++){
             conjunto.get(j).paint(g, panel);
         }
-        //dibujar cantidad de bolas
         g.setFont(new Font("Calibri",Font.ITALIC,15));
-        String s = Integer.toString(cantidadBolas);
-        g.drawString(s, 150, 775);
+        String s = Integer.toString(cantidadBolas+1);
+        g.drawString(s, 149, 775);
      }
     /**
      * Metodo Constructor de ConjuntoBolas.

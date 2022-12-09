@@ -8,10 +8,10 @@ import java.awt.Color;
 import java.awt.Point;
 
 /** 
- * a
+ * Clase de Taco.
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.2, 08 de diciembre de 2022
+ * @version versión  1.3, 09 de diciembre de 2022
  */
 public class Taco {
     //PROPIEDADES
@@ -28,26 +28,25 @@ public class Taco {
     
     //METODOS
     /**
-     * Metodo Setter de propiedades x e y
-     * @param x 
-     * @param y 
+     * Metodo Setter de propiedades x e y.
+     * @param x Posicion x con respecto a bolaBlanca.
+     * @param y Posicion y con respecto a bolaBlanca.
      */
     public void setXY(float x, float y){
         this.x = x;
         this.y = y;
     }
     /**
-     * Metodo Setter de propiedades cos y sen
-     * @param cos
-     * @param sen 
+     * Metodo Setter de propiedades cos y sen.
+     * @param angulo Angulo de rotacion con respecto a bolaBlanca.
      */
-    public void setCosSen(float cos, float sen){
-        this.cos = cos;
-        this.sen = sen;
+    public void setCosSen(float angulo){
+        cos = (float)Math.cos(angulo);
+        sen = (float)Math.sin(angulo);
     }
     /**
-     * Metodo Setter de mousePulsado
-     * @param pulsado 
+     * Metodo Setter de mousePulsado.
+     * @param pulsado Posicion del mouse al ser presionado.
      */
     public void setPulsado(Point pulsado){
         if(turnoAcabado == true){
@@ -55,8 +54,8 @@ public class Taco {
         }
     }
     /**
-     * Metodo Setter de mouseSuelto
-     * @param suelto 
+     * Metodo Setter de mouseSuelto.
+     * @param suelto Posicion del mouse al ser soltado.
      */
     public void setSuelto(Point suelto){
         if(turnoAcabado == true){
@@ -65,14 +64,14 @@ public class Taco {
         }
     }
     /**
-     * Metodo Setter de propiedad turnoAcabado
-     * @param turnoAcabado 
+     * Metodo Setter de propiedad turnoAcabado.
+     * @param turnoAcabado Retorna true en caso de turno acabado y false en caso contrario.
      */
     public void setTurnoAcabado(boolean turnoAcabado){
         this.turnoAcabado = turnoAcabado;
     }
     /**
-     * Metodo que cambia la velocidad de la Bola Blanca con respecto a la fuerza que se le golpea 
+     * Metodo que cambia la velocidad de la Bola Blanca con respecto a la fuerza que se le golpea.
      */
     public void golpearBola(){
         if(turnoAcabado == true){
@@ -86,9 +85,9 @@ public class Taco {
         }
     }
     /**
-     * Metodo paint de Taco
-     * @param g clase Graphics
-     * @param panel clase JPanel 
+     * Metodo paint de Taco.
+     * @param g Clase Graphics.
+     * @param panel Clase JPanel.
      */
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
@@ -116,8 +115,8 @@ public class Taco {
     }
     /**
      * Metodo Constructor de Taco.
-     * @param bolaBlanca a la que golpeara.
-     * @param mesaBillar En la que sera ocupado.
+     * @param bolaBlanca Bola a la que golpeara.
+     * @param mesaBillar MesaBillar en la que sera ocupado.
      */
     public Taco(Bola bolaBlanca, MesaBillar mesaBillar){
         this.bolaBlanca = bolaBlanca;
