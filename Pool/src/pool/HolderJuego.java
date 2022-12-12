@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 /**
  * Clase que almacena todas las clases principales de Pool y da acceso a panel principal de una manera mas ordenada.
  * @author Diego  Venegas
- * @version versión  1.1, 12 de diciembre de 2022
+ * @version versión  1.2, 12 de diciembre de 2022
  */
 public class HolderJuego {
     //PROPIEDADES
