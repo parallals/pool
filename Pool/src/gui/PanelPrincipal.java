@@ -195,7 +195,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      * Metodo Constructor del PanelPrincipal
      */
     public PanelPrincipal() {
-        Holder = new HolderJuego();
+        Holder = HolderJuego.getInstancia();
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);

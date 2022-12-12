@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  */
 public class HolderJuego {
     //PROPIEDADES
+    private static HolderJuego instancia = null;
     private final MesaBillar mesaBillar;
     private final Taco taco;
     private final ConjuntoJugadores conjuntoJugadores;
@@ -89,9 +90,19 @@ public class HolderJuego {
         taco.paint(g, panel);
     }
     /**
-     * Contructor de HolderJuego
+     * Metodo que llama al contructor, sigue el patro Singleton.
+     * @return retorna un unico HolderJuego.
      */
-    public HolderJuego(){
+    public static HolderJuego getInstancia( ){
+        if(instancia == null){
+            instancia = new HolderJuego( );
+        }
+        return instancia;
+    }
+    /**
+     * Contructor de privado HolderJuego.
+     */
+    private HolderJuego(){
         conjuntoJugadores = new ConjuntoJugadores();
         mesaBillar = new MesaBillar(conjuntoJugadores);
         conjuntoJugadores.setMesaBillar(mesaBillar);

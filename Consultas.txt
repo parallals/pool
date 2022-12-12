@@ -26,10 +26,17 @@ Por hacer:
 - Remplazar figuras de Graphics por texturas personalizas 
 - Hacer que la bola al caer en una tronera aparezca luego de terminar el turno 
 - Implementar que al meter una Bola en Tronera no se cambie el turno del jugador actual 
+- Informe
+- JUnit
+- Uml grafico
+- Uml logico
+- Diagrama de Caso de Uso
 - 
 - 
 - 
 - 
+- 
+
 
 ----------------------------------------------------------------------------------------
 Nos gustaria agregar:
