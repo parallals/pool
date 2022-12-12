@@ -14,35 +14,28 @@ public class ConjuntoJugadores {
     private MesaBillar mesaBillar;
     private final ArrayList<Jugador> jugadores; // Guarda una referencia de los Jugadores actuales.
     private Jugador jugadorActual; // Guarda una referencia al Jugador actual.
+    
     //METODOS
-    
-        
-    /**
-     * Metodo que cambia el turno para multiples jugadores.
-    */
-    public void cambiaTurno(){
-        if(jugadores.size() != 1 && mesaBillar.getConjunto().getTurnoAcabado()==false){
-            if(jugadorActual.getNumJugador() == jugadores.size()-1){
-                jugadorActual = jugadores.get(0);
-            }else{
-                jugadorActual = jugadores.get(jugadorActual.getNumJugador()+1);
-            }
-        }
-    }
-    
-    /**
-     * Metodo Getter de jugadorActual.
-     * @return Jugador del turno actual.
-     */
-    public Jugador getJugadorActual(){
-        return jugadorActual;
-    }
     /**
      * Metodo Setter de mesaBillar, solo se ocupa una vez y es porque conjuntoJugadores se inicializa primero que mesabillar.
      * @param mesaBillar Referencia a MesaBillar donde los jugadores juegan.
      */
     public void setMesaBillar(MesaBillar mesaBillar){
         this.mesaBillar = mesaBillar;
+    }
+    /**
+     * Metodo Getter de la cantidad de jugadores.
+     * @return int cantidad de jugadores actuales.
+     */
+    public int getCantidadJugadores(){
+        return jugadores.size();
+    }
+    /**
+     * Metodo Getter de jugadorActual.
+     * @return Jugador del turno actual.
+     */
+    public Jugador getJugadorActual(){
+        return jugadorActual;
     }
     /**
      * Metodo Setter de players.
@@ -58,13 +51,17 @@ public class ConjuntoJugadores {
             mesaBillar.reiniciarJuego();
         }
     }
-    
     /**
-     * Metodo Getter de la cantidad de jugadores.
-     * @return int cantidad de jugadores actuales.
-     */
-    public int getCantidadJugadores(){
-        return jugadores.size();
+     * Metodo que cambia el turno para multiples jugadores.
+    */
+    public void cambiaTurno(){
+        if(jugadores.size() != 1 && mesaBillar.getConjunto().getTurnoAcabado()==false){
+            if(jugadorActual.getNumJugador() == jugadores.size()-1){
+                jugadorActual = jugadores.get(0);
+            }else{
+                jugadorActual = jugadores.get(jugadorActual.getNumJugador()+1);
+            }
+        }
     }
     /**
      * Metodo que reinicia puntajes de los jugadores y regresa el primer turno al jugador 0.

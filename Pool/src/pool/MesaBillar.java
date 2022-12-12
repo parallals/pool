@@ -110,7 +110,7 @@ public class MesaBillar {
     /**
      * Metodo que Ordena Bolas que no estan en la mesa.
      */
-    public void OrdenarTronera(){
+    private void OrdenarTronera(){
         for(int i=0 ; i<Tronera.size() ; i++){
             Tronera.get(i).setXY(20, 35+40*i);
         }

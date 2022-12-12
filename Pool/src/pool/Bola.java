@@ -130,57 +130,62 @@ public class Bola {
      * @param panel clase JPanel 
      */
     public void paint(Graphics g, JPanel panel){
-        switch(serie){
-            case 0 ->  { // BOLA BLANCA
-                g.setColor(Color.white); 
-                g.fillOval((int)x, (int)y, 30, 30);                
-            } case 1 ->  { // BOLA 1 LISA
-                Image i1 = new ImageIcon(this.getClass().getResource("../Textures/1.png")).getImage();
-                g.drawImage(i1, (int)x, (int)y, 30, 30, panel);
-            } case 2 ->  { // BOLA 2 LISA
-                Image i2 = new ImageIcon(this.getClass().getResource("../Textures/2.png")).getImage();
-                g.drawImage(i2, (int)x, (int)y, 30, 30, panel);
-            } case 3 ->  { // BOLA 3 LISA
-                Image i3 = new ImageIcon(this.getClass().getResource("../Textures/3.png")).getImage();
-                g.drawImage(i3, (int)x, (int)y, 30, 30, panel);
-            } case 4 ->  { // BOLA 4 LISA
-                Image i4 = new ImageIcon(this.getClass().getResource("../Textures/4.png")).getImage();
-                g.drawImage(i4, (int)x, (int)y, 30, 30, panel);
-            } case 5 ->  { // BOLA 5 LISA
-                Image i5 = new ImageIcon(this.getClass().getResource("../Textures/5.png")).getImage();
-                g.drawImage(i5, (int)x, (int)y, 30, 30, panel);
-            } case 6 ->  { // BOLA 6 LISA
-                Image i6 = new ImageIcon(this.getClass().getResource("../Textures/6.png")).getImage();
-                g.drawImage(i6, (int)x, (int)y, 30, 30, panel);
-            } case 7 ->  { // BOLA 7 LISA
-                Image i7 = new ImageIcon(this.getClass().getResource("../Textures/7.png")).getImage();
-                g.drawImage(i7, (int)x, (int)y, 30, 30, panel);
-            } case 8 ->  { // BOLA 8 NEGRA
-                Image i8 = new ImageIcon(this.getClass().getResource("../Textures/8.png")).getImage();
-                g.drawImage(i8, (int)x, (int)y, 30, 30, panel);
-            } case 9 ->  { // BOLA 9 RAYADA
-                Image i9 = new ImageIcon(this.getClass().getResource("../Textures/9.png")).getImage();
-                g.drawImage(i9, (int)x, (int)y, 30, 30, panel);
-            } case 10 ->  { // BOLA 10 RAYADA
-                Image i10 = new ImageIcon(this.getClass().getResource("../Textures/10.png")).getImage();
-                g.drawImage(i10, (int)x, (int)y, 30, 30, panel);
-            } case 11 ->  { // BOLA 11 RAYADA
-                Image i11 = new ImageIcon(this.getClass().getResource("../Textures/11.png")).getImage();
-                g.drawImage(i11, (int)x, (int)y, 30, 30, panel);
-            } case 12 ->  { // BOLA 12 RAYADA
-                Image i12 = new ImageIcon(this.getClass().getResource("../Textures/12.png")).getImage();
-                g.drawImage(i12, (int)x, (int)y, 30, 30, panel);
-            } case 13 ->  { // BOLA 13 RAYADA
-                Image i13 = new ImageIcon(this.getClass().getResource("../Textures/13.png")).getImage();
-                g.drawImage(i13, (int)x, (int)y, 30, 30, panel);
-            } case 14 ->  { // BOLA 14 RAYADA
-                Image i14 = new ImageIcon(this.getClass().getResource("../Textures/14.png")).getImage();
-                g.drawImage(i14, (int)x, (int)y, 30, 30, panel);
-            } case 15 ->  { // BOLA 15
+        try{
+            switch(serie){
+                case 0 ->  { // BOLA BLANCA
+                    g.setColor(Color.white); 
+                    g.fillOval((int)x, (int)y, 30, 30);                
+                } case 1 ->  { // BOLA 1 LISA
+                    Image i1 = new ImageIcon(this.getClass().getResource("../Textures/1.png")).getImage();
+                    g.drawImage(i1, (int)x, (int)y, 30, 30, panel);
+                } case 2 ->  { // BOLA 2 LISA
+                    Image i2 = new ImageIcon(this.getClass().getResource("../Textures/2.png")).getImage();
+                    g.drawImage(i2, (int)x, (int)y, 30, 30, panel);
+                } case 3 ->  { // BOLA 3 LISA
+                    Image i3 = new ImageIcon(this.getClass().getResource("../Textures/3.png")).getImage();
+                    g.drawImage(i3, (int)x, (int)y, 30, 30, panel);
+                } case 4 ->  { // BOLA 4 LISA
+                    Image i4 = new ImageIcon(this.getClass().getResource("../Textures/4.png")).getImage();
+                    g.drawImage(i4, (int)x, (int)y, 30, 30, panel);
+                } case 5 ->  { // BOLA 5 LISA
+                    Image i5 = new ImageIcon(this.getClass().getResource("../Textures/5.png")).getImage();
+                    g.drawImage(i5, (int)x, (int)y, 30, 30, panel);
+                } case 6 ->  { // BOLA 6 LISA
+                    Image i6 = new ImageIcon(this.getClass().getResource("../Textures/6.png")).getImage();
+                    g.drawImage(i6, (int)x, (int)y, 30, 30, panel);
+                } case 7 ->  { // BOLA 7 LISA
+                    Image i7 = new ImageIcon(this.getClass().getResource("../Textures/7.png")).getImage();
+                    g.drawImage(i7, (int)x, (int)y, 30, 30, panel);
+                } case 8 ->  { // BOLA 8 NEGRA
+                    Image i8 = new ImageIcon(this.getClass().getResource("../Textures/8.png")).getImage();
+                    g.drawImage(i8, (int)x, (int)y, 30, 30, panel);
+                } case 9 ->  { // BOLA 9 RAYADA
+                    Image i9 = new ImageIcon(this.getClass().getResource("../Textures/9.png")).getImage();
+                    g.drawImage(i9, (int)x, (int)y, 30, 30, panel);
+                } case 10 ->  { // BOLA 10 RAYADA
+                    Image i10 = new ImageIcon(this.getClass().getResource("../Textures/10.png")).getImage();
+                    g.drawImage(i10, (int)x, (int)y, 30, 30, panel);
+                } case 11 ->  { // BOLA 11 RAYADA
+                    Image i11 = new ImageIcon(this.getClass().getResource("../Textures/11.png")).getImage();
+                    g.drawImage(i11, (int)x, (int)y, 30, 30, panel);
+                } case 12 ->  { // BOLA 12 RAYADA
+                    Image i12 = new ImageIcon(this.getClass().getResource("../Textures/12.png")).getImage();
+                    g.drawImage(i12, (int)x, (int)y, 30, 30, panel);
+                } case 13 ->  { // BOLA 13 RAYADA
+                    Image i13 = new ImageIcon(this.getClass().getResource("../Textures/13.png")).getImage();
+                    g.drawImage(i13, (int)x, (int)y, 30, 30, panel);
+                } case 14 ->  { // BOLA 14 RAYADA
+                    Image i14 = new ImageIcon(this.getClass().getResource("../Textures/14.png")).getImage();
+                    g.drawImage(i14, (int)x, (int)y, 30, 30, panel);
+                } case 15 ->  { // BOLA 15
                 Image i15 = new ImageIcon(this.getClass().getResource("../Textures/15.png")).getImage();
                 g.drawImage(i15, (int)x, (int)y, 30, 30, panel);
+                }
             }
+        }catch(Exception e){
+            System.out.println("Fallo al cargar imagen");
         }
+        
     }
     /**
      * Metodo paint para el contorno blanco de Bola

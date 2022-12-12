@@ -6,7 +6,6 @@ import java.awt.*;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
-//import java.util.Random;
 
 /** 
  * Clase que almacena las Bolas en la mesaBillar.
@@ -97,7 +96,7 @@ public final class ConjuntoBolas {
      * Metodo que detecta si hay una colision entre una Bola y  la Pared de la mesa
      * @param b1 Bola a analizar
      */
-    public void ColisionPared(Bola b1){
+    private void ColisionPared(Bola b1){
         if(b1.getX()<mesaBillar.getX()){
             b1.setVelocidadX(-b1.getVelocidadX());
             b1.setX(mesaBillar.getX());
@@ -145,7 +144,7 @@ public final class ConjuntoBolas {
      * @param b1 Primera bola a comparar
      * @param b2 Segunda bola a comparar
      */
-    public void ColisionDosBolas(Bola b1, Bola b2){
+    private void ColisionDosBolas(Bola b1, Bola b2){
         if(DetectarColision(b1, b2)){
             EfectoDeColision(b1, b2);
         }
@@ -167,7 +166,7 @@ public final class ConjuntoBolas {
      * @param b1 Primera bola a comparar
      * @param b2 Segunda bola a comparar
      */
-    public void EfectoDeColision(Bola b1, Bola b2){
+    private void EfectoDeColision(Bola b1, Bola b2){
          // Despegar b1 y b2
          float puntoMedioX = (b1.getX()+b2.getX())/2;
          float puntoMedioY = (b1.getY()+b2.getY())/2;

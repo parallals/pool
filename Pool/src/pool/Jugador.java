@@ -45,13 +45,13 @@ public class Jugador {
             case 0 -> {
                 g.setColor(Color.red);
             } case 1 -> {
-            g.setColor(Color.blue);
+                g.setColor(Color.blue);
             } case 2 -> {
-            g.setColor(Color.green);
+                g.setColor(Color.green);
             } case 3 -> {
-            g.setColor(Color.yellow);
+                g.setColor(Color.yellow);
             } default -> {
-            g.setColor(Color.white);
+                g.setColor(Color.white);
             }
         }
     }
@@ -82,7 +82,7 @@ public class Jugador {
                 }
             }
         }catch(Exception e){
-                    System.out.println("Fallo al cargar la imagen");
+                    System.out.println("Fallo al cargar imagen");
         }
         g.setFont(new Font("Calibri",Font.ITALIC,20));
         String s = "Puntaje: " + Integer.toString(puntaje);
