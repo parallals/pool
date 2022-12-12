@@ -11,7 +11,7 @@ import java.awt.Point;
  * Clase de Taco.
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.3, 09 de diciembre de 2022
+ * @version versión  1.4, 12 de diciembre de 2022
  */
 public class Taco {
     //PROPIEDADES
