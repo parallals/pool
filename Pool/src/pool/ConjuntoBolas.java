@@ -239,6 +239,7 @@ public final class ConjuntoBolas {
     /**
      * Metodo Constructor de ConjuntoBolas.
      * @param mesaBillar Referencia  a mesaBillar en que se encuentra. 
+     * @param conjuntoJugadores Referencia al conjunto de jugadores que se encuentra jugando.
      */
     public ConjuntoBolas(MesaBillar mesaBillar, ConjuntoJugadores conjuntoJugadores){
         this.conjuntoJugadores = conjuntoJugadores;

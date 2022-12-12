@@ -24,8 +24,8 @@ Por hacer:
 - Agregar funcionalidades a Botones() X
 - Agregar una cantidad de Bolas elegida X
 - Remplazar figuras de Graphics por texturas personalizas 
-- Hacer que la bola al caer en una tronera aparezca luego de terminar el turno.
-- Implementar que al meter una Bola en Tronera no se cambie el turno del jugador actual
+- Hacer que la bola al caer en una tronera aparezca luego de terminar el turno 
+- Implementar que al meter una Bola en Tronera no se cambie el turno del jugador actual 
 - 
 - 
 - 
@@ -34,11 +34,11 @@ Por hacer:
 ----------------------------------------------------------------------------------------
 Nos gustaria agregar:
 Permitido por el ayudante:
+- Aumentar la cantidad de bolas X
 - Modo 2 jugadores X
+- Usar dos JPanel - Al final no lo consideramos necesario
 Sin consultar:
-- Aumentar la cantidad de bolas
-- Opcion de quitar bola 8 (En este caso la bola 8 te haria perder el juego)
-- Remplazar figuras de Graphics por texturas personalizas 
+- Opcion de quitar bola 8 (En este caso la bola 8 te haria perder el juego) - Preferimos dar prioridad a otros aspectos que mejorar y añadir
 - 
 -
 - 

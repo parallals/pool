@@ -28,7 +28,6 @@ public class ConjuntoJugadores {
                 jugadorActual = jugadores.get(jugadorActual.getNumJugador()+1);
             }
         }
-        System.out.println("cambio");
     }
     
     /**
@@ -38,11 +37,13 @@ public class ConjuntoJugadores {
     public Jugador getJugadorActual(){
         return jugadorActual;
     }
-    
+    /**
+     * Metodo Setter de mesaBillar, solo se ocupa una vez y es porque conjuntoJugadores se inicializa primero que mesabillar.
+     * @param mesaBillar Referencia a MesaBillar donde los jugadores juegan.
+     */
     public void setMesaBillar(MesaBillar mesaBillar){
         this.mesaBillar = mesaBillar;
     }
-    
     /**
      * Metodo Setter de players.
      * @param cantidad Numero de jugadores.
@@ -65,18 +66,26 @@ public class ConjuntoJugadores {
     public int getCantidadJugadores(){
         return jugadores.size();
     }
-    
+    /**
+     * Metodo que reinicia puntajes de los jugadores y regresa el primer turno al jugador 0.
+     */
     public void reiniciarJugadores(){
         for(int i=0 ; i<jugadores.size() ; i++){
             jugadores.get(i).setPuntaje(0);
         }
         jugadorActual=jugadores.get(0);
     }
-    
+    /**
+     * Metodo paint de ConjuntoJugadores, hace un llamado al paint de cada Jugador.
+     * @param g clase Graphics.
+     * @param panel clase JPanel.
+     */
     public void paint(Graphics g, JPanel panel){
         jugadorActual.paintJugador(g,panel);
     }
-    
+    /**
+     * Metodo Constructor de ConjuntoJugadores.
+     */
     public ConjuntoJugadores(){
         jugadores = new ArrayList<>();
         jugadorActual = new Jugador(0);

@@ -116,7 +116,7 @@ public class Taco {
     /**
      * Metodo Constructor de Taco.
      * @param bolaBlanca Bola a la que golpeara.
-     * @param mesaBillar MesaBillar en la que sera ocupado.
+     * @param conjuntoJugadores Refrencia a ConjuntoJugadores por los que sera ocupado.
      */
     public Taco(Bola bolaBlanca, ConjuntoJugadores conjuntoJugadores){
         this.bolaBlanca = bolaBlanca;
