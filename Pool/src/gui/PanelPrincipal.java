@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.event.MouseMotionListener;
-import static angular.Angular.anguloPI;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -22,7 +21,7 @@ import pool.HolderJuego;
  * @version versión  1.2, 08 de diciembre de 2022*/
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
-    private final HolderJuego holder;
+    private final HolderJuego Holder;
     private final Timer timer;
     
     //METODOS
@@ -32,7 +31,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        holder.ActionPerformed();
+        Holder.ActionPerformed();
         repaint();
     }
     /**
@@ -43,7 +42,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
     public void paint(Graphics g){
         super.paint(g);
         this.setBackground(new Color(20,20,20));
-        holder.paint(g, this);
+        Holder.paint(g, this);
     }
     /**
      * Metodo que crea  botones
@@ -57,7 +56,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         botonReset.setForeground(Color.black);
         botonReset.setBackground(Color.white);
         ActionListener oyenteBotonReset = (ActionEvent e) -> {
-            holder.ReiniciarJuego();
+            Holder.ReiniciarJuego();
         };
         botonReset.addActionListener(oyenteBotonReset);        
         this.add(botonReset);
@@ -69,7 +68,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         botonSumaBola.setForeground(Color.black);
         botonSumaBola.setBackground(Color.white);
         ActionListener oyenteBotonSumaBola = (ActionEvent e) -> {
-            holder.AgregarBolas();
+            Holder.AgregarBolas();
         };
         botonSumaBola.addActionListener(oyenteBotonSumaBola);
         this.add(botonSumaBola);
@@ -81,7 +80,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         botonRestaBola.setForeground(Color.black);
         botonRestaBola.setBackground(Color.white);
         ActionListener oyenteBotonRestaBola = (ActionEvent e) -> {            
-            holder.RetirarBolas();
+            Holder.RetirarBolas();
         };
         botonRestaBola.addActionListener(oyenteBotonRestaBola);
         this.add(botonRestaBola);
@@ -92,7 +91,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton1Player.setForeground(Color.black);
         boton1Player.setBackground(Color.white);
         ActionListener oyenteBoton1Player = (ActionEvent e) -> {
-            holder.CambiarJugadores(1);
+            Holder.CambiarJugadores(1);
         };
         boton1Player.addActionListener(oyenteBoton1Player);
         this.add(boton1Player);
@@ -103,7 +102,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton2Players.setForeground(Color.black);
         boton2Players.setBackground(Color.white);
         ActionListener oyenteBoton2Players = (ActionEvent e) -> {
-            holder.CambiarJugadores(2);
+            Holder.CambiarJugadores(2);
         };
         boton2Players.addActionListener(oyenteBoton2Players);
         this.add(boton2Players);
@@ -114,7 +113,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton3Players.setForeground(Color.black);
         boton3Players.setBackground(Color.white);
         ActionListener oyenteBoton3Players = (ActionEvent e) -> {
-            holder.CambiarJugadores(3);
+            Holder.CambiarJugadores(3);
         };
         boton3Players.addActionListener(oyenteBoton3Players);
         this.add(boton3Players); 
@@ -125,7 +124,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton4Players.setForeground(Color.black);
         boton4Players.setBackground(Color.white);
         ActionListener oyenteBoton4Players = (ActionEvent e) -> {
-            holder.CambiarJugadores(4);
+            Holder.CambiarJugadores(4);
         };
         boton4Players.addActionListener(oyenteBoton4Players);
         this.add(boton4Players);
@@ -143,7 +142,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseMoved(MouseEvent me) {
-        holder.MovimientoMouse(me.getX(), me.getY());
+        Holder.MovimientoMouse(me.getX(), me.getY());
     }
     /**
      * Metodo mousePressed
@@ -151,7 +150,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mousePressed(MouseEvent me){
-        holder.PulsarMouse(me.getPoint());
+        Holder.PulsarMouse(me.getPoint());
     }
     /**
      * Metodo que detecta el movimiento del mouse cuando el click esta presionado
@@ -159,8 +158,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseDragged(MouseEvent me) {
-        holder.MovimientoMouse(me.getX(), me.getY());
-        holder.SoltarMouse(me.getPoint());
+        Holder.MovimientoMouse(me.getX(), me.getY());
+        Holder.SoltarMouse(me.getPoint());
     }
     /**
      * Metodo mouseClicked
@@ -175,8 +174,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseReleased(MouseEvent me) {
-        holder.SoltarMouse(me.getPoint());
-        holder.GolpearBola();
+        Holder.SoltarMouse(me.getPoint());
+        Holder.GolpearBola();
     }
     /**
      * Metodo mouseEntered
@@ -196,7 +195,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      * Metodo Constructor del PanelPrincipal
      */
     public PanelPrincipal() {
-        holder = new HolderJuego();
+        Holder = new HolderJuego();
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);
