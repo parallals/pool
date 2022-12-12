@@ -91,13 +91,21 @@ public class Taco {
      */
     public void paint(Graphics g, JPanel panel){
         if(turnoAcabado == true){
-            conjuntoJugadores.getJugadorActual().colorTaco(g);
+            g.setColor(new Color(200, 150, 100));
             Polygon taco = new Polygon();
             taco.addPoint(Math.round(x+30*cos+2*sen),Math.round(y-30*sen+2*cos)); //Parte cercana a la bola
             taco.addPoint(Math.round(x+30*cos-2*sen),Math.round(y-30*sen-2*cos));
             taco.addPoint(Math.round(x+400*cos-5*sen), Math.round(y-400*sen-5*cos)); // Parte lejana a la bola 
             taco.addPoint(Math.round(x+400*cos+5*sen), Math.round(y-400*sen+5*cos));
             g.fillPolygon(taco);
+            Polygon fundaTaco = new Polygon();
+            conjuntoJugadores.getJugadorActual().colorTaco(g);
+            fundaTaco.addPoint(Math.round(x+100*cos+2*sen),Math.round(y-100*sen+2*cos)); //Parte cercana a la bola
+            fundaTaco.addPoint(Math.round(x+100*cos-2*sen),Math.round(y-100*sen-2*cos));
+            fundaTaco.addPoint(Math.round(x+350*cos-5*sen), Math.round(y-350*sen-5*cos)); // Parte lejana a la bola 
+            fundaTaco.addPoint(Math.round(x+350*cos+5*sen), Math.round(y-350*sen+5*cos));
+            g.fillPolygon(fundaTaco);
+            g.drawPolygon(fundaTaco);
             if(pintarTrayectoria ==true){
                 float magnitudTrayectoria = distEntre2Puntos(mousePulsado, mouseSuelto)+40;
                 if((magnitudTrayectoria-40)/6 > 50){

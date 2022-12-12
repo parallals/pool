@@ -67,6 +67,14 @@ public class MesaBillar {
         return Tronera.isEmpty();
     }
     /**
+     * Metodo que Ordena Bolas que no estan en la mesa.
+     */
+    private void OrdenarTronera(){
+        for(int i=0 ; i<Tronera.size() ; i++){
+            Tronera.get(i).setXY(20, 35+40*i);
+        }
+    }
+    /**
      * Metodo que verifica si cayo alguna bola en las troneras.
      * @param bola Bola a revisar.
      * @return true en caso de que haya caido una Bola y false en caso contrario.
@@ -107,14 +115,6 @@ public class MesaBillar {
         }
         return false;
     }  
-    /**
-     * Metodo que Ordena Bolas que no estan en la mesa.
-     */
-    private void OrdenarTronera(){
-        for(int i=0 ; i<Tronera.size() ; i++){
-            Tronera.get(i).setXY(20, 35+40*i);
-        }
-    }
     /**
      * Metodo que reinicia el puntaje, velocidad y posicion de Bolas.
      */
