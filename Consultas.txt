@@ -23,14 +23,14 @@ Por hacer:
 - Una forma de ver las Bolas que han caido en las troneras X
 - Agregar funcionalidades a Botones() X
 - Agregar una cantidad de Bolas elegida X
-- Remplazar figuras de Graphics por texturas personalizas 
+- Remplazar figuras de Graphics por texturas personalizas X
+- JUnit X
+- Uml grafico X
+- Uml logico X
+- Diagrama de Caso de Uso X
+- Informe X
 - Hacer que la bola al caer en una tronera aparezca luego de terminar el turno 
 - Implementar que al meter una Bola en Tronera no se cambie el turno del jugador actual 
-- Informe
-- JUnit
-- Uml grafico
-- Uml logico
-- Diagrama de Caso de Uso
 - 
 - 
 - 

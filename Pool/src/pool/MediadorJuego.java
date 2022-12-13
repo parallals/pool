@@ -10,9 +10,9 @@ import javax.swing.JPanel;
  * @author Diego  Venegas
  * @version versión  1.2, 12 de diciembre de 2022
  */
-public class HolderJuego {
+public class MediadorJuego {
     //PROPIEDADES
-    private static HolderJuego instancia = null;
+    private static MediadorJuego instancia = null;
     private final MesaBillar mesaBillar;
     private final Taco taco;
     private final ConjuntoJugadores conjuntoJugadores;
@@ -93,16 +93,16 @@ public class HolderJuego {
      * Metodo que llama al contructor, sigue el patro Singleton.
      * @return retorna un unico HolderJuego.
      */
-    public static HolderJuego getInstancia( ){
+    public static MediadorJuego getInstancia( ){
         if(instancia == null){
-            instancia = new HolderJuego( );
+            instancia = new MediadorJuego( );
         }
         return instancia;
     }
     /**
      * Contructor de privado HolderJuego.
      */
-    private HolderJuego(){
+    private MediadorJuego(){
         conjuntoJugadores = new ConjuntoJugadores();
         mesaBillar = new MesaBillar(conjuntoJugadores);
         conjuntoJugadores.setMesaBillar(mesaBillar);

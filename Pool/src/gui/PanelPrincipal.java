@@ -14,7 +14,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import pool.HolderJuego;
+import pool.MediadorJuego;
 
 /** 
  * JPanel Principal que llama a las principales clases del Pool para hacerlas funcionar y relacionarse, ademas de agregar botones y forma de interactuar con el programa.
@@ -23,7 +23,7 @@ import pool.HolderJuego;
  * @version versión  1.2, 08 de diciembre de 2022*/
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
-    private final HolderJuego Holder;
+    private final MediadorJuego Mediador;
     private final Timer timer;
     
     //METODOS
@@ -33,7 +33,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Holder.ActionPerformed();
+        Mediador.ActionPerformed();
         repaint();
     }
     /**
@@ -46,7 +46,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         //Image i1 = new ImageIcon(this.getClass().getResource("../Textures/Fondo.jpeg")).getImage();
         //g.drawImage(i1,0,0,1519,864,this);
         super.paint(g);
-        Holder.paint(g, this);
+        Mediador.paint(g, this);
     }
     /**
      * Metodo que crea  botones
@@ -60,7 +60,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         botonReset.setForeground(Color.black);
         botonReset.setBackground(Color.white);
         ActionListener oyenteBotonReset = (ActionEvent e) -> {
-            Holder.ReiniciarJuego();
+            Mediador.ReiniciarJuego();
         };
         botonReset.addActionListener(oyenteBotonReset);        
         this.add(botonReset);
@@ -72,7 +72,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         botonSumaBola.setForeground(Color.black);
         botonSumaBola.setBackground(Color.white);
         ActionListener oyenteBotonSumaBola = (ActionEvent e) -> {
-            Holder.AgregarBolas();
+            Mediador.AgregarBolas();
         };
         botonSumaBola.addActionListener(oyenteBotonSumaBola);
         this.add(botonSumaBola);
@@ -84,7 +84,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         botonRestaBola.setForeground(Color.black);
         botonRestaBola.setBackground(Color.white);
         ActionListener oyenteBotonRestaBola = (ActionEvent e) -> {            
-            Holder.RetirarBolas();
+            Mediador.RetirarBolas();
         };
         botonRestaBola.addActionListener(oyenteBotonRestaBola);
         this.add(botonRestaBola);
@@ -95,7 +95,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton1Player.setForeground(Color.black);
         boton1Player.setBackground(Color.white);
         ActionListener oyenteBoton1Player = (ActionEvent e) -> {
-            Holder.CambiarJugadores(1);
+            Mediador.CambiarJugadores(1);
         };
         boton1Player.addActionListener(oyenteBoton1Player);
         this.add(boton1Player);
@@ -106,7 +106,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton2Players.setForeground(Color.black);
         boton2Players.setBackground(Color.white);
         ActionListener oyenteBoton2Players = (ActionEvent e) -> {
-            Holder.CambiarJugadores(2);
+            Mediador.CambiarJugadores(2);
         };
         boton2Players.addActionListener(oyenteBoton2Players);
         this.add(boton2Players);
@@ -117,7 +117,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton3Players.setForeground(Color.black);
         boton3Players.setBackground(Color.white);
         ActionListener oyenteBoton3Players = (ActionEvent e) -> {
-            Holder.CambiarJugadores(3);
+            Mediador.CambiarJugadores(3);
         };
         boton3Players.addActionListener(oyenteBoton3Players);
         this.add(boton3Players); 
@@ -128,7 +128,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
         boton4Players.setForeground(Color.black);
         boton4Players.setBackground(Color.white);
         ActionListener oyenteBoton4Players = (ActionEvent e) -> {
-            Holder.CambiarJugadores(4);
+            Mediador.CambiarJugadores(4);
         };
         boton4Players.addActionListener(oyenteBoton4Players);
         this.add(boton4Players);
@@ -146,7 +146,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseMoved(MouseEvent me) {
-        Holder.MovimientoMouse(me.getX(), me.getY());
+        Mediador.MovimientoMouse(me.getX(), me.getY());
     }
     /**
      * Metodo mousePressed
@@ -154,7 +154,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mousePressed(MouseEvent me){
-        Holder.PulsarMouse(me.getPoint());
+        Mediador.PulsarMouse(me.getPoint());
     }
     /**
      * Metodo que detecta el movimiento del mouse cuando el click esta presionado
@@ -162,8 +162,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseDragged(MouseEvent me) {
-        Holder.MovimientoMouse(me.getX(), me.getY());
-        Holder.SoltarMouse(me.getPoint());
+        Mediador.MovimientoMouse(me.getX(), me.getY());
+        Mediador.SoltarMouse(me.getPoint());
     }
     /**
      * Metodo mouseClicked
@@ -178,8 +178,8 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void mouseReleased(MouseEvent me) {
-        Holder.SoltarMouse(me.getPoint());
-        Holder.GolpearBola();
+        Mediador.SoltarMouse(me.getPoint());
+        Mediador.GolpearBola();
     }
     /**
      * Metodo mouseEntered
@@ -199,7 +199,7 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      * Metodo Constructor del PanelPrincipal
      */
     public PanelPrincipal() {
-        Holder = HolderJuego.getInstancia();
+        Mediador = MediadorJuego.getInstancia();
         addMouseListener(this);
         Botones();
         addMouseMotionListener(this);
