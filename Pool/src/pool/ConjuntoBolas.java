@@ -231,6 +231,7 @@ public final class ConjuntoBolas {
         for(int j = 0; j < conjunto.size() ; j++){
             conjunto.get(j).paint(g, panel);
         }
+        g.setColor(Color.white);
         g.setFont(new Font("Calibri",Font.ITALIC,15));
         String s = Integer.toString(cantidadBolas+1);
         g.drawString(s, 149, 725);

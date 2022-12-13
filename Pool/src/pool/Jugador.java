@@ -64,7 +64,7 @@ public class Jugador {
         try{
             switch(numJugador){
                 case 0 -> {
-                    Image i0 = new ImageIcon(this.getClass().getResource("../Textures/jugador1.jpg")).getImage();
+                    Image i0 = new ImageIcon(this.getClass().getResource("../Textures/jugador1.png")).getImage();
                     g.drawImage(i0, 900, 650, 100, 100, panel);
                     g.setColor(Color.red);
                 } case 1 -> {
@@ -72,11 +72,11 @@ public class Jugador {
                     g.drawImage(i1, 900, 650, 100, 100, panel);
                     g.setColor(Color.blue);
                 } case 2 -> {
-                    Image i2 = new ImageIcon(this.getClass().getResource("../Textures/jugador3.jpeg")).getImage();
+                    Image i2 = new ImageIcon(this.getClass().getResource("../Textures/jugador3.png")).getImage();
                     g.drawImage(i2, 900, 650, 100, 100, panel);
                     g.setColor(Color.green);
                 } case 3 -> {
-                    Image i3 = new ImageIcon(this.getClass().getResource("../Textures/jugador4.jpg")).getImage();
+                    Image i3 = new ImageIcon(this.getClass().getResource("../Textures/jugador4.png")).getImage();
                     g.drawImage(i3, 900, 650, 100, 100, panel);
                     g.setColor(Color.yellow);
                 }
@@ -86,7 +86,7 @@ public class Jugador {
         }
         g.setFont(new Font("Calibri",Font.ITALIC,20));
         String s = "Puntaje: " + Integer.toString(puntaje);
-        g.drawString(s, 1100, 700);
+        g.drawString(s, 1050, 700);
     }
     /**
      * Metodo Constructor de Jugador.

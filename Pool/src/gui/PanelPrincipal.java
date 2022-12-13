@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import pool.HolderJuego;
 
 /** 
@@ -40,8 +42,10 @@ class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListen
      */
     @Override
     public void paint(Graphics g){
+        setBackground(Color.black);
+        //Image i1 = new ImageIcon(this.getClass().getResource("../Textures/Fondo.jpeg")).getImage();
+        //g.drawImage(i1,0,0,1519,864,this);
         super.paint(g);
-        this.setBackground(new Color(20,20,20));
         Holder.paint(g, this);
     }
     /**
