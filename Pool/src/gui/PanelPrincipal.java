@@ -12,15 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import pool.MediadorJuego;
 
 /** 
  * JPanel Principal que llama a las principales clases del Pool para hacerlas funcionar y relacionarse, ademas de agregar botones y forma de interactuar con el programa.
  * @author Francy Jelvez
  * @author Diego Venegas
- * @version versión  1.2, 08 de diciembre de 2022*/
+ * @version versión  1.2, 08 de diciembre de 2022
+ */
 class PanelPrincipal extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
     //PROPIEDADES
     private final MediadorJuego Mediador;
