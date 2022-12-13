@@ -4,6 +4,9 @@
  */
 package pool;
 
+import java.awt.Graphics;
+import java.util.ArrayList;
+import javax.swing.JPanel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,6 +19,7 @@ import static org.junit.Assert.*;
  * @author jelve
  */
 public class ConjuntoBolasTest {
+    private ConjuntoBolas cb;
     
     public ConjuntoBolasTest() {
     }
@@ -30,17 +34,21 @@ public class ConjuntoBolasTest {
     
     @Before
     public void setUp() {
+        ConjuntoJugadores cj = new ConjuntoJugadores();
+        cb = new ConjuntoBolas(new MesaBillar(cj),cj);
     }
     
     @After
     public void tearDown() {
     }
-    @Test
-    public void TestDetectarColisionB(){
-        ConjuntoBolas cb = new ConjuntoBolas(new MesaBillar());
-        Bola b1 = new Bola(0,3,23,13);
-        Bola b2 = new Bola(0,34,13,23);
-        assertTrue(cb.DetectarColision(b1,b2));
-    }
 
+    /**
+     * Test of getcantidadBolas method, of class ConjuntoBolas.
+     */
+    @Test
+    public void testDetectarColision(){
+        Bola b1 = new Bola(1,1,1,2);
+        Bola b2 = new Bola(10,10,1,2);
+        assertTrue(cb.DetectarColision(b1, b2));
+    }
 }
