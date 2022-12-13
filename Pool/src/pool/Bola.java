@@ -133,8 +133,8 @@ public class Bola {
         try{
             switch(serie){
                 case 0 ->  { // BOLA BLANCA
-                    g.setColor(Color.white); 
-                    g.fillOval((int)x, (int)y, 30, 30);                
+                    Image i0 = new ImageIcon(this.getClass().getResource("../Textures/0.png")).getImage();
+                    g.drawImage(i0, (int)x, (int)y, 30, 30, panel);           
                 } case 1 ->  { // BOLA 1 LISA
                     Image i1 = new ImageIcon(this.getClass().getResource("../Textures/1.png")).getImage();
                     g.drawImage(i1, (int)x, (int)y, 30, 30, panel);
