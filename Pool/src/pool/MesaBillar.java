@@ -4,7 +4,9 @@ import static angular.Angular.distEntre2Puntos;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /** 
  * Clase mesaBillar que contiene al ConjuntoBolas.
@@ -130,18 +132,12 @@ public class MesaBillar {
      */
     public void paint(Graphics g, JPanel panel){
         //Mesa
-        g.setColor(new Color(100, 60, 50)); 
-        g.fillRect(x-30, y-30, 1124, 541);
-        g.setColor(new Color(30, 130, 80)); // Zona Verde
-        g.fillRect(x, y, 1064, 481);
-        //Troneras
-        g.setColor(new Color(0, 0, 0)); 
-        g.fillOval(x-20, y-20, 40, 40);
-        g.fillOval(x+512, y-20, 40, 40);
-        g.fillOval(x+1044, y-20, 40, 40);
-        g.fillOval(x-20, y+461, 40, 40);
-        g.fillOval(x+512, y+461, 40, 40);
-        g.fillOval(x+1044, y+461, 40, 40);
+        try{
+            Image i0 = new ImageIcon(this.getClass().getResource("../Textures/mesaBillar.png")).getImage();
+            g.drawImage(i0, x-30, y-30, 1124, 541, panel);
+        }catch(Exception e){
+            System.out.println("Fallo al cargar imagen");
+        }
         //conjuntoBolas
         conjuntoBolas.paint(g, panel);
         for(int i=0 ; i<Tronera.size() ; i++){
